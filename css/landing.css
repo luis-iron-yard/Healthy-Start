@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+}
+
+main {
+  background: url("../img/landing_hp.jpg");
+  background-size: cover;
+}
+
+img {
+  width: 100%;
+}
+
+.welcomeContainer {
+  width: 50%;
+  margin: auto;
+}
+
+.welcomeText {
+  padding-top: 20px;
+  padding-left: 20px;
+}

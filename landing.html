@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing Page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Stylesheets go here. -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/landing.css" />
+</head>
+<body>
+  <!--Begin Header-->
+  <header></header>
+  <!--End of Header-->
+
+  <!--Begin Main-->
+  <main>
+  <div class="container welcomeContainer">
+    <div class="row">
+      <div class="col-sm-8 welcomeText">
+        <!--Title Section of the landing page-->
+        <h1>healthy start</h1>
+        <p>Providing healthy recipes that meet the nutritional needs of pregnant women.</p>
+        <img id="landingBg__logo" src="#" alt="image of tomato sauce for home page">
+      </div>
+      <!--End of Title Section of the landing page-->
+      <!--SignIn Section of the landing page-->
+      <div class="col-sm-4 welcomeProfile">
+        <img id="genericBg_profile"src="http://unsplash.it/600?random" alt="generic profile image for the signup/in section">
+        <p>Need an account? <a href="#">SignUp</a></p>
+        <div class="form-group">
+          <label for="emailInput">Email address</label>
+          <input type="email" class="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email">
+          <small id="emailAssistance" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="selectInterest">Select Interest</label>
+          <select class="form-control" id="selectInterest">
+            <option>Nutritional Topics</option>
+            <option>Common Complaint Topics</option>
+          </select>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <button>Login</button>
+          </div>
+          <div class="col-sm-6">
+            <button>Guest</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <button>SignUp</button>
+          </div>
+        </div>
+      </div>
+      <!--End of SignIn Section of the landing page-->
+    </div>
+  </div>
+  </main>
+  <!--End of Main-->
+
+  <!--Begin Footer-->
+  <footer></footer>
+  <!--End of Footer-->
+
+  <!-- Scripts go here. -->
+  <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
+  <script type="text/javascript" src="js/landing.js"></script>
+</body>
+</html>
