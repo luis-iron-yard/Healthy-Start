@@ -1,14 +1,22 @@
+$primaryText: #fff;
+$secondaryText: #000;
+$welcomeBorder: #fff;
+
+
 * {
     box-sizing: border-box;
+    // border: 1px dashed grey;
 }
 
 //Generic Styling for the Landing page
 body {
-    background: #fff;
+    background: $welcomeBorder;
+    padding: 1%;
 }
 main {
     background: url("../img/landing_hp.jpg");
     background-size: cover;
+    height: 100vh;
 }
 img {
     width: 100%;
@@ -16,17 +24,27 @@ img {
 
 //Styling for the Main Section
 .welcomeContainer {
-    width: 50%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 55%;
     margin: auto;
+    height: 25%;
 }
 
     //Styling for the Main Section Title Area
     .welcomeText {
-        padding-top: 20px;
-        padding-left: 20px;
+        padding: 10px;
+        color: $primaryText;
     }
 
     //Styling for the Main Section SignIn Area
     .welcomeProfile {
-
+        background: $welcomeBorder;
+        padding: 10px;
+        color: $secondaryText;
+        height: 100%;
+        border-radius: 15px 50px 30px;
+        img {
+            border-radius: 30px;
+        }
     }
