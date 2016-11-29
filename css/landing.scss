@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+//Generic Styling for the Landing page
+body {
+    background: #fff;
+}
+main {
+    background: url("../img/landing_hp.jpg");
+    background-size: cover;
+}
+img {
+    width: 100%;
+}
+
+//Styling for the Main Section
+.welcomeContainer {
+    width: 50%;
+    margin: auto;
+}
+
+    //Styling for the Main Section Title Area
+    .welcomeText {
+        padding-top: 20px;
+        padding-left: 20px;
+    }
+
+    //Styling for the Main Section SignIn Area
+    .welcomeProfile {
+
+    }
