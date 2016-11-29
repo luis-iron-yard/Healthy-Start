@@ -3,13 +3,17 @@
   <head>
     <title>HealthyStart</title>
     <%= csrf_meta_tags %>
-
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag *webpack_asset_paths('application', extension: 'js') %>
+  <%= stylesheet_link_tag *webpack_asset_paths('application', extension: 'css') %>
+<!--
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag *webpack_asset_paths("application") %>
+    <%= javascript_include_tag *webpack_asset_paths("application") %> -->
   </head>
 
   <body>
+    <div id="app"></div>
     <%= yield %>
   </body>
 </html>
