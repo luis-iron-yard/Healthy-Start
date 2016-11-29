@@ -4,11 +4,13 @@
 
 body {
   background: #fff;
+  padding: 1%;
 }
 
 main {
   background: url("../img/landing_hp.jpg");
   background-size: cover;
+  height: 100vh;
 }
 
 img {
@@ -16,11 +18,26 @@ img {
 }
 
 .welcomeContainer {
-  width: 50%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 55%;
   margin: auto;
+  height: 25%;
 }
 
 .welcomeText {
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 10px;
+  color: #fff;
+}
+
+.welcomeProfile {
+  background: #fff;
+  padding: 10px;
+  color: #000;
+  height: 100%;
+  border-radius: 15px 50px 30px;
+}
+
+.welcomeProfile img {
+  border-radius: 30px;
 }

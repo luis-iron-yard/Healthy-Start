@@ -11,19 +11,15 @@
   <link rel="stylesheet" type="text/css" href="css/landing.css" />
 </head>
 <body>
-  <!--Begin Header-->
-  <header></header>
-  <!--End of Header-->
 
   <!--Begin Main-->
   <main>
-  <div class="container welcomeContainer">
-    <div class="row">
+  <div class="container">
+    <div class="row welcomeContainer">
       <div class="col-sm-8 welcomeText">
         <!--Title Section of the landing page-->
-        <h1>healthy start</h1>
+        <h1 class="text-capitalize">healthy start</h1>
         <p>Providing healthy recipes that meet the nutritional needs of pregnant women.</p>
-        <img id="landingBg__logo" src="#" alt="image of tomato sauce for home page">
       </div>
       <!--End of Title Section of the landing page-->
       <!--SignIn Section of the landing page-->
@@ -32,12 +28,12 @@
         <p>Need an account? <a href="#">SignUp</a></p>
         <div class="form-group">
           <label for="emailInput">Email address</label>
-          <input type="email" class="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email">
+          <input type="email" class="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" />
           <small id="emailAssistance" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
           <label for="passwordInput">Password</label>
-          <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+          <input type="password" class="form-control" id="passwordInput" placeholder="Password" />
         </div>
         <div class="form-group">
           <label for="selectInterest">Select Interest</label>
@@ -48,15 +44,15 @@
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <button>Login</button>
+            <button class="btn btn-primary">Login</button>
           </div>
           <div class="col-sm-6">
-            <button>Guest</button>
+            <button class="btn btn-default">Guest</button>
           </div>
-        </div>
+        </div><br/>
         <div class="row">
-          <div class="col-sm-12">
-            <button>SignUp</button>
+          <div class="col-sm-12 text-center">
+            <button class="btn btn-success">SignUp</button>
           </div>
         </div>
       </div>
@@ -65,11 +61,6 @@
   </div>
   </main>
   <!--End of Main-->
-
-  <!--Begin Footer-->
-  <footer></footer>
-  <!--End of Footer-->
-
   <!-- Scripts go here. -->
   <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
   <script type="text/javascript" src="js/landing.js"></script>
