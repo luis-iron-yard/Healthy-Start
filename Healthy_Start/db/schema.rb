@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130174502) do
+ActiveRecord::Schema.define(version: 20161130200714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,12 @@ ActiveRecord::Schema.define(version: 20161130174502) do
   end
 
   create_table "interests", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "interestable_id"
+    t.string   "interestable_type"
+    t.integer  "user_id"
+    t.index ["interestable_type", "interestable_id"], name: "index_interests_on_interestable_type_and_interestable_id", using: :btree
   end
 
   create_table "nutritions", force: :cascade do |t|
