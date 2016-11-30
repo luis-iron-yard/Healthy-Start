@@ -14,8 +14,8 @@ import Signup from './components/Signup'
 document.addEventListener('DOMContentLoaded', function(event) {
     ReactDOM.render(
         <Router history={browserHistory}>
-            <Route path='/' component={Landing} />
-            <Route path='./users/signup' component={Signup} />
+            <Route path='/users/sign_in' component={Landing} />
+            <Route path='/users/sign_up' component={Signup} />
         </Router>
         ,document.getElementById('app')
     )
