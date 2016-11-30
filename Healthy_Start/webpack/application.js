@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
 import Landing from './components/Landing'
-// import Signup from './components/Signup'
+import Signup from './components/Signup'
 // import Search from './components/Search'
 // import Recipe_Id from './components/Recipe_Id'
 // import Favorites from './components/Favorites'
@@ -14,8 +14,8 @@ import Landing from './components/Landing'
 document.addEventListener('DOMContentLoaded', function(event) {
     ReactDOM.render(
         <Router history={browserHistory}>
-            <Route path='/' component={Landing}>
-            </Route>
+            <Route path='/users/sign_in' component={Landing} />
+            <Route path='/users/sign_up' component={Signup} />
         </Router>
         ,document.getElementById('app')
     )
