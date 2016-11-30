@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+// import Signup from './Signup'
 
 class Landing extends React.Component {
     constructor(props) {
@@ -38,43 +39,14 @@ class Landing extends React.Component {
                                     <button className="btn btn-primary">Login</button>
                                 </div>
                                 <div className="col-sm-6">
-                                    <Link to="/search"><button className="btn btn-default">Guest</button></Link>
+                                    <button className="btn btn-default">Guest</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
-            <div className="modal fade" id="addNewProfile" tabindex="-1" role="dialog" aria-labelledby="createProfile" aria-hidden="true">
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 className="modal-title" id="createProfile">Create New Profile</h4>
-                  </div>
-                  <div className="modal-body">
-                    <div className="form-group">
-                      <label htmlFor="username">Username</label>
-                      <input type="text" className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" required />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="emailInput">Email address</label>
-                      <input type="email" className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" required />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="passwordInput">Password</label>
-                      <input type="password" className="form-control" id="signUpPassword" name="password" placeholder="Password" required />
-                    </div>
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary" id="saveSignUp">Save changes</button>
-                  </div>
-                </div>
-              </div>
-            </div>
         )
     }
 }
+export default Landing
