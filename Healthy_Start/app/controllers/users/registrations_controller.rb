@@ -1,7 +1,18 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
+  respond_to :json
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
+  def create
+
+    user = User.new(sign_up_params)
+    if user.save
+      render :json=> user
+    else
+      warden.custom_failure!
+      render :json=> user.errors, :status=>422
+    end
+  end
   # GET /resource/sign_up
   # def new
   #   super
