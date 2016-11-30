@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  padding: 1%;
+}
+
+main {
+  background: url("./landing_hp.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+}
+
+.welcomeContainer {
+  padding-top: 5%;
+  padding-bottom: 5%;
+  width: 55%;
+  margin: auto;
+  height: 25%;
+}
+
+.welcomeText {
+  padding: 10px;
+  color: #fff;
+}
+
+.welcomeProfile {
+  background: #fff;
+  padding: 10px;
+  color: #000;
+  height: 100%;
+  border-radius: 15px 50px 30px;
+}
+
+.welcomeProfile img {
+  border-radius: 30px;
+}

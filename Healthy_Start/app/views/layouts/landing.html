@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landing Page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Stylesheets go here. -->
+  <!-- Latest compiled and minified CSS -->
+  <script src="https://use.fontawesome.com/bfd4e076b7.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/landing.css" />
+</head>
+<body>
+
+  <!--Begin Main-->
+  <main>
+    <div class="container">
+      <div class="row welcomeContainer">
+        <div class="col-sm-7 welcomeText">
+          <!--Title Section of the landing page-->
+          <h1 class="text-capitalize">healthy start</h1>
+          <p>Providing healthy recipes that meet the nutritional needs of pregnant women.</p>
+        </div>
+        <!--End of Title Section of the landing page-->
+        <!--SignIn Section of the landing page-->
+        <div class="col-sm-5 welcomeProfile">
+          <img id="genericBg_profile"src="http://unsplash.it/600?random" alt="generic profile image for the signup/in section">
+          <p>Need an account? <a href="#" data-toggle="modal" data-target="#addNewProfile">SignUp</a></p>
+          <div class="form-group">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" />
+            <small id="emailAssistance" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password" />
+          </div>
+          <div class="form-group">
+            <label for="selectInterest">Select Interest</label>
+            <select class="form-control" id="selectInterest">
+              <option>Nutritional Topics</option>
+              <option>Common Complaint Topics</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <button class="btn btn-primary">Login</button>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn btn-default">Guest</button>
+            </div>
+          </div><br/>
+          <div class="row">
+            <div class="col-sm-12 text-center">
+              <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addNewProfile">
+                SignUp
+              </button> -->
+            </div>
+          </div>
+        </div>
+        <!--End of SignIn Section of the landing page-->
+      </div>
+    </div>
+  </main>
+  <!--End of Main-->
+  <!-- Begin Modal for Profile here -->
+  <div class="modal fade" id="addNewProfile" tabindex="-1" role="dialog" aria-labelledby="createProfile" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="createProfile">Create New Profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" required />
+          </div>
+          <div class="form-group">
+            <label for="emailInput">Email address</label>
+            <input type="email" class="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="passwordInput">Password</label>
+            <input type="password" class="form-control" id="signUpPassword" name="password" placeholder="Password" required />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveSignUp">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal for Profile here -->
+  <!-- Scripts go here. -->
+  <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/landing.js"></script>
+</body>
+</html>

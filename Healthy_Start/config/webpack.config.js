@@ -31,7 +31,18 @@ var config = {
   resolve: {
     root: path.join(__dirname, '..', 'webpack')
   },
-
+  module: {
+      loaders: [
+          {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              loader: 'babel',
+              query: {
+                  presets: ['latest', 'react']
+              }
+          }
+      ]
+  },
   plugins: [
     // must match config.webpack.manifest_filename
     new StatsPlugin('manifest.json', {
