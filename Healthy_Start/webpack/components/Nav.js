@@ -1,5 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router'
 import Favorites from './Favorites'
+import Nutritions from './Nutritions'
+
 
 
 class Nav extends React.Component {
@@ -12,7 +15,7 @@ class Nav extends React.Component {
                <div className="row navBar">
 
                  <div className="col-sm-2">
-                   <button type="button" className="btn btn-lg btn-primary btn-block">Nutrition</button>
+                  <Link to='/nutritions'><button type="button" className="btn btn-lg btn-primary btn-block">Nutrition</button></Link>
                  </div>
 
                  <div className="col-sm-2">
@@ -26,7 +29,7 @@ class Nav extends React.Component {
                  </div>
 
                  <div className="col-sm-2">
-                   <button type="button" className="btn btn-lg btn-primary btn-block"><img src="http://bonniesomerville.nz/wp-content/uploads/2015/08/profile-icon.png" /></button>
+                   <Link to='/favorites' ><button type="button" className="btn btn-lg btn-primary btn-block"><img src="http://bonniesomerville.nz/wp-content/uploads/2015/08/profile-icon.png" /></button></Link>
                  </div>
 
                </div>
