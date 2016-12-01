@@ -26,7 +26,7 @@ class Interests extends React.Component {
                   </div>
 
                   <div className="col-sm-2">
-                    <button type="button" className="btn btn-lg btn-primary btn-block"><img src="http://bonniesomerville.nz/wp-content/uploads/2015/08/profile-icon.png" style="width: 1.5em"/></button>
+                    <button type="button" className="btn btn-lg btn-primary btn-block"><img src="http://bonniesomerville.nz/wp-content/uploads/2015/08/profile-icon.png" /*style="width: 1.5em"*//></button>
                   </div>
 
                 </div>
