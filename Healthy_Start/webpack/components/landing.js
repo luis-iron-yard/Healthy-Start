@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Signup from './Signup'
+import Nutritions from './Nutritions'
 
 class Landing extends React.Component {
     constructor(props) {
@@ -71,7 +72,7 @@ class Landing extends React.Component {
                                     <button className="btn btn-primary" onClick={this.confirmUser}>Login</button>
                                 </div>
                                 <div className="col-sm-6">
-                                <Link to='/nutritions'><button className="btn btn-default">Guest</button></Link>
+                                <Link to="/nutritions"><button className="btn btn-default">Guest</button></Link>
                                 </div>
                             </div>
                         </div>
