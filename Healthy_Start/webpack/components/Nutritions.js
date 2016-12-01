@@ -7,7 +7,7 @@ import Recipes from './Recipes'
 
 
 
-class Interests extends React.Component {
+class Nutritions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -37,4 +37,4 @@ class Interests extends React.Component {
     }
 }
 
-export default Interests
+export default Nutritions
