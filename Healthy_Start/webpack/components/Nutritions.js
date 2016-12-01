@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Nav from './Nav'
-import User from './User'
+import Nutrient from './Nutrient'
+import NutrientDetail from './NutrientDetail'
 import Recipes from './Recipes'
 
-class Favorites extends React.Component {
+
+
+class Nutritions extends React.Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -21,9 +24,10 @@ class Favorites extends React.Component {
              <div className="container-fluid">
                  <div className="row">
                      <div className="col-sm-3">
-                         <User />
+                         <Nutrient />
                      </div>
                      <div className="col-sm-9">
+                         <NutrientDetail />
                          <Recipes />
                      </div>
                  </div>
@@ -33,4 +37,4 @@ class Favorites extends React.Component {
     }
 }
 
-export default Favorites
+export default Nutritions
