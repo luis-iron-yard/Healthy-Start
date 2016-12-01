@@ -14,7 +14,7 @@ class Interests extends React.Component {
     }
     render() {
         return (
-            <main>
+            <div>
              <div className="container-fluid">
                 <Nav />
              </div>
@@ -32,7 +32,7 @@ class Interests extends React.Component {
                      </div>
                  </div>
              </div>
-            </main>
+            </div>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-class Recipe extends React.Component {
+class Recipes extends React.Component {
     constructor(props){
         super(props)
     }
@@ -22,4 +22,4 @@ class Recipe extends React.Component {
     }
 }
 
-export default Recipe
+export default Recipes
