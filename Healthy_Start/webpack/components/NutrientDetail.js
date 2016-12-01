@@ -5,9 +5,17 @@ class NutrientDetail extends React.Component {
     constructor(props){
         super(props)
     }
+
+    componentDidMount(){
+        fetch('/nutritions')
+        .then(response => response.json())
+        // .then(response => console.log(response[0].nutrient))
+        .then(response => this.setState({nutrients: response}))
+    }
+
     render(){
         return (
-            <div className="container-fluid well nutriFacts">
+            <div>
               <h2>Vitamin A</h2>
               <h4>Benefits:</h4>
                 <p>

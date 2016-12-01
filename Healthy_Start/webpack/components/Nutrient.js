@@ -7,42 +7,34 @@ class Nutrient extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            // nutrients: [
-            //     id1: {
-            //         recipe_name: "Stew",
-            //         food: ["Broccoli", "Carrots"],
-            //         image: "https://unsplash.it/600?random"
-            //     },
-            //     id2: {
-            //         recipe_name: "Stew",
-            //         food: ["Broccoli", "Carrots"],
-            //         image: "https://unsplash.it/600?random"
-            //     }
-            // ],
+            nutrients: [],
         }
     }
 
-    // componentDidMount(){
-    //     fetch('/nutritions')
-    //     .then(response => response.json())
-    //     .then(response => this.setState({nutrients: response}))
-    // }
+    componentDidMount(){
+        fetch('/nutritions')
+        .then(response => response.json())
+        // .then(response => console.log(response[0].nutrient))
+        .then(response => this.setState({nutrients: response}))
+    }
 
     render(){
-        // const nutrients = this.state.nutrients.map((nutrients, i) =>{
-        //     return <Link to={"/nutritions"} key={i}>
-        //                 <li>{nutrient}</li>
-        //             </Link>
-        // })
+        const nutrients = this.state.nutrients.map((nutrient, i) =>{
+            console.log('Made it to the mapping')
+            return <Link to="/" key={i}><li >{nutrient.nutrient}</li></Link>
+        })
         return (
-            <div className="col-sm-3">
-                <h4>Nutrients:</h4>
-                <ol id="sidebar">
-                {/* {nutrients} */}
-                </ol>
-                 {/* <NutrientDetail /> */}
+            <div>
+                <div className="col-sm-3">
+                    <h4>Nutrients:</h4>
+                    <ol id="sidebar">
+                    {nutrients}
+                    </ol>
+                </div>
+                <div className="col-sm-9">
+                    {/* <NutrientDetail /> */}
+                </div>
             </div>
-
         )
 
     }
