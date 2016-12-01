@@ -18,7 +18,7 @@ class Landing extends React.Component {
             password: this.state.password,
         }
         console.log(formData)
-        fetch("/users", {
+        fetch("/users/sign_in", {
             body:JSON.stringify(
                 {user_login: formData}
             ),
@@ -29,13 +29,13 @@ class Landing extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            // if () {
-            //
-            // }
-            // else {
-            //     window.location.href = '/users/sign_in'
-            // }
-            console.log(response)
+            sessionStorage.setItem('api_token', response.authentication_token)
+            window.authenticate_token = sessionStorage.getItem('authenticate_token')
+            window.location.href = '/nutritions'
+            // console.dir(response)
+            // console.log(authenticate_token)
+            // console.log('About to redirect to nutritions')
+            // console.log('Got all the way here...')
         })
     }
     render () {
@@ -71,7 +71,7 @@ class Landing extends React.Component {
                                     <button className="btn btn-primary" onClick={this.confirmUser}>Login</button>
                                 </div>
                                 <div className="col-sm-6">
-                                    <button className="btn btn-default">Guest</button>
+                                <Link to='/nutritions'><button className="btn btn-default">Guest</button></Link>
                                 </div>
                             </div>
                         </div>
