@@ -8,9 +8,8 @@ class NutrientDetail extends React.Component {
 
     render(){
         console.log(this.props.currentNutrition)
-
         var foods = this.props.currentNutrition.foods.map((food, i) => {
-            return <li key={i}>{food}</li>
+            return <li key={i}>{food.name}</li>
         })
 
         return (
@@ -28,5 +27,6 @@ class NutrientDetail extends React.Component {
         )
     }
 }
+
 
 export default NutrientDetail
