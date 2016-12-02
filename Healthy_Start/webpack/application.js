@@ -16,6 +16,7 @@ import Favorites from './components/Favorites'
 document.addEventListener('DOMContentLoaded', function(event) {
     ReactDOM.render(
         <Router history={browserHistory}>
+            <Route path='/' component={Landing} />
             <Route path='/users/sign_in' component={Landing} />
             <Route path='/users/sign_up' component={Signup} />
             <Route path='/nutritions' component={Nutritions} />
