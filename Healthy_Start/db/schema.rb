@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20161201204418) do
     t.datetime "updated_at",  null: false
   end
 
+
   create_table "foodables", id: false, force: :cascade do |t|
     t.integer "food_id",   null: false
     t.integer "recipe_id", null: false
     t.index ["food_id", "recipe_id"], name: "index_foodables_on_food_id_and_recipe_id", using: :btree
     t.index ["recipe_id", "food_id"], name: "index_foodables_on_recipe_id_and_food_id", using: :btree
+
   end
 
   create_table "foods", force: :cascade do |t|

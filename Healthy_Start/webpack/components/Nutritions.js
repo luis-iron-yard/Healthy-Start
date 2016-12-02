@@ -10,9 +10,14 @@ import Recipes from './Recipes'
 class Nutritions extends React.Component {
     constructor(props) {
         super(props)
-
+        this.setCurrentNutrition = this.setCurrentNutrition.bind(this)
+        this.state = {
+            currentNutrition: {},
+        }
     }
-
+    setCurrentNutrition(nutrition) {
+        this.setState({currentNutrition: nutrition})
+    }
     render() {
         window.authenticate_token = sessionStorage.getItem('authenticate_token')
         return (
@@ -26,10 +31,10 @@ class Nutritions extends React.Component {
              <div className="container-fluid">
                  <div className="row">
                      <div className="col-sm-3">
-                         <Nutrient />
+                         <Nutrient setCurrentNutrition={this.setCurrentNutrition} />
                      </div>
                      <div className="col-sm-9">
-                         <NutrientDetail />
+                         <NutrientDetail currentNutrition={this.state.currentNutrition} />
                          <Recipes />
                      </div>
                  </div>
