@@ -30,13 +30,11 @@ class Landing extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            sessionStorage.setItem('api_token', response.authentication_token)
-            window.authenticate_token = sessionStorage.getItem('authenticate_token')
-            window.location.href = '/nutritions'
+            sessionStorage.setItem('authentication_token', response.authentication_token)
             // console.dir(response)
-            // console.log(authenticate_token)
-            // console.log('About to redirect to nutritions')
-            // console.log('Got all the way here...')
+            console.log('About to redirect to nutritions')
+            window.location.href = '/nutritions?authentication_token=' + response.authentication_token
+            console.log('Got all the way here...')
         })
     }
     render () {
