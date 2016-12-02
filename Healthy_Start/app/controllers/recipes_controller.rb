@@ -8,25 +8,36 @@ ENV["edamam_key"]
     @recipe = Recipe.all
     render json: @recipe
   end
-  The search
+  # The search
   def search
-    @response = HTTParty.get('https://api.edamam.com/search?q=brocilli&app_id={edamam_app_id}&app_key={edamam_key}')
-
-    if params[:food].present?
-      @food = params:[food]
-      render json: @response.pots,
-      .map{|stuff| custom_params}
-    else
-      render json: client
-
+     @response = HTTParty.get("https://api.edamam.com/search?q=rice", headers: {app_id: ENV["edamam_app_id"], app_key: ENV["edamam_key"]})
+    # @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}&app_id=#{ENV["edamam_app_id"]}&app_key=#{ENV["edamam_key"]}")
+    @recipies = []
+    @response["hits"].each do |nut|
+      recipe = Recipe.find_or_create_by(
+        recipe_name: nut["recipe"]["label"],
+        instruction: nut["recipe"]["url"],
+        food_image: nut["recipe"]["image"]
+      )
+      nut["recipe"]["ingredients"].each do |fd|
+        puts fd.inspect
+        food = Food.find_or_initialize_by(
+          name: fd["food"]
+        )
+        recipe.foods << food unless recipe.foods.include?(food)
+      end
+      @recipies << recipe
+    end
+    render json: @recipies
   end
+
 
 
 private
 
   def custom_params(pots)
     {
-      name: pots.label, 
+      name: pots.label,
     }
   end
 
