@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201161516) do
+ActiveRecord::Schema.define(version: 20161201205138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,20 @@ ActiveRecord::Schema.define(version: 20161201161516) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "foodings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "foods", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
+  end
+
+  create_table "foods_recipes", id: false, force: :cascade do |t|
+    t.integer "food_id",   null: false
+    t.integer "recipe_id", null: false
   end
 
   create_table "interests", force: :cascade do |t|
@@ -49,6 +59,14 @@ ActiveRecord::Schema.define(version: 20161201161516) do
     t.integer "food_id",      null: false
     t.index ["food_id", "nutrition_id"], name: "index_nutrizations_on_food_id_and_nutrition_id", using: :btree
     t.index ["nutrition_id", "food_id"], name: "index_nutrizations_on_nutrition_id_and_food_id", using: :btree
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string   "recipe_name"
+    t.string   "instruction"
+    t.string   "food_image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

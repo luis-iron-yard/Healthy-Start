@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  acts_as_token_authentication_handler_for User, only: [:create, :update, :destroy]
 
   def create
 
