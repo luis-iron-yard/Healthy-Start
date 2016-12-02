@@ -12,7 +12,7 @@ class Nutritions extends React.Component {
         super(props)
         this.setCurrentNutrition = this.setCurrentNutrition.bind(this)
         this.state = {
-            currentNutrition: {},
+            currentNutrition: undefined,
         }
     }
     setCurrentNutrition(nutrition) {
@@ -34,7 +34,7 @@ class Nutritions extends React.Component {
                          <Nutrient setCurrentNutrition={this.setCurrentNutrition} />
                      </div>
                      <div className="col-sm-9">
-                         <NutrientDetail currentNutrition={this.state.currentNutrition} />
+                         {this.state.currentNutrition?<NutrientDetail currentNutrition={this.state.currentNutrition} />: ''}
                          <Recipes />
                      </div>
                  </div>

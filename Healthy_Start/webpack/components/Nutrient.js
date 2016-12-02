@@ -15,7 +15,10 @@ class Nutrient extends React.Component {
         fetch('/api/nutritions')
         .then(response => response.json())
         // .then(response => console.log(response[0].nutrient))
-        .then(response => this.setState({nutrients: response}))
+        .then(response => {
+            this.setState({nutrients: response})
+            this.props.setCurrentNutrition(response[0])
+        })
     }
 
 
