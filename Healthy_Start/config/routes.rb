@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :nutritions
     resources :foods
   end
-
   root to: 'home#index'
   get '/:thing' => 'home#index'
 # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
