@@ -10,9 +10,11 @@ import Recipes from './Recipes'
 class Nutritions extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {}
+
     }
+
     render() {
+        window.authenticate_token = sessionStorage.getItem('authenticate_token')
         return (
             <div>
              <div className="container-fluid">

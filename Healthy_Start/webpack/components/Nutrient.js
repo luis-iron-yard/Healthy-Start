@@ -1,40 +1,40 @@
 import React from 'react'
+import { Link } from 'react-router'
+import NutrientDetail from './NutrientDetail'
+
 
 class Nutrient extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            nutrients: [],
+        }
     }
+
+    componentDidMount(){
+        fetch('/nutritions')
+        .then(response => response.json())
+        // .then(response => console.log(response[0].nutrient))
+        .then(response => this.setState({nutrients: response}))
+    }
+
     render(){
+        const nutrients = this.state.nutrients.map((nutrient, i) =>{
+            console.log('Made it to the mapping')
+            return <Link to="/" key={i}><li >{nutrient.nutrient}</li></Link>
+        })
         return (
-            <div className="col-sm-3">
-                <ol id="sidebar">
-                  <h4>Nutrients:</h4>
-
-                  <li><a href="">Vitamin A</a></li>
-
-                  <li><a href="">Vitamin B</a></li>
-
-                  <li><a href="">Vitamin C</a></li>
-
-                    <li><a href="">Vitamin D</a></li>
-
-                    <li><a href="">Vitamin K</a></li>
-
-                    <li><a href="">Folic Acid</a></li>
-
-                    <li><a href="">Iron</a></li>
-
-                    <li><a href="">Zinc</a></li>
-
-                    <li><a href="">Calcium</a></li>
-
-                    <li><a href="">Omega 3 / fatty acid</a></li>
-
-                    <li><a href="">Protein</a></li>
-
-                    <li><a href="">Potassium</a></li>
-                  </ol>
-              </div>
+            <div>
+                <div className="col-sm-3">
+                    <h4>Nutrients:</h4>
+                    <ol id="sidebar">
+                    {nutrients}
+                    </ol>
+                </div>
+                <div className="col-sm-9">
+                    {/* <NutrientDetail /> */}
+                </div>
+            </div>
         )
 
     }
