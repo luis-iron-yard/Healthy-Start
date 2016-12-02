@@ -4,16 +4,20 @@ import { Link } from 'react-router'
 class NutrientDetail extends React.Component {
     constructor(props){
         super(props)
+        this.state = {
+            nutrients: {}
+        }
     }
 
     componentDidMount(){
-        fetch('/nutritions')
+        fetch('/api/nutritions')
         .then(response => response.json())
         // .then(response => console.log(response[0].nutrient))
         .then(response => this.setState({nutrients: response}))
     }
 
     render(){
+        console.log(this.props)
         return (
             <div>
               <h2>Vitamin A</h2>
