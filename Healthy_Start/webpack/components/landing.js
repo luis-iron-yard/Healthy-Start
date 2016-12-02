@@ -19,7 +19,7 @@ class Landing extends React.Component {
             password: this.state.password,
         }
         console.log(formData)
-        fetch("/users/sign_in", {
+        fetch("/api/users/sign_in", {
             body:JSON.stringify(
                 {user_login: formData}
             ),
@@ -33,7 +33,7 @@ class Landing extends React.Component {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             // console.dir(response)
             console.log('About to redirect to nutritions')
-            window.location.href = '/nutritions?authentication_token=' + response.authentication_token
+            window.location.href = '/nutritions'
             console.log('Got all the way here...')
         })
     }

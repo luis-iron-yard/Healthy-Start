@@ -12,7 +12,7 @@ class Nutrient extends React.Component {
     }
 
     componentDidMount(){
-        fetch('/nutritions')
+        fetch('/api/nutritions')
         .then(response => response.json())
         // .then(response => console.log(response[0].nutrient))
         .then(response => this.setState({nutrients: response}))
@@ -21,7 +21,7 @@ class Nutrient extends React.Component {
     render(){
         const nutrients = this.state.nutrients.map((nutrient, i) =>{
             console.log('Made it to the mapping')
-            return <Link to="/" key={i}><li >{nutrient.nutrient}</li></Link>
+            return <li key={i} onClick={()=>this.props.setCurrentNutrition(nutrient.id)}>{nutrient.nutrient}</li>
         })
         return (
             <div>
