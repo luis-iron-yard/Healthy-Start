@@ -4,32 +4,25 @@ import { Link } from 'react-router'
 class NutrientDetail extends React.Component {
     constructor(props){
         super(props)
-        this.state = {
-            nutrients: {}
-        }
-    }
-
-    componentDidMount(){
-        fetch('/api/nutritions')
-        .then(response => response.json())
-        // .then(response => console.log(response[0].nutrient))
-        .then(response => this.setState({nutrients: response}))
     }
 
     render(){
-        console.log(this.props)
+        console.log(this.props.currentNutrition)
+
+        var foods = this.props.currentNutrition.foods.map((food, i) => {
+            return <li key={i}>{food}</li>
+        })
+
         return (
             <div>
-              <h2>Vitamin A</h2>
+              <h2>{this.props.currentNutrition.nutrient}</h2>
               <h4>Benefits:</h4>
                 <p>
-                  Vitamin A has multiple functions: it is important for growth and development, for the maintanence of the immune system and good vision.
+                    {this.props.currentNutrition.benefits}
                 </p>
               <h4>Common Foods:</h4>
                 <ul>
-                  <li>Broccoli</li>
-                  <li>Carrots</li>
-                  <li>Sweet Potatoes</li>
+                  {foods}
                 </ul>
             </div>
         )

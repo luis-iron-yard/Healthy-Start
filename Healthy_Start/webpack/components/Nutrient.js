@@ -18,10 +18,11 @@ class Nutrient extends React.Component {
         .then(response => this.setState({nutrients: response}))
     }
 
+
     render(){
         const nutrients = this.state.nutrients.map((nutrient, i) =>{
             console.log('Made it to the mapping')
-            return <li key={i} onClick={()=>this.props.setCurrentNutrition(nutrient.id)}>{nutrient.nutrient}</li>
+            return <li key={i} onClick={()=>this.props.setCurrentNutrition(nutrient)}>{nutrient.nutrient}</li>
         })
         return (
             <div>
