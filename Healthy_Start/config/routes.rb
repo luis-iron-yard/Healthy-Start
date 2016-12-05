@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :recipes
     get '/search' => 'recipes#search'
-    get '/user/:id' => 'users#show'
 
     resources :favorites, only: [:create]
 
@@ -14,9 +13,10 @@ Rails.application.routes.draw do
           registrations: 'users/registrations',
           sessions: 'users/sessions'
         }
-    resources :users, only: [:show, :edit, :update]
     resources :nutritions
     resources :foods
+    resources :users, only: [:show, :edit, :update]
+    get '/user/:id' => 'users#show'
   end
   root to: 'home#index'
   get '/:thing' => 'home#index'
