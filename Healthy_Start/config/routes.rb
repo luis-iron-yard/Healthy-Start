@@ -2,14 +2,16 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :recipes
     get '/search' => 'recipes#search'
-    # get '/user/:id' => 'users#show'
-    resources :users, only: [:show, :edit, :update]
+    get '/user/:id' => 'users#show'
+
+    resources :favorites, only: [:create]
     # resources :interests
     # resources :complaints
         devise_for :users, controllers: {
           registrations: 'users/registrations',
           sessions: 'users/sessions'
         }
+    resources :users, only: [:show, :edit, :update]
     resources :nutritions
     resources :foods
   end
