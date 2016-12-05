@@ -21,7 +21,7 @@ class Signup extends React.Component {
             password_confirmation: this.state.password_confirmation,
         }
         console.log(formData)
-        fetch("/users", {
+        fetch("/api/users", {
             body:JSON.stringify(
                 {user: formData}
             ),
@@ -32,7 +32,7 @@ class Signup extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            window.location.href = '/users/sign_in'
+            window.location.href = '/api/users/sign_in'
             console.log(response)
         })
     }

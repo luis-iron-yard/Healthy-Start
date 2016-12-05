@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get '/user/:id' => 'users#show'
 
     resources :favorites, only: [:create]
+
+    # get '/user/:id' => 'users#show'
+
     # resources :interests
     # resources :complaints
         devise_for :users, controllers: {
