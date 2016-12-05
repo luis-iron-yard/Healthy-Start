@@ -31,7 +31,15 @@ ENV["edamam_key"]
     render json: @recipies
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    render json: @recipe
+  end
 
+  def show_foods
+    @food = Food.find(params[:id])
+    render json: @food
+  end
 
 private
 

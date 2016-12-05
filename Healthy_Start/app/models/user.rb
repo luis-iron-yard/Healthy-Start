@@ -7,5 +7,5 @@ class User < ApplicationRecord
   # has_one :interest
   has_many :favorites
   has_many :recipes, through: :favorites
-
+  validates :email, uniqueness: true
 end
