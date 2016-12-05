@@ -48,7 +48,7 @@ class Landing extends React.Component {
                         </div>
                         <div className="col-sm-5 welcomeProfile">
                             <img id="genericBg_profile"src="http://unsplash.it/600?random" alt="generic profile image for the signup/in section" />
-                            <p>Need an account? <Link to="/users/sign_up">SignUp</Link></p>
+                            <p>Need an account? <Link to="/api/users/sign_up">SignUp</Link></p>
                             <div className="form-group">
                                 <label htmlFor="emailInput">Email address</label>
                                 <input type="email" className="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" onChange={(e)=>this.setState({login: e.target.value})} required />

@@ -3,13 +3,13 @@ Rails.application.routes.draw do
     resources :recipes
     get '/search' => 'recipes#search'
     # get '/user/:id' => 'users#show'
-    resources :users, only: [:show, :edit, :update]
     # resources :interests
     # resources :complaints
         devise_for :users, controllers: {
           registrations: 'users/registrations',
           sessions: 'users/sessions'
         }
+        resources :users, only: [:show, :edit, :update]
     resources :nutritions
     resources :foods
   end
