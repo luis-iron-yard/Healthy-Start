@@ -10,7 +10,7 @@ ENV["edamam_key"]
   end
   # The search
   def search
-     @response = HTTParty.get("https://api.edamam.com/search?q=rice", headers: {app_id: ENV["edamam_app_id"], app_key: ENV["edamam_key"]})
+     @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}", headers: {app_id: ENV["edamam_app_id"], app_key: ENV["edamam_key"]})
     # @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}&app_id=#{ENV["edamam_app_id"]}&app_key=#{ENV["edamam_key"]}")
     @recipies = []
     @response["hits"].each do |nut|

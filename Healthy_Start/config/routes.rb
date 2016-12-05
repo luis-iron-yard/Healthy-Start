@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :recipes
     get '/search' => 'recipes#search'
+    # get '/user/:id' => 'users#show'
+    resources :users, only: [:show, :edit, :update]
     # resources :interests
-      # resources :complaints
+    # resources :complaints
         devise_for :users, controllers: {
           registrations: 'users/registrations',
           sessions: 'users/sessions'
@@ -14,6 +16,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get '/:thing' => 'home#index'
 # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
+# GET /api/recipes == > pulls all recipes saved in our database
+# GET /api/resource/edit
 # For getting nutrions, send request to == > GET /api/nutritions
 # To login the the end point will be  ==> POST to /api /users/sign_in
 # If you want to sign_up the end point will be ==>  POST to /api/users
