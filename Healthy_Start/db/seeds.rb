@@ -34,3 +34,16 @@ puts csv.inspect
     end
 end
 puts "There are now #{Food.count} rows in the Food table"
+
+50.times do
+
+	user = User.create!(
+		:username => Faker::Internet.user_name,
+		:email => Faker::Internet.free_email,
+    :phone => Faker::PhoneNumber.cell_phone,
+    :password => "111222",
+    :password_confirmation => "111222"
+	)
+  puts "Hey I'm #{User.last.username} "
+end
+puts "There are now #{User.count} rows in the User table"

@@ -21,6 +21,7 @@ gem 'devise'
 gem 'figaro'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'httparty'
+gem 'faker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
