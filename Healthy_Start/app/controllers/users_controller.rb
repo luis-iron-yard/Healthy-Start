@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
-
+  before_action :require_user
   # GET '/users/:id' => 'users#show'
   def show
-    @user = User.find(params[:id])
+    @user = current_user
     render json: @user
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     render json: @user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update_attributes(user_params)
       render json: @user
       # Handle a successful update.
@@ -20,5 +20,10 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+end
 
+private
+
+def user_params
+  params.permit(:email, :password, :username, :phone)
 end
