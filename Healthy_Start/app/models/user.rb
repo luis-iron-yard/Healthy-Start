@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_welcome
   acts_as_token_authenticatable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,4 +9,10 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :recipes, through: :favorites
   validates :email, uniqueness: true
+
+  private
+
+  def send_welcome
+    UserMailer.welcome_email(self).deliver
+  end
 end
