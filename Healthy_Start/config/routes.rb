@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope '/api' do
     resources :recipes
     get '/search' => 'recipes#search'
+    get '/quote' => 'quotes#quote_hit'
 
     resources :favorites, only: [:create]
 
@@ -21,12 +22,15 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get '/:thing' => 'home#index'
   # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
+  # Send user updates to this endpoint =>  PATCH /api/users/54
   # GET /api/recipes == > pulls all recipes saved in our database
-  # GET /api/resource/edit
   # For getting nutrions, send request to == > GET /api/nutritions
   # To login the the end point will be  ==> POST to /api /users/sign_in
   # If you want to sign_up the end point will be ==>  POST to /api/users
   # If you need to reset password send request to this end point ==> /api/users/password/new
+  # If you would like to see a preview of the email that is sent in sign_up go here: /rails/mailers
+  # here is the endpoint for making api calls for generating a random quote ==> http://localhost:5000/api/quote/?method=getQuote&format=json&lang=en
+
   # *******************Below are there rails routes, just a quick reference ***************
 
   #                   Prefix Verb   URI Pattern                        Controller#Action
