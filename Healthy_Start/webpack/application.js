@@ -1,22 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Route, Link, browserHistory } from 'react-router'
-import Landing from './components/Landing'
+import Home from './components/Home'
+import Welcome from './components/Welcome'
 import Signup from './components/Signup'
-import Nutritions from './components/Nutritions'
-import Favorites from './components/Favorites'
+import Nutrition from './components/Nutrition'
+import Illness from './components/Illness'
+import Search from './components/Search'
+import Profile from './components/Profile'
+
 
 
 document.addEventListener('DOMContentLoaded', function(event) {
     var destination = document.getElementById('app');
     ReactDOM.render(
         <Router history={browserHistory}>
-            <Route path='/' component={Landing} />
-            <Route path='/api/users/sign_in' component={Landing} />
-            <Route path='/api/users/sign_up' component={Signup} />
-            <Route path='/nutritions' component={Nutritions} />
-            <Route path='/favorites' component={Favorites} />
-            {/* <Route path='/nutrientdetail' component={NutrientDetail} /> */}
+            <Route path='/' component={Welcome} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/home' component={Home}>
+                <Route path='nutrition' component={Nutrition} />
+                <Route path='illness' component={Illness} />
+                <Route path='search' component={Search} />
+                <Route path='profile' component={Profile} />
+            </Route>
         </Router>
         ,destination
     )
