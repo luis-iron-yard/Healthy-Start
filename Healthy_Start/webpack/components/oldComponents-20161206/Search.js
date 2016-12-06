@@ -2,11 +2,12 @@ import React from 'react'
 
 
 class Search extends React.Component {
-    render() {
+    constructor(props) {
+        super(props)
+    }
+    render(){
         return(
-            <div>
-                <h1>Search</h1>
-            </div>
+            <Recipes />
         )
     }
 }

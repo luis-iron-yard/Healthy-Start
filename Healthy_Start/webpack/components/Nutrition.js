@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-class Search extends React.Component {
+class Nutrition extends React.Component {
     render() {
         return(
             <div>
-                <h1>Search</h1>
+                <h1>Nutrition</h1>
             </div>
         )
     }
 }
 
-export default Search
+export default Nutrition

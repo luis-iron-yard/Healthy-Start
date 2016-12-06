@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     get '/user/:id' => 'users#show'
   end
   root to: 'home#index'
-  get '/:thing' => 'home#index'
+  get '/:thing/(:thing)' => 'home#index'
   # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
   # Send user updates to this endpoint =>  PATCH /api/users/54
   # GET /api/recipes == > pulls all recipes saved in our database
