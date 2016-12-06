@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 20161205164035) do
     t.index ["user_id", "recipe_id"], name: "index_favorites_on_user_id_and_recipe_id", using: :btree
   end
 
-  create_table "foodable", id: false, force: :cascade do |t|
+  create_table "foodables", id: false, force: :cascade do |t|
     t.integer "food_id",   null: false
     t.integer "recipe_id", null: false
-    t.index ["food_id", "recipe_id"], name: "index_foodable_on_food_id_and_recipe_id", using: :btree
-    t.index ["recipe_id", "food_id"], name: "index_foodable_on_recipe_id_and_food_id", using: :btree
+    t.index ["food_id", "recipe_id"], name: "index_foodables_on_food_id_and_recipe_id", using: :btree
+    t.index ["recipe_id", "food_id"], name: "index_foodables_on_recipe_id_and_food_id", using: :btree
   end
 
   create_table "foods", force: :cascade do |t|

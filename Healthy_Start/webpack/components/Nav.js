@@ -8,8 +8,45 @@ import Nutritions from './Nutritions'
 class Nav extends React.Component {
     constructor(props){
         super(props)
+        this.searchRecipes = this.searchRecipes.bind(this)
+        this.state = {
+            recipes: []
+        }
+
     }
+    searchRecipes(event) {
+        var searchTerm = this._inputElement.value
+        console.log('Ajax about to fire off')
+        fetch('/api/search?food='+ searchTerm)
+        .then(response => response.json())
+        .then(response => {console.log(response)})
+        // .then(recipes => this.setState({recipes: response}))
+        console.log('Made it all the way')
+        event.preventDefault();
+    }
+
+
     render(){
+        // var foods = this.state.recipes.foods.map((food, i) => {
+        //     return <li key={i}>
+        //         {food}
+        //     </li>
+        // })
+        // var recipes = this.state.recipes.map((recipe, i) => {
+        //     return(
+        //             <div className="row">
+        //                 <div className="pictureHolder">
+        //                     <div className="col-xs-6">
+        //                   <img src={recipe.food_image}  />
+        //                 </div>
+        //                 <div className="col-xs-6">
+        //                   <h6>Recipe #{i}</h6>
+        //                   <span>{foods}</span><br />
+        //                 </div>
+        //               </div>
+        //             </div>
+        //     )
+        // })
         return (
             <div className="container-fluid">
                <div className="row navBar">
@@ -24,7 +61,10 @@ class Nav extends React.Component {
 
                  <div className="col-sm-6">
                      <div className="form-group">
-                     <input type="text" className="form-control input-lg" placeholder="search recipes" />
+                         <form onSubmit={this.searchRecipes}>
+                             <input type="text" className="form-control input-lg" placeholder="search recipes" ref={(a) => this._inputElement = a}/>
+                             <button type='submit'>Search Recipes</button>
+                         </form>
                      </div>
                  </div>
 
