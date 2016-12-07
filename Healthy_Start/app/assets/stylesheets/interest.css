@@ -1,52 +1,54 @@
 * {
     box-sizing: border-box;
 }
-
-.navBar {
-    margin-top: 10px;
+img {
+    /*height: 200px;*/
+    /*width: 200px;*/
+    overflow: hidden;
 }
-.nutriFacts {
-    background-color: white;
+.cardContainer {
+    height: 200px;
+    width: 400px;
 }
-#sidebar, #sidebar h4 {
-    /*height: 300px;*/
-    column-count: 1;
-    list-style: none;
-    text-align: center;
-}
-ul li {
-    list-style: none;
-    display: inline;
-    margin-left: 50px;
+.cardInfo {
+    display: inline-block;
+    padding-top: 150px;
 }
 ol {
     box-sizing: border-box;
+    /*display: flex;*/
+    /*list-style: none;*/
+    column-count: 1;
 }
 ol li {
     border: 1px solid grey;
     padding: 8px;
     text-align: center;
     background-color: white;
+    list-style: none;
 }
-ol li:hover {
-    background-color: grey;
-}
+
 .pictureHolder {
     background: white;
-    padding: 10px;
+    /*padding: 10px;*/
     height: 150px;
+    width: 50em;
     box-shadow: 1px 1px 3px
     border-radius: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 45px;
+    /*display: flex;*/
 }
 .pictureHolder img {
-    margin-bottom: 15px;
+    margin-bottom:20px;
+    width: auto;
+    height: 100px;
+    /*flex: 1*/
 }
 .pictureHolder span, h6{
-    display: inline-block;
+    /*display: inline-block;*/
     margin-bottom: 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 100%
 }
