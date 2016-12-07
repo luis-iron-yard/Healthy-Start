@@ -1,15 +1,18 @@
 import React from 'react'
 
 
-class Nutrition extends React.Component {
+class NutritionDetails extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         return(
             <div>
-                <h1>Nutrition</h1>
-                
+                <h1>Nutrition Details</h1>
+
             </div>
         )
     }
 }
 
-export default Nutrition
+export default NutritionDetails

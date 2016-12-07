@@ -1,3 +1,27 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+    box-sizing: border-box;
+}
+
+//Generic Styling for the Home Page*
+img {
+    width: 100%;
+}
+//Styling for the Header Section for the Home Page
+.hm_body_style {
+    padding: 20px;
+    margin: 0;
+    background-color: #66ccff;
+    height: 100%;
+}
+ul.hm_header_style {
+    font-family: Lobster, Helvetica, sans-serif;
+    font-size: 25px;
+    background-color: #000;
+    color: #fff;
+    padding: 25px;
+    text-align: left;
+}
+
+//Styling for the Main Section for the Home Page
+
+//Styling for the Footer Section for the Home Page

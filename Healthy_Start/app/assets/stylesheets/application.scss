@@ -1,0 +1,17 @@
+/* ...
+*= require_self
+*= require_tree .
+*/
+* {
+    box-sizing: border-box;
+}
+
+//Generic Styling for the Application...
+#mainBody {
+    background-color: #66ccff;
+    // padding: 25px;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+//Generic Styling for the Application Frame...
