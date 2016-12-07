@@ -28,7 +28,7 @@ class Search extends React.Component {
 
                   <div className="card">
                         <div className="row">
-                          <div className="col-sm-6">
+                          <div className="col-sm-6 cardContainer">
                             <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
                           </div>
                           <div className="col-sm-6">
