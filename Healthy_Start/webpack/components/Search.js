@@ -10,8 +10,16 @@ class Search extends React.Component {
             favorites: [],
         }
     }
+    componentDidMount() {
+        fetch('/api/search?food=' + sessionStorage.getItem('searchValue'))
+        .then(response => response.json())
+        .then(response => this.setState({recipes: response}))
+    }
 
     searchResults(e) {
+    sessionStorage.clear('searchValue')
+    sessionStorage.setItem('searchValue', this._inputSearch.value)
+    console.log(food)
     var food = this._inputSearch.value;
     console.log(food);
     fetch('/api/search?food=' + food)
@@ -21,7 +29,7 @@ class Search extends React.Component {
     }
 
     savedRecipes() {
-        
+
     }
 
     render() {
