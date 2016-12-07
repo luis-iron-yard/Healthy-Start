@@ -7,6 +7,7 @@ class Search extends React.Component {
         this.searchResults = this.searchResults.bind(this)
         this.state = {
             recipes: [],
+            favorites: [],
         }
     }
 
@@ -19,9 +20,14 @@ class Search extends React.Component {
     e.preventDefault();
     }
 
+    savedRecipes() {
+        
+    }
 
     render() {
         console.log(this.state.recipes)
+        console.log(this.state.favorites)
+
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
                 <li key={i}>
@@ -34,6 +40,11 @@ class Search extends React.Component {
                           <div className="col-sm-6">
                             <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
                             <a href={recipe.instruction}>Click here for recipe!</a>
+                                <div className="row"><br />
+                                    <div className="col-sm-12">
+                                        <button className="btn btn-default">Save</button>
+                                    </div>
+                                </div>
                           </div>
                         </div>
                     </div>
