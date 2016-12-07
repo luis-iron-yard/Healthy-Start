@@ -25,27 +25,19 @@ class Search extends React.Component {
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
                 <li key={i}>
-                  {/* <div className="card">
-                      <img className="card-img-top" src={recipe.food_image} alt="Card image cap"/>
-                      <div className="card-block" >
-                        <h4 className="card-title">{recipe.recipe_name}</h4>
-                        <p className="card-text">{recipe.instruction}</p>
-                      </div>
-                    </div> */}
 
-                    <div className="col s12 m7">
-                        <h2 className="header">{recipe.recipe_name}</h2>
-                        <div className="card horizontal">
-                          <div className="card-image">
-                            <img src={recipe.food_image} />
+                  <div className="card">
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
                           </div>
-                          <div className="card-stacked">
-                            <div className="card-action">
-                              <a href={recipe.instruction}>Click here for recipe!</a>
-                            </div>
+                          <div className="col-sm-6">
+                            <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
+                            <a href={recipe.instruction}>Click here for recipe!</a>
                           </div>
                         </div>
-                      </div>
+                    </div>
+
                 </li>
             )
         })
@@ -61,6 +53,7 @@ class Search extends React.Component {
                     <h4>Recipes:</h4>
                     <ol>
                         {/* <li> */}
+
                             {/* <div className="pictureHolder">
                                 <div className="col-xs-6">
                                     <img src="http://unsplash.it/200/120?random"  />
@@ -71,14 +64,16 @@ class Search extends React.Component {
                             </div>
                           </div> */}
 
-                          {/* <div className="card">
+                          {/* BELOW IS A BOOTSTRAP CARD
+                          <div className="card">
                               <img className="card-img-top" src="http://unsplash.it/200/120?random" alt="Card image cap"/>
                               <div className="card-block">
                                 <h4 className="card-title">Recipe</h4>
                                 <p className="card-text">Link to recipe</p>
                               </div>
-                            </div>
+                            </div> */}
 
+                            {/* BELOW IS A MATERIALIZE CARD
                             <div className="col s12 m7">
                                 <h2 className="header">Recipe</h2>
                                 <div className="card horizontal">
@@ -95,6 +90,7 @@ class Search extends React.Component {
                                   </div>
                                 </div>
                               </div> */}
+
                         {/* </li> */}
 
                         {newRecipes}
