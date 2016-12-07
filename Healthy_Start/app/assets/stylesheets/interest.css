@@ -2,11 +2,18 @@
     box-sizing: border-box;
 }
 img {
-    height: 200px;
-    width: 200px;
+    /*height: 200px;*/
+    /*width: 200px;*/
     overflow: hidden;
 }
-
+.cardContainer {
+    height: 200px;
+    width: 400px;
+}
+.cardInfo {
+    display: inline-block;
+    padding-top: 150px;
+}
 ol {
     box-sizing: border-box;
     /*display: flex;*/
