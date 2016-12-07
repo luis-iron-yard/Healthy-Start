@@ -27,6 +27,7 @@ ul.hm_header_style {
     background-color: #66ccff;
     padding: 1% 0 1% 0;
     font-size: 1.5em;
+    box-shadow: 0 0 5px #5F5F5F;
 }
 
 //Styling for the Main Section for the Home Page
@@ -39,12 +40,25 @@ ul.hm_header_style {
 .ns--nutritionlist {
     display: block;
     padding: 5%;
-    margin: 2%;
+    margin: 2% 0 2% 0;
+    border: 1px solid #66ccff;
+    box-shadow: 2px 2px 2px #5F5F5F;
 }
 .ns-listItem {
     margin: 3%;
     padding: 5%;
+    font-size: 1em;
+    border: 1px solid #66ccff;
+    border-radius: 40px 10px;
+    box-shadow: 0 0 5px #5F5F5F;
+}
+.ns--sectionHeader {
+    margin-top: 0;
     font-size: 1.5em;
+}
+
+.ns--card {
+    padding: 1%;
 }
 
 
