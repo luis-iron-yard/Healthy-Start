@@ -21,3 +21,26 @@ ul.hm_header_style {
   padding: 25px;
   text-align: left;
 }
+
+.pageTitle {
+  background-color: #66ccff;
+  padding: 1% 0 1% 0;
+  font-size: 1.5em;
+}
+
+.viewSection {
+  background-color: #fff;
+  padding: 1%;
+}
+
+.ns--nutritionlist {
+  display: block;
+  padding: 5%;
+  margin: 2%;
+}
+
+.ns-listItem {
+  margin: 3%;
+  padding: 5%;
+  font-size: 1.5em;
+}
