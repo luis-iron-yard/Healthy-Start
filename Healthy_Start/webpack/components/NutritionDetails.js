@@ -23,13 +23,22 @@ class NutritionDetails extends React.Component {
 
 
     render() {
+        var buttonStyle = {
+            backgroundColor: '#66ccff',
+            borderRadius: 15,
+            color: '#fff',
+            padding: 20,
+            margin: 5,
+            display: 'inline-block',
+            cursor: 'pointer',
+        }
+        console.log(this.props.currentNutrient)
         var foods = ''
         if(this.props.currentNutrient) {
              foods = this.props.currentNutrient.foods.map((food, i) => {
-                return <li key={i} onClick={() => this.captureFoodSearch(food)}>{food.name}</li>
+                return <div style={buttonStyle} key={i} onClick={() => this.captureFoodSearch(food)}>{food.name}</div>
             })
         }
-
         return(
             <div>
                 <div className='ns--nutritionDesc'>
@@ -37,12 +46,15 @@ class NutritionDetails extends React.Component {
                     <div className='ns--card'>
                         <h5>Nutrient Name: </h5>
                         {/* <p>Lorem ipsum dolor sit amet</p><br /> */}
-                        <p>{this.props.currentNutrient? this.props.currentNutrient.nutrient: ''}</p><br />
-                        <h5>Nutrien Benefits:</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
-                        <ul>
+                        <p>{this.props.currentNutrient? this.props.currentNutrient.nutrient: ''}</p>
+                        <h5>Nutrient Benefits:</h5>
+                        {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p> */}
+                        <p>{this.props.currentNutrient? this.props.currentNutrient.benefits: ''}</p>
+                        <h5>Food Solutions: (Select food for recipes) </h5>
+                        <div>
                             {foods}
-                        </ul>
+                        </div>
+                        <h6>Source: Pregnancy The Beginner's Guide &copy;2014 Dorling Kindersley Limited</h6>
                     </div>
                     <hr />
                 </div>

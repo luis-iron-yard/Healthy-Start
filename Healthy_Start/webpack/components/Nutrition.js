@@ -44,7 +44,7 @@ class Nutrition extends React.Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-4'>
-                            <p>Nutrition List</p>
+                            <p>Nutrition List: (Select a Nutrient)</p>
                             <ul className='ns--nutritionlist'>
                                 {nutritionItems}
                             </ul>
