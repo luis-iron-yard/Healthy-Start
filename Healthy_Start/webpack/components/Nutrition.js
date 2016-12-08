@@ -1,7 +1,5 @@
 import React from 'react'
-import NutritionList from './NutritionList'
 import NutritionDetails from './NutritionDetails'
-import NutritionRecipes from './NutritionRecipes'
 
 class Nutrition extends React.Component {
     constructor(props) {
