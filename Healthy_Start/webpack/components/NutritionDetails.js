@@ -23,6 +23,9 @@ class NutritionDetails extends React.Component {
         console.log(food)
         //Call method to fire off Ajax to receive recipes
         this.fetchRecipes(food)
+        //Save search term
+        sessionStorage.clear('searchValue')
+        sessionStorage.setItem('searchValue', food)
     }
 
     fetchRecipes(food) {
