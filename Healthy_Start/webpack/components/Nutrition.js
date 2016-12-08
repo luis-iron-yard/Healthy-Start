@@ -53,7 +53,6 @@ class Nutrition extends React.Component {
                         </div>
                         <div className='col-sm-8'>
                             <NutritionDetails currentNutrient={this.state.activeNutrient} /><hr />
-                            <NutritionRecipes />
                         </div>
                     </div>
                 </div>
