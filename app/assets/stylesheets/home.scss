@@ -44,7 +44,7 @@ ul.hm_header_style {
     border: 1px solid #66ccff;
     box-shadow: 2px 2px 2px #5F5F5F;
 }
-.ns-listItem, .ns-listItemRecipe, .ns--nutritionDesc {
+.ns-listItem, .ns-listItemRecipe {
     margin: 3%;
     padding: 5%;
     font-size: 1em;
@@ -59,10 +59,6 @@ ul.hm_header_style {
 
 .ns--card {
     padding: 1%;
-}
-
-.ns--nutritionDesc {
-    border-radius: 15px;
 }
 
 //Section for Illness Styling

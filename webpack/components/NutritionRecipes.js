@@ -8,27 +8,10 @@ class NutritionRecipes extends React.Component {
         this.compileRecipe = this.compileRecipe.bind(this)
         this.postRecipeToDB = this.postRecipeToDB.bind(this)
         this.state = {
-            favorites: [],
-            recipes: [],
+            favorites: []
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
-        if(nextProps.food){
-            this.fetchRecipes(nextProps.food.name)
-        } else {
-            this.setState({recipes: []})
-        }
-    }
-
-    fetchRecipes(food) {
-        //Fire off ajax request to obtain list of nutritions
-        fetch('/api/search?food=' + food)
-        //Convert server response and update the current state of the nutritions empty array
-        .then(response => response.json())
-        .then(response => this.setState({recipes: response}))
-    }
     saveFavorites(event){
         console.log('Saving recipe to favorites')
         this.compileRecipe(recipe)
@@ -37,9 +20,7 @@ class NutritionRecipes extends React.Component {
     compileRecipe(recipe) {
         console.log('Compile recipe details to send to database')
         var recipeID = {
-            user_token: '',
-            user_email: 'login authentication',
-            food_id: 'id',
+            id: this.recipe.id,
         }
         this.postRecipeToDB(recipeID)
     }
@@ -47,7 +28,7 @@ class NutritionRecipes extends React.Component {
     postRecipeToDB(recipeID) {
         fetch("/api/favorites", {
             body:JSON.stringify(
-                {recipeID}
+                {favorites: recipeID}
             ),
             method: 'POST',
             headers: {
@@ -65,7 +46,7 @@ class NutritionRecipes extends React.Component {
         var cardStyle = {
             border: '2px solid black',
         }
-        var recipes = this.state.recipes.map((recipe, i) =>{
+        var recipes = this.props.recipes.map((recipe, i) =>{
             return <li className='ns-listItemRecipe' key={i}>
                 <div className="card">
                     <div className="card-block">
