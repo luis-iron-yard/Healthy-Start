@@ -1,3 +1,70 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+    box-sizing: border-box;
+}
+
+//Generic Styling for the Home Page*
+img {
+    width: 100%;
+}
+//Styling for the Header Section for the Home Page
+.hm_body_style {
+    padding: 20px;
+    margin: 0;
+    background-color: #66ccff;
+    height: 100%;
+}
+ul.hm_header_style {
+    font-family: Lobster, Helvetica, sans-serif;
+    font-size: 25px;
+    background-color: #000;
+    color: #fff;
+    padding: 25px;
+    text-align: left;
+}
+
+//Styling for the SubHeader Section for the Home Page
+.pageTitle {
+    background-color: #66ccff;
+    padding: 1% 0 1% 0;
+    font-size: 1.5em;
+    box-shadow: 0 0 5px #5F5F5F;
+}
+
+//Styling for the Main Section for the Home Page
+
+//Section for Nutrition Styling naming convention 'ns--section-***'
+.viewSection {
+    background-color: #fff;
+    padding: 1%;
+}
+.ns--nutritionlist {
+    display: block;
+    padding: 5%;
+    margin: 2% 0 2% 0;
+    border: 1px solid #66ccff;
+    box-shadow: 2px 2px 2px #5F5F5F;
+}
+.ns-listItem, .ns-listItemRecipe {
+    margin: 3%;
+    padding: 5%;
+    font-size: 1em;
+    border: 1px solid #66ccff;
+    border-radius: 40px 10px;
+    box-shadow: 0 0 5px #5F5F5F;
+}
+.ns--sectionHeader {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.ns--card {
+    padding: 1%;
+}
+
+//Section for Illness Styling
+
+//Section for Search Styling
+
+//Section for Profile Styling
+
+//Styling for the Footer Section for the Home Page

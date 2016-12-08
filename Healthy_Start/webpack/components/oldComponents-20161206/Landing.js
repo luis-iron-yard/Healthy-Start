@@ -33,6 +33,7 @@ class Landing extends React.Component {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             // console.dir(response)
             console.log('About to redirect to nutritions')
+            console.log(response.authentication_token)
             window.location.href = '/nutritions'
             console.log('Got all the way here...')
         })

@@ -20,6 +20,7 @@ class Nutritions extends React.Component {
     }
     render() {
         window.authenticate_token = sessionStorage.getItem('authenticate_token')
+        console.log(authenticate_token)
         return (
             <div>
              <div className="container-fluid">
