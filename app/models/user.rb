@@ -10,9 +10,11 @@ class User < ApplicationRecord
   has_many :recipes, through: :favorites
   validates :email, uniqueness: true
 
+  attr_accessor :seeded
+
   private
 
   def send_welcome
-    UserMailer.welcome_email(self).deliver
+    UserMailer.welcome_email(self).deliver unless seeded
   end
 end
