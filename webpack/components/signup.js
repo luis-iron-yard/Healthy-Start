@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 
 class Signup extends React.Component {
     constructor(props) {
@@ -53,16 +54,25 @@ class Signup extends React.Component {
         var titleStyling = {
             fontSize: '2.5em',
             fontFamily: 'Lobster, Helvetica, sans-serif',
+            color: '#fff',
+        }
+        var logoStyling = {
+            fontSize: '1em',
+            fontFamily: 'Lobster, Helvetica, sans-serif',
         }
         var buttonSignupStyling = {
             padding: 20,
             margin: 30,
             borderRadius: 15,
+            backgroundColor: '#fff',
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px grey',
         }
         return(
             <div style={signupStyling}>
-                <h1 style={titleStyling}>Signup</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br />
+                <h1 style={titleStyling}>Healthy Start Signup</h1><br />
+                <p>When you don't know where to begin, you can always come to <span style={logoStyling}>Healthy Start</span></p><br />
                 <div>
                   <h4 id="createProfile">Create User Profile</h4>
                   <hr />
@@ -84,7 +94,7 @@ class Signup extends React.Component {
                       <input type="password" className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
                     </div>
                     <div>
-                      <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => browserHistory.push('/')}>Close</button>
                       <button style={buttonSignupStyling} type="button" className="btn btn-primary" id="saveSignUp" onClick={this.captureUserData}>Save changes</button>
                     </div>
                   </div>
