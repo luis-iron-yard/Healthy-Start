@@ -7,10 +7,3 @@ class QuotesController < ApplicationController
   end
 
 end
-
-# response = Unirest.post "https://andruxnet-random-famous-quotes.p.mashape.com/?cat=movies",
-#   headers:{
-#     "X-Mashape-Key" => "wMsFnzSC51mshYiJ2ZsbkwcuDLaKp1LRjUdjsndu3kXuuT1oTw",
-#     "Content-Type" => "application/x-www-form-urlencoded",
-#     "Accept" => "application/json"
-#   }
