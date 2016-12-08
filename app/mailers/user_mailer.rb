@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@healthystart.com'
+  default from: 'https://fathomless-dawn-58376.herokuapp.com/'
 
   def welcome_email(user)
     @user = user
