@@ -4,49 +4,62 @@ import NutritionRecipes from './NutritionRecipes'
 class NutritionDetails extends React.Component {
     constructor(props) {
         super(props)
+        this.fetchRecipes = this.fetchRecipes.bind(this)
         this.state = {
-            selectedFood: undefined,
+            currentNutrition: undefined,
+            recipes: [],
+            selectedFood: 'broccoli',
         }
 
     }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({selectedFood: undefined})
+    componentWillReceiveProps(){
+        this.setState({currentNutrition: this.props.currentNutrient})
     }
 
-    captureFoodSearch(food) {
-        this.setState({selectedFood: food})
+    captureFoodSearch(a) {
+        //Capture the food item that has been selected...
+        console.log('made it this far...')
+        var food = this.state.selectedFood
+        console.log(food)
+        //Call method to fire off Ajax to receive recipes
+        this.fetchRecipes(food)
+        //Save search term
+        sessionStorage.clear('searchValue')
+        sessionStorage.setItem('searchValue', food)
     }
 
-
-// TODO: (1)Render Current Nutrient in Component; (2) Capture clicked on Food (Not clicking on current food); (3)Use current food item to conduct fetch for receips; (3) Render recipes to the Nutrient Recipes Component
-
+    fetchRecipes(food) {
+        //Fire off ajax request to obtain list of nutritions
+        fetch('/api/search?food=' + food)
+        //Convert server response and update the current state of the nutritions empty array
+        .then(response => response.json())
+        .then(response => this.setState({recipes: response}))
+    }
+// TODO: (1)Render Current Nutrient in Component; (2) Capture clicked on Food; (3)Use current food item to conduct fetch for receips; (3) Render recipes to the Nutrient Recipes Component
 
     render() {
-        var foods = ''
-        if(this.props.currentNutrient) {
-             foods = this.props.currentNutrient.foods.map((food, i) => {
-                return <li key={i} onClick={() => this.captureFoodSearch(food)}>{food.name}</li>
-            })
-        }
+        console.log(this.state.currentNutrition)
+        console.log(this.state.recipes)
+        var recipes = this.state.recipes.map((recipe, i) => {
+            return
+        })
 
         return(
             <div>
-                <div className='ns--nutritionDesc'>
-                    <h4 className='ns--sectionHeader'>Nutrition Details</h4>
-                    <div className='ns--card'>
-                        <h5>Nutrient Name: </h5>
-                        {/* <p>Lorem ipsum dolor sit amet</p><br /> */}
-                        <p>{this.props.currentNutrient? this.props.currentNutrient.nutrient: ''}</p><br />
-                        <h5>Nutrien Benefits:</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
-                        <ul>
-                            {foods}
-                        </ul>
-                    </div>
-                    <hr />
+                <h4 className='ns--sectionHeader'>Nutrition Details</h4>
+                <div className='ns--card'>
+                    <h5>Nutrient Name: </h5>
+                    <p>Lorem ipsum dolor sit amet</p><br />
+                    <h5>Nutrien Benefits:</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
+                    <ul>
+                        <li onClick={(a) => this.captureFoodSearch(a)}>Broccoli</li>
+                        <li onClick={(a) => this.captureFoodSearch(a)}>Kale</li>
+                        <li onClick={(a) => this.captureFoodSearch(a)}>Sweet Potatoe</li>
+                    </ul>
                 </div>
-                <NutritionRecipes food={this.state.selectedFood} />
+                <hr />
+                <NutritionRecipes recipes={this.state.recipes}/>
             </div>
         )
     }

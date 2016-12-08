@@ -34,7 +34,7 @@ class Nutrition extends React.Component {
 
     render() {
         console.log('The active nutrient is: ' + this.state.activeNutrient)
-        console.log(this.state.nutritions)
+        // console.log(this.state.nutritions)
         //Declare a variable to loop through list of nutritients and display each as a list item
         var nutritionItems = this.state.nutritions.map((nutrientItem, i) =>{
             return <li className='ns-listItem' onClick={()=> this.activeNutrient(nutrientItem)} key={i}>{nutrientItem.nutrient}</li>
