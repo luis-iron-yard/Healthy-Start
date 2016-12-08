@@ -22,6 +22,7 @@ gem 'figaro'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'httparty'
 gem 'faker'
+gem 'sendgrid'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
