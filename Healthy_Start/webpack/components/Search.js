@@ -19,6 +19,7 @@ class Search extends React.Component {
     searchResults(e) {
     sessionStorage.clear('searchValue')
     sessionStorage.setItem('searchValue', this._inputSearch.value)
+
     console.log(food)
     var food = this._inputSearch.value;
     console.log(food);
@@ -28,13 +29,30 @@ class Search extends React.Component {
     e.preventDefault();
     }
 
-    savedRecipes() {
+    savedRecipes(recipe) {
+        console.log('This is value of save: ')
+        this.setState({favorites: recipe})
+        var newRecipes = recipe.
+        console.log(newRecipes)
+
+    //     fetch('/api/favorites'{
+    //        method: 'POST',
+    //        body: JSON.stringify({
+    //            token: this.state.user_token,
+    //            email: this.state.user_email,
+    //            food_image: this.state.recipe.food_image,
+    //            recipe_name: this.state.recipe.recipe_name,
+    //            recipe_instruction: this.state.recipe.instruction,
+    //        }),
+    //    })
+
 
     }
 
+
     render() {
         console.log(this.state.recipes)
-        console.log(this.state.favorites)
+        // console.log(this.state.favorites)
 
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
@@ -47,10 +65,10 @@ class Search extends React.Component {
                           </div>
                           <div className="col-sm-6">
                             <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
-                            <a href={recipe.instruction}>Click here for recipe!</a>
+                            <a href={recipe.instruction} >Click here for recipe!</a>
                                 <div className="row"><br />
                                     <div className="col-sm-12">
-                                        <button className="btn btn-default">Save</button>
+                                        <button onClick={() => this.savedRecipes(recipe)} className="btn btn-default">Save</button>
                                     </div>
                                 </div>
                           </div>
