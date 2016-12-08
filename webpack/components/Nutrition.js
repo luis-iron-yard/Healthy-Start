@@ -1,7 +1,5 @@
 import React from 'react'
-import NutritionList from './NutritionList'
 import NutritionDetails from './NutritionDetails'
-import NutritionRecipes from './NutritionRecipes'
 
 class Nutrition extends React.Component {
     constructor(props) {
@@ -46,7 +44,7 @@ class Nutrition extends React.Component {
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-4'>
-                            <p>Nutrition List</p>
+                            <p>Nutrition List: (Select a Nutrient)</p>
                             <ul className='ns--nutritionlist'>
                                 {nutritionItems}
                             </ul>
