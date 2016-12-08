@@ -42,7 +42,8 @@ puts "There are now #{Food.count} rows in the Food table"
 		:email => Faker::Internet.free_email,
     :phone => Faker::PhoneNumber.cell_phone,
     :password => "111222",
-    :password_confirmation => "111222"
+    :password_confirmation => "111222",
+    :seeded => true
 	)
   puts "Hey I'm #{User.last.username} "
 end
