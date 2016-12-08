@@ -29,7 +29,7 @@ li {
     background: white;
     padding: 10px;
     height: 150px;
-    box-shadow: 1px 1px 3px
+    box-shadow: 1px 1px 3px;
     border-radius: 2px;
     margin-bottom: 30px;
 }
@@ -40,7 +40,7 @@ li {
     /*background: white;*/
     padding: 10px;
     height: 200px;
-    box-shadow: 1px 1px 3px
+    box-shadow: 1px 1px 3px;
     border-radius: 2px;
     margin-bottom: 30px;
     text-overflow: ellipsis;

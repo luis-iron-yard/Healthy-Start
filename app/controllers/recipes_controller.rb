@@ -11,7 +11,6 @@ class RecipesController < ApplicationController
   # The search
   def search
     @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}", headers: { app_id: ENV['edamam_app_id'], app_key: ENV['edamam_key'] })
-    # @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}&app_id=#{ENV["edamam_app_id"]}&app_key=#{ENV["edamam_key"]}")
     @recipies = []
     @response['hits'].each do |nut|
       recipe = Recipe.find_or_create_by(
