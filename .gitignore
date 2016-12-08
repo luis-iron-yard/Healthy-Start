@@ -21,7 +21,7 @@
 .byebug_history
 # Added by webpack-rails
 /node_modules
-/public/webpack
+
 
 # Ignore application configuration
 /config/application.yml
