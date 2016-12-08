@@ -42,7 +42,7 @@ ul.hm_header_style {
   box-shadow: 2px 2px 2px #5F5F5F;
 }
 
-.ns-listItem, .ns-listItemRecipe {
+.ns-listItem, .ns-listItemRecipe, .ns--nutritionDesc {
   margin: 3%;
   padding: 5%;
   font-size: 1em;
@@ -58,4 +58,8 @@ ul.hm_header_style {
 
 .ns--card {
   padding: 1%;
+}
+
+.ns--nutritionDesc {
+  border-radius: 15px;
 }
