@@ -10,8 +10,10 @@ class RecipesController < ApplicationController
 
   # The search
   def search
-
-    cache params[:food] do
+ # Rails.cache.fetch("#{cache_key}/competing_price", expires_in: 12.hours)
+ #    cache params[:food]
+    Rails.cache.fetch("#{params[:foods]}/search", expires_in:
+    12.hours) do
       @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}", headers: { 'app_id' => ENV['edamam_app_id'], 'app_key' => ENV['edamam_key'] })
       puts @response.inspect
       @recipies = []
