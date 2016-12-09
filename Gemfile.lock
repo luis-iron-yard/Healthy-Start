@@ -48,6 +48,7 @@ GEM
     builder (3.2.2)
     byebug (9.0.6)
     concurrent-ruby (1.0.2)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -186,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   byebug
+  dalli
   devise
   faker
   figaro
