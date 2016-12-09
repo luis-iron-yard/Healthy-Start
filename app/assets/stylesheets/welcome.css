@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+.ws--Button:hover {
+  background-color: #000;
+  color: #fff;
+}

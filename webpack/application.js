@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     ReactDOM.render(
         <Router history={browserHistory}>
             <Route path='/' component={Welcome} />
-            <Route path='/signup' component={Signup} />
+            <Route path='/api/users/sign_up' component={Signup} />
             <Route path='/home' component={Home}>
                 <Route path='nutrition' component={Nutrition} />
                 <Route path='illness' component={Illness} />

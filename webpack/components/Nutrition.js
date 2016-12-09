@@ -31,6 +31,8 @@ class Nutrition extends React.Component {
     }
 
     render() {
+        window.authenticate_token = sessionStorage.getItem('authenticate_token')
+        console.log(authenticate_token)        
         console.log('The active nutrient is: ' + this.state.activeNutrient)
         // console.log(this.state.nutritions)
         //Declare a variable to loop through list of nutritients and display each as a list item
