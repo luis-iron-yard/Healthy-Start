@@ -10,6 +10,7 @@ class RecipesController < ApplicationController
 
   # The search
   def search
+
     cache params[:food] do
       @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}", headers: { 'app_id' => ENV['edamam_app_id'], 'app_key' => ENV['edamam_key'] })
       @recipies = []
