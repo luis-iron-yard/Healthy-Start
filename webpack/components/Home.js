@@ -13,6 +13,7 @@ class Home extends React.Component {
 
     captureUserToken() {
     sessionStorage.clear('authentication_token')
+    console.log('Bye Bye')
     this.kickUserToLogin()
     }
 
