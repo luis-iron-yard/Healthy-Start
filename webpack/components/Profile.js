@@ -14,6 +14,10 @@ class Profile extends React.Component {
         this.retrieveQuote()
     }
 
+    deleteRecipe() {
+        console.log("Delete button firing off delete function")
+    }
+
     retrieveQuote(){
         //Fire off Ajax to retrieve quote as users mounts page...
         fetch('/api/quote/?method=getQuote&format=json&lang=en')
@@ -78,7 +82,7 @@ class Profile extends React.Component {
                                   <a href='#'>Click here for recipe!</a>
                                       <div className='row'><br />
                                           <div className='col-sm-12'>
-                                              <button className='btn btn-default'>Save</button>
+                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
                                           </div>
                                       </div>
                                 </div>

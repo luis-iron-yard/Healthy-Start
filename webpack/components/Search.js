@@ -28,13 +28,38 @@ class Search extends React.Component {
     e.preventDefault();
     }
 
-    savedRecipes() {
-
+    savedRecipes(recipe){
+        let updatedRecipes = this.state.favorites
+        updatedRecipes.push({
+            recipe: recipe.recipe_name,
+            food_image: recipe.food_image,
+            instruction: recipe.instruction,
+        })
+        this.setState({
+            favorites: updatedRecipes
+        })
+        console.log(updatedRecipes)
     }
+    addToFavorites() {
+    //     fetch('/api/favorites', {
+    //        method: 'POST',
+    //        body: JSON.stringify({
+    //            token: sharedState().user_token,
+    //            id: this.state.recipe.food_id,
+    //            recipe: this.state.recipe.recipe_name,
+    //            instruction: this.state.recipe.instruction,
+    //        }),
+    //    })
+    //    .then(response => response.json())
+    //    .then(this.handleAddToFavorites)
+}
+handleAddToFavorites() {
+
+}
 
     render() {
-        console.log(this.state.recipes)
-        console.log(this.state.favorites)
+        // console.log(this.state.recipes)
+        // console.log(this.state.favorites)
 
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
@@ -50,7 +75,7 @@ class Search extends React.Component {
                             <a href={recipe.instruction}>Click here for recipe!</a>
                                 <div className="row"><br />
                                     <div className="col-sm-12">
-                                        <button className="btn btn-default">Save</button>
+                                        <button onClick={()=>this.savedRecipes(recipe)} className="btn btn-default">Save</button>
                                     </div>
                                 </div>
                           </div>
