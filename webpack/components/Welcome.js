@@ -41,9 +41,13 @@ class Welcome extends React.Component {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
+            if(response.authentication_token) {
+                window.location.href = '/home/nutrition'
+                console.log('Got all the way here...')
+            } else {
+                console.log('Error with login, please try again...')
+            }
             //If user info. is valid redirect to home page...
-            window.location.href = '/home/nutrition'
-            console.log('Got all the way here...')
         })
     }
 
