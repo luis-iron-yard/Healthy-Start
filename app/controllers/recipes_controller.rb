@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   def search
  # Rails.cache.fetch("#{cache_key}/competing_price", expires_in: 12.hours)
  #    cache params[:food]
-    Rails.cache.fetch("#{params[:food]}/search", expires_in:
+    @things = Rails.cache.fetch("#{params[:food]}/search", expires_in:
     12.hours) do
       @response = HTTParty.get("https://api.edamam.com/search?q=#{params[:food]}", headers: { 'app_id' => ENV['edamam_app_id'], 'app_key' => ENV['edamam_key'] })
       puts @response.inspect
@@ -32,9 +32,9 @@ class RecipesController < ApplicationController
         end
         @recipies << recipe
       end
-
+      @recipies
     end
-    render json: @recipies
+    render json: @things
   end
 
   def show
