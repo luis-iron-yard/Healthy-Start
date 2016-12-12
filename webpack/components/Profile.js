@@ -37,7 +37,10 @@ class Profile extends React.Component {
         fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
         .then(response => response.json())
         // .then(response => this.setState({favorites: response})
-        .then(response => {console.log(response)})
+        .then(response => {
+            this.setState({favorites: response})
+            // console.log(this.state.favorites)
+        })
     }
 
     render() {
@@ -72,6 +75,28 @@ class Profile extends React.Component {
             borderRadius: '40px 10px',
             boxShadow: '0 0 5px #5F5F5F',
         }
+        var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
+            return(
+                <li key={i}>
+                <div className="card">
+                      <div className="row">
+                        <div className="col-sm-6 cardContainer">
+                          <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
+                        </div>
+                        <div className="col-sm-6">
+                          <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
+                          <a href={recipe.instruction}>Click here for recipe!</a>
+                              <div className="row"><br />
+                                  <div className="col-sm-12">
+                                      <button className="btn btn-default">Delete</button>
+                                  </div>
+                              </div>
+                        </div>
+                      </div>
+                  </div>
+                </li>
+            )
+        })
         return(
             <div className='viewSection'>
                 <h4 className='pageTitle'>Profile</h4>
@@ -121,7 +146,12 @@ class Profile extends React.Component {
                                 </div>
                               </div>
                           </div>
-
+                          <div className="col-sm-6">
+                              <h4>Saved:</h4>
+                              <ol>
+                                  {favoriteRecipes}
+                              </ol>
+                          </div>
                     </div>
 
                 </div>

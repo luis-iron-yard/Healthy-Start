@@ -85,29 +85,6 @@ class Search extends React.Component {
         // window.authenticate_token = sessionStorage.getItem('authenticate_token')
         // console.log(authenticate_token)
 
-        var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
-            return(
-                <li key={i}>
-                <div className="card">
-                      <div className="row">
-                        <div className="col-sm-6 cardContainer">
-                          <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
-                        </div>
-                        <div className="col-sm-6">
-                          <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
-                          <a href={recipe.instruction}>Click here for recipe!</a>
-                              <div className="row"><br />
-                                  <div className="col-sm-12">
-                                      <button className="btn btn-default">Delete</button>
-                                  </div>
-                              </div>
-                        </div>
-                      </div>
-                  </div>
-                </li>
-            )
-        })
-
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             //this^^ takes our empty array 'recipes', loops through it and assigns each incoming object as 'recipe' and assigns it an index (i) number. Below in the render function we are taking each of these objects we are receiving from the API call and displaying the various properties in each list item (li) that we are looping through, which is what gets rendered in our list (ul) by calling on our newRecipes variable
             return (
@@ -144,13 +121,6 @@ class Search extends React.Component {
                     <h4>Recipes:</h4>
                     <ol>
                         {newRecipes}
-                    </ol>
-                </div>
-
-                <div className="col-sm-6">
-                    <h4>Saved:</h4>
-                    <ol>
-                        {favoriteRecipes}
                     </ol>
                 </div>
             </div>
