@@ -295,7 +295,7 @@ CREATE TABLE users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     username character varying,
-    photo character varying,
+    photo_id character varying,
     phone character varying,
     authentication_token character varying(30)
 );
@@ -531,6 +531,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154');
+INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154'), ('20161212211338');
 
 
