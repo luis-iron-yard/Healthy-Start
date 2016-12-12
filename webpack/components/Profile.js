@@ -1,4 +1,5 @@
 import React from 'react'
+import Search from './Search'
 
 
 class Profile extends React.Component {
@@ -7,15 +8,17 @@ class Profile extends React.Component {
         this.retrieveQuote = this.retrieveQuote.bind(this)
         this.state = {
             quote: '',
+            favorites: [],
         }
     }
 
     componentDidMount(){
         this.retrieveQuote()
+        this.retrieveFavorites()
     }
 
     deleteRecipe() {
-        console.log("Delete button firing off delete function")
+        // console.log("Delete button firing off delete function")
     }
 
     retrieveQuote(){
@@ -24,11 +27,22 @@ class Profile extends React.Component {
         .then(response => response.json())
         .then(response => {
             this.setState({quote: response})
-            console.log(this.state.quote)
-    })
+            // console.log(this.state.quote)
+        })
+    }
+
+    retrieveFavorites(){
+        var email = sessionStorage.getItem('email')
+        var user = sessionStorage.getItem('authentication_token')
+        fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
+        .then(response => response.json())
+        // .then(response => this.setState({favorites: response})
+        .then(response => {console.log(response)})
     }
 
     render() {
+        console.log(this.state.favorites)
+
         var quoteText = this.state.quote.quoteText
         var quoteAuthor = this.state.quote.quoteAuthor
         var quoteLink = this.state.quote.quoteLink
@@ -71,7 +85,9 @@ class Profile extends React.Component {
                         <a href={quoteLink} target='_blank'>Link to Quote</a>
                     </div>
                     <div style={favoriteDetails}>
+
                         <h1>Favorites Section</h1>
+
                         <div className='card' style={cardStyle}>
                               <div className='row'>
                                 <div className='col-sm-6 cardContainer'>
@@ -88,6 +104,7 @@ class Profile extends React.Component {
                                 </div>
                               </div>
                           </div>
+
                         <div className='card' style={cardStyle}>
                               <div className='row'>
                                 <div className='col-sm-6 cardContainer'>
@@ -98,15 +115,17 @@ class Profile extends React.Component {
                                   <a href='#'>Click here for recipe!</a>
                                       <div className='row'><br />
                                           <div className='col-sm-12'>
-                                              <button className='btn btn-default'>Save</button>
+                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
                                           </div>
                                       </div>
                                 </div>
                               </div>
                           </div>
+
                     </div>
 
                 </div>
+
             </div>
         )
     }

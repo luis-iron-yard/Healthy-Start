@@ -1,10 +1,12 @@
 import React from 'react'
 
 
+
 class Search extends React.Component {
     constructor(props) {
         super(props)
         this.searchResults = this.searchResults.bind(this)
+        this.savedRecipes = this.savedRecipes.bind(this)
         this.state = {
             recipes: [],
             favorites: [],
@@ -14,54 +16,100 @@ class Search extends React.Component {
         fetch('/api/search?food=' + sessionStorage.getItem('searchValue'))
         .then(response => response.json())
         .then(response => this.setState({recipes: response}))
+        // .then(response => console.log(response))
     }
+
 
     searchResults(e) {
-    sessionStorage.clear('searchValue')
-    sessionStorage.setItem('searchValue', this._inputSearch.value)
-    console.log(food)
-    var food = this._inputSearch.value;
-    console.log(food);
-    fetch('/api/search?food=' + food)
-    .then(response => response.json())
-    .then(response => this.setState({recipes: response}))
-    e.preventDefault();
+        sessionStorage.setItem('searchValue', this._inputSearch.value)
+
+        var food = this._inputSearch.value;
+        //this takes the value of the input field (attached to _inputSearch) and attaches it to the variable food
+        // console.log(food);
+        fetch('/api/search?food=' + food)
+        //^ this line fetches the api and runs our value(food) against it
+        .then(response => response.json())
+        //^ this line turns the api call into JSON data
+        .then(response => console.log(response))
     }
 
+
     savedRecipes(recipe){
-        let updatedRecipes = this.state.favorites
-        updatedRecipes.push({
-            recipe: recipe.recipe_name,
-            food_image: recipe.food_image,
-            instruction: recipe.instruction,
-        })
+        //When the save button is clicked, it fires off this function and takes in the prop recipe from our loop newRecipes
+        var updatedRecipes = this.state.favorites
+        //we are assigning ^^this variable to the empty array favorites
+        updatedRecipes.push(recipe)
+        //taking updatedRecipes(favorites array) and pushing these properties into each object that is "saved" and added to the favorites array
         this.setState({
             favorites: updatedRecipes
         })
-        console.log(updatedRecipes)
-    }
-    addToFavorites() {
-    //     fetch('/api/favorites', {
-    //        method: 'POST',
-    //        body: JSON.stringify({
-    //            token: sharedState().user_token,
-    //            id: this.state.recipe.food_id,
-    //            recipe: this.state.recipe.recipe_name,
-    //            instruction: this.state.recipe.instruction,
-    //        }),
-    //    })
-    //    .then(response => response.json())
-    //    .then(this.handleAddToFavorites)
-}
-handleAddToFavorites() {
+        //this set's the new state of the array favorites from empty to updatedRecipes, with ech new OBJECT carrying the properties we defined above
 
-}
+        // console.log(updatedRecipes)
+
+        this.addFavoriteRecipe(recipe)
+
+    }
+
+    addFavoriteRecipe(recipe) {
+        //Below is the fetch call that will POST the saved favorite recipes
+        fetch("/api/favorites", {
+            body:JSON.stringify({
+                id: recipe.id,
+                user_token: sessionStorage.getItem('authentication_token'),
+                user_email: sessionStorage.getItem('email'),
+            }),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(response => {
+            sessionStorage.getItem('authentication_token', response.authentication_token)
+            // console.log(response.authentication_token)
+
+        })
+
+        // formData.append('id'), sessionStorage.getItem('recipe_id')
+        // formData.append('user_token'), sessionStorage.getItem('authentication_token')
+        // formData.append('user_email'), sessionStorage.getItem('user_email')
+    }
+
+
+
 
     render() {
         // console.log(this.state.recipes)
-        // console.log(this.state.favorites)
+        console.log(this.state.favorites)
+        // window.authenticate_token = sessionStorage.getItem('authenticate_token')
+        // console.log(authenticate_token)
+
+        var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
+            return(
+                <li key={i}>
+                <div className="card">
+                      <div className="row">
+                        <div className="col-sm-6 cardContainer">
+                          <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
+                        </div>
+                        <div className="col-sm-6">
+                          <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
+                          <a href={recipe.instruction}>Click here for recipe!</a>
+                              <div className="row"><br />
+                                  <div className="col-sm-12">
+                                      <button className="btn btn-default">Delete</button>
+                                  </div>
+                              </div>
+                        </div>
+                      </div>
+                  </div>
+                </li>
+            )
+        })
 
         var newRecipes = this.state.recipes.map((recipe, i) =>{
+            //this^^ takes our empty array 'recipes', loops through it and assigns each incoming object as 'recipe' and assigns it an index (i) number. Below in the render function we are taking each of these objects we are receiving from the API call and displaying the various properties in each list item (li) that we are looping through, which is what gets rendered in our list (ul) by calling on our newRecipes variable
             return (
                 <li key={i}>
 
@@ -91,53 +139,18 @@ handleAddToFavorites() {
                     <input type="text" ref={(a) => this._inputSearch = a} placeholder="search recipes..."></input>
                     <button type="submit">search recipe</button>
                 </form>
-
                 <h1>Search Results</h1>
-                <div className="col-sm-11">
+                <div className="col-sm-6">
                     <h4>Recipes:</h4>
                     <ol>
-                        {/* <li> */}
-
-                            {/* <div className="pictureHolder">
-                                <div className="col-xs-6">
-                                    <img src="http://unsplash.it/200/120?random"  />
-                                </div><br />
-                            <div className="col-xs-6"><br />
-                              <h5>recipe_name</h5>
-                              <span>instruction</span><br />
-                            </div>
-                          </div> */}
-
-                          {/* BELOW IS A BOOTSTRAP CARD
-                          <div className="card">
-                              <img className="card-img-top" src="http://unsplash.it/200/120?random" alt="Card image cap"/>
-                              <div className="card-block">
-                                <h4 className="card-title">Recipe</h4>
-                                <p className="card-text">Link to recipe</p>
-                              </div>
-                            </div> */}
-
-                            {/* BELOW IS A MATERIALIZE CARD
-                            <div className="col s12 m7">
-                                <h2 className="header">Recipe</h2>
-                                <div className="card horizontal">
-                                  <div className="card-image">
-                                    <img src="http://lorempixel.com/100/190/nature/6" />
-                                  </div>
-                                  <div className="card-stacked">
-                                    <div className="card-content">
-                                      <p>I am a very simple card. I am good at containing small bits of information.</p>
-                                    </div>
-                                    <div className="card-action">
-                                      <a href="#">This is a link</a>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div> */}
-
-                        {/* </li> */}
-
                         {newRecipes}
+                    </ol>
+                </div>
+
+                <div className="col-sm-6">
+                    <h4>Saved:</h4>
+                    <ol>
+                        {favoriteRecipes}
                     </ol>
                 </div>
             </div>
