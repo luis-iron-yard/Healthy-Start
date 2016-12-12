@@ -4,8 +4,7 @@ import React from 'react'
 class NutritionRecipes extends React.Component {
     constructor(props) {
         super(props)
-        this.saveFavorite = this.saveFavorites.bind(this)
-        this.compileRecipe = this.compileRecipe.bind(this)
+        this.saveFavorites = this.saveFavorites.bind(this)
         this.postRecipeToDB = this.postRecipeToDB.bind(this)
         this.state = {
             favorites: [],
@@ -30,38 +29,29 @@ class NutritionRecipes extends React.Component {
         .then(response => response.json())
         .then(response => this.setState({recipes: response}))
     }
-    saveFavorites(event){
+    saveFavorites(recipe){
         console.log('Saving recipe to favorites')
-        this.compileRecipe(recipe)
-    }
-
-    compileRecipe(recipe) {
-        console.log('Compile recipe details to send to database')
-        var recipeID = {
-            user_token: '',
-            user_email: 'login authentication',
-            food_id: 'id',
+        console.log(recipe)
+        //Collect inputs of selected recipe to save to favorits array...
+        var newFavoriteRecipe = {
+            recipe: recipe.recipe_name,
+            food_image: recipe.food_imgage,
+            instruction: recipe.instruction,
+            email: sessionStorage.getItem('email'),
+            user_token: sessionStorage.getItem('authentication_token')
         }
-        this.postRecipeToDB(recipeID)
+        this.postRecipeToDB(newFavoriteRecipe)
     }
 
-    postRecipeToDB(recipeID) {
-        fetch("/api/favorites", {
-            body:JSON.stringify(
-                {recipeID}
-            ),
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+    postRecipeToDB(newFavoriteRecipe) {
+        fetch('/api/favorites?user_email=' + newFavoriteRecipe.email + '&user_token=' + newFavoriteRecipe.user_token)
         .then(response => response.json())
         .then(response => {console.log(response)})
     }
 
     render() {
         var imgStyle = {
-            width: '45%',
+            width: '60%',
             borderRadius: '2%',
             boxShadow: '3px 3px 4px grey',
             textAlign: 'center'
@@ -71,8 +61,8 @@ class NutritionRecipes extends React.Component {
         }
 
         var buttonStyling = {
-            padding: 5,
-            margin: 5,
+            padding: '2%',
+            margin: '3%',
             borderRadius: 15,
             color: '#66ccff',
             border: '2px solid #66ccff',
@@ -94,7 +84,7 @@ class NutritionRecipes extends React.Component {
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
                         <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>&nbsp;&nbsp;&nbsp;
-                        <button style={buttonStyling} href="#" className="card-link">Save to Favorites</button>
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button>
                     </div>
                 </div>
             </div>
