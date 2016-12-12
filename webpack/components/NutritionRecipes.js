@@ -88,14 +88,14 @@ class NutritionRecipes extends React.Component {
             return (
             // <li className='ns-listItemRecipe' key={i}>
             <div className='col-sm-3 ns-listItemRecipe' key={i}>
-                <div className="card">
+                <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
                         <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
                         <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button>
                     </div>
                 </div>
