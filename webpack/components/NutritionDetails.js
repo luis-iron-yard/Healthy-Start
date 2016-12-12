@@ -16,7 +16,9 @@ class NutritionDetails extends React.Component {
 
     captureFoodSearch(food) {
         this.setState({selectedFood: food})
-    }
+        document.getElementById('recipes').scrollIntoView({
+  behavior: 'smooth'})
+}
 
 
 // TODO: (1)Render Current Nutrient in Component; (2) Capture clicked on Food (Not clicking on current food); (3)Use current food item to conduct fetch for receips; (3) Render recipes to the Nutrient Recipes Component
@@ -39,6 +41,7 @@ class NutritionDetails extends React.Component {
                 return <div style={buttonStyle} key={i} onClick={() => this.captureFoodSearch(food)}>{food.name}</div>
             })
         }
+        console.log(foods)
         return(
             <div>
                 <div className='ns--nutritionDesc'>
@@ -58,7 +61,7 @@ class NutritionDetails extends React.Component {
                     </div>
                     <hr />
                 </div>
-                <NutritionRecipes food={this.state.selectedFood} />
+                <NutritionRecipes food={this.state.selectedFood} nutritient={this.props.currentNutrient? this.props.currentNutrient.nutrient: ''} />
             </div>
         )
     }
