@@ -18,7 +18,7 @@ class Welcome extends React.Component {
         //Collecting values for user input fields...
         //Compile values into form variable to send out for authentication...
         var formData = {
-            login: this.state.login,
+            email: this.state.login,
             password: this.state.password,
         }
         this.authenticateUser(formData)
