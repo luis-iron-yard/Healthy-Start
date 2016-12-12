@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :recipes, through: :favorites
   validates :email, uniqueness: true
+  # validates :username, uniqueness: true
 
   attr_accessor :seeded
 

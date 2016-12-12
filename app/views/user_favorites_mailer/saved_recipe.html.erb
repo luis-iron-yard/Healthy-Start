@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+    </head>
+    <body>
+        <h1>Here's the recipe you favorited,
+            <%= @user.username %>!</h1>
+
+        <h1>
+            <%= @recipe.recipe_name %>
+        </h1>
+
+        <% @recipe.foods.each do |ing| %>
+
+        <p>
+            <%= ing.name %>
+        </p>
+        <% end %>
+        <a href="<%= @recipe.instruction %>">
+            Click here for the recipe instructions !</a>
+        <img src="<%= @recipe.food_image %>">
+
+        <p>Thanks for visiting and have a great day! Now   <a href="https://fathomless-dawn-58376.herokuapp.com/">
+        sign in </a> and do awesome things!  </p>
+
+
+    </body>
+</html>

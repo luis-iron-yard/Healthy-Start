@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-before_action :require_user, only: [:create]
+before_action :require_user, only: [:create, :index]
   def create
     @favorites = Recipe.find(params[:id])
     @favorites.inspect
@@ -7,4 +7,8 @@ before_action :require_user, only: [:create]
         render json: @favorites
   end
 
+  def index
+    @favorites = current_user.recipes
+    render json: @favorites
+  end
 end
