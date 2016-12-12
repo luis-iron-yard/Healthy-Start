@@ -34,6 +34,7 @@ class NutritionRecipes extends React.Component {
         console.log(recipe)
         //Collect inputs of selected recipe to save to favorits array...
         var newFavoriteRecipe = {
+            id: recipe.id,
             recipe: recipe.recipe_name,
             food_image: recipe.food_imgage,
             instruction: recipe.instruction,
@@ -44,7 +45,18 @@ class NutritionRecipes extends React.Component {
     }
 
     postRecipeToDB(newFavoriteRecipe) {
-        fetch('/api/favorites?user_email=' + newFavoriteRecipe.email + '&user_token=' + newFavoriteRecipe.user_token)
+        fetch('/api/favorites', {
+            body: JSON.stringify(
+                {id: newFavoriteRecipe.id,
+                user_email: newFavoriteRecipe.email,
+                user_token: newFavoriteRecipe.user_token,
+                }
+            ),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
         .then(response => response.json())
         .then(response => {console.log(response)})
     }
