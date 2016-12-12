@@ -18,7 +18,7 @@ class Profile extends React.Component {
     }
 
     deleteRecipe() {
-        console.log("Delete button firing off delete function")
+        // console.log("Delete button firing off delete function")
     }
 
     retrieveQuote(){
@@ -27,26 +27,22 @@ class Profile extends React.Component {
         .then(response => response.json())
         .then(response => {
             this.setState({quote: response})
-            console.log(this.state.quote)
-    })
-    }
-
-    sessionTest(){
-        var data = sessionStorage.getItem('recipe_id', recipe_id)
-        console.log(data)
-        this.setState({favorites: data})
-    }
-
-    retrieveFavorites(){
-
-        fetch('/api/favorites')
-        .then(response => response.json())
-        .then(response => {this.setState({favorites: response})
-        console.log(this.state.favorites)
+            // console.log(this.state.quote)
         })
     }
 
+    retrieveFavorites(){
+        var email = sessionStorage.getItem('email')
+        var user = sessionStorage.getItem('authentication_token')
+        fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
+        .then(response => response.json())
+        // .then(response => this.setState({favorites: response})
+        .then(response => {console.log(response)})
+    }
+
     render() {
+        console.log(this.state.favorites)
+
         var quoteText = this.state.quote.quoteText
         var quoteAuthor = this.state.quote.quoteAuthor
         var quoteLink = this.state.quote.quoteLink
@@ -125,7 +121,6 @@ class Profile extends React.Component {
                                 </div>
                               </div>
                           </div>
-                          {/* <Search favorites={this.state.favorites}/> */}
 
                     </div>
 

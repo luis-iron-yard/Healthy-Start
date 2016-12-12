@@ -52,8 +52,6 @@ class Search extends React.Component {
     }
 
     addFavoriteRecipe(recipe) {
-        // userInfo = sessionStorage.getItem('authentication_token')
-        // console.log('Authentication token is ' + userInfo)
         //Below is the fetch call that will POST the saved favorite recipes
         fetch("/api/favorites", {
             body:JSON.stringify({
@@ -69,7 +67,7 @@ class Search extends React.Component {
         .then(response => response.json())
         .then(response => {
             sessionStorage.getItem('authentication_token', response.authentication_token)
-            console.log(response.authentication_token)
+            // console.log(response.authentication_token)
 
         })
 
@@ -83,7 +81,7 @@ class Search extends React.Component {
 
     render() {
         // console.log(this.state.recipes)
-        // console.log(this.state.favorites)
+        console.log(this.state.favorites)
         // window.authenticate_token = sessionStorage.getItem('authenticate_token')
         // console.log(authenticate_token)
 
