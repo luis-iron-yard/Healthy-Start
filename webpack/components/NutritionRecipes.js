@@ -10,6 +10,7 @@ class NutritionRecipes extends React.Component {
         this.state = {
             favorites: [],
             recipes: [],
+            selectedNutrient: '',
         }
     }
 
@@ -60,33 +61,59 @@ class NutritionRecipes extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '25%',
+            width: '45%',
+            borderRadius: '2%',
+            boxShadow: '3px 3px 4px grey',
+            textAlign: 'center'
         }
         var cardStyle = {
             border: '2px solid black',
         }
+
+        var buttonStyling = {
+            padding: 5,
+            margin: 5,
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var recipeTitleStyle = {
+            overflow: 'hidden',
+        }
         var recipes = this.state.recipes.map((recipe, i) =>{
-            return <li className='ns-listItemRecipe' key={i}>
+            return (
+            // <li className='ns-listItemRecipe' key={i}>
+            <div className='col-sm-3 ns-listItemRecipe' key={i}>
                 <div className="card">
                     <div className="card-block">
-                        <h4 className="card-title">Nutrition</h4>
-                        <h6 className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        {/* <h4 className="card-title">Nutrition</h4> */}
+                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <a href={recipe.instruction} target='_blank' className="card-link">Instructions</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" className="card-link">Save to Favorites</a>
+                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonStyling} href="#" className="card-link">Save to Favorites</button>
                     </div>
                 </div>
-            </li>
+            </div>
+            // </li>
+        )
         })
 // TODO: (1) Add save button; (2) Create function to capture values of specific recipe; (3) Compile favorite object into form; (4) Send a Post method to update database (5) Figure out what to do with response from Post to Server...
+        // console.log(this.props.nutrient.nutrient)
         return(
             <div>
-                <h1>Nutrition Recipes</h1>
-                <ol>
+                <h1 id='recipes'>Nutrition Recipes</h1>
+                {/* <ol>
                     {recipes}
-                </ol>
+                </ol> */}
+                <div className='container-fluid'>
+                    <div className='row'>
+                        {recipes}
+                    </div>
+                </div>
             </div>
         )
     }

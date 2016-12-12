@@ -1,31 +1,136 @@
 import React from 'react'
+import Search from './Search'
 
 
 class Profile extends React.Component {
+    constructor(props) {
+        super(props)
+        this.retrieveQuote = this.retrieveQuote.bind(this)
+        this.state = {
+            quote: '',
+            favorites: [],
+        }
+    }
+
+    componentDidMount(){
+        this.retrieveQuote()
+        this.retrieveFavorites()
+    }
+
+    deleteRecipe() {
+        console.log("Delete button firing off delete function")
+    }
+
+    retrieveQuote(){
+        //Fire off Ajax to retrieve quote as users mounts page...
+        fetch('/api/quote/?method=getQuote&format=json&lang=en')
+        .then(response => response.json())
+        .then(response => {
+            this.setState({quote: response})
+            console.log(this.state.quote)
+    })
+    }
+
+    sessionTest(){
+        var data = sessionStorage.getItem('recipe_id', recipe_id)
+        console.log(data)
+        this.setState({favorites: data})
+    }
+
+    retrieveFavorites(){
+
+        fetch('/api/favorites')
+        .then(response => response.json())
+        .then(response => {this.setState({favorites: response})
+        console.log(this.state.favorites)
+        })
+    }
+
     render() {
+        var quoteText = this.state.quote.quoteText
+        var quoteAuthor = this.state.quote.quoteAuthor
+        var quoteLink = this.state.quote.quoteLink
         var profileContainer = {
             display: 'flex',
         }
         var profileDetails = {
             flex: 4,
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'column',
+            padding: 20,
         }
         var favoriteDetails = {
             flex: 8,
+            padding: 20,
+        }
+        var imageStyling = {
+            borderRadius: '50%',
+            width: '50%',
+        }
+        var cardStyle = {
+            margin: '3%',
+            padding: '5%',
+            fontSize: '1em',
+            border: '1px solid #66ccff',
+            borderRadius: '40px 10px',
+            boxShadow: '0 0 5px #5F5F5F',
         }
         return(
             <div className='viewSection'>
                 <h4 className='pageTitle'>Profile</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <div style={profileContainer}>
                     <div style={profileDetails}>
                         <h1>Profile Section</h1><br />
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <img style={imageStyling} src='https://unsplash.it/600/?random' alt='random image for profile'/><br />
+                        <h5>Quote for the Day:</h5>
+                        <blockquote>{quoteText}</blockquote>
+                        <footer> - <i>{quoteAuthor}</i></footer><br />
+                        <a href={quoteLink} target='_blank'>Link to Quote</a>
                     </div>
                     <div style={favoriteDetails}>
+
                         <h1>Favorites Section</h1>
+
+                        <div className='card' style={cardStyle}>
+                              <div className='row'>
+                                <div className='col-sm-6 cardContainer'>
+                                  <img className='cardContainer img-responsive' src='https://unsplash.it/600/?random' alt='Recipe image '/>
+                                </div>
+                                <div className='col-sm-6'>
+                                  <h4 className='cardInfo card-title'>Name of Recipe</h4><br />
+                                  <a href='#'>Click here for recipe!</a>
+                                      <div className='row'><br />
+                                          <div className='col-sm-12'>
+                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
+                                          </div>
+                                      </div>
+                                </div>
+                              </div>
+                          </div>
+
+                        <div className='card' style={cardStyle}>
+                              <div className='row'>
+                                <div className='col-sm-6 cardContainer'>
+                                  <img className='cardContainer img-responsive' src='https://unsplash.it/600/?random' alt='Recipe image '/>
+                                </div>
+                                <div className='col-sm-6'>
+                                  <h4 className='cardInfo card-title'>Name of Recipe</h4><br />
+                                  <a href='#'>Click here for recipe!</a>
+                                      <div className='row'><br />
+                                          <div className='col-sm-12'>
+                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
+                                          </div>
+                                      </div>
+                                </div>
+                              </div>
+                          </div>
+                          {/* <Search favorites={this.state.favorites}/> */}
+
                     </div>
 
                 </div>
+
             </div>
         )
     }
