@@ -39,8 +39,15 @@ class Signup extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            window.location.href = '/'
-            console.log(response)
+            if (typeof response.authentication_token !== 'undefined') {
+                sessionStorage.setItem('authentication_token', response.authentication_token)
+                sessionStorage.setItem('email', response.email)
+                window.location.href = '/home/nutrition'
+                console.log(response)
+            }
+            else {
+                console.log(response)
+            }
         })
     }
 

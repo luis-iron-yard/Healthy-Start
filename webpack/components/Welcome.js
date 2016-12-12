@@ -39,6 +39,7 @@ class Welcome extends React.Component {
         .then(response => response.json())
         .then(response => {
             sessionStorage.setItem('authentication_token', response.authentication_token)
+            sessionStorage.setItem('email', response.email)
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
             if(response.authentication_token) {

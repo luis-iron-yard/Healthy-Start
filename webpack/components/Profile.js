@@ -1,4 +1,5 @@
 import React from 'react'
+import Search from './Search'
 
 
 class Profile extends React.Component {
@@ -7,11 +8,13 @@ class Profile extends React.Component {
         this.retrieveQuote = this.retrieveQuote.bind(this)
         this.state = {
             quote: '',
+            favorites: [],
         }
     }
 
     componentDidMount(){
         this.retrieveQuote()
+        this.retrieveFavorites()
     }
 
     deleteRecipe() {
@@ -26,6 +29,21 @@ class Profile extends React.Component {
             this.setState({quote: response})
             console.log(this.state.quote)
     })
+    }
+
+    sessionTest(){
+        var data = sessionStorage.getItem('recipe_id', recipe_id)
+        console.log(data)
+        this.setState({favorites: data})
+    }
+
+    retrieveFavorites(){
+
+        fetch('/api/favorites')
+        .then(response => response.json())
+        .then(response => {this.setState({favorites: response})
+        console.log(this.state.favorites)
+        })
     }
 
     render() {
@@ -71,7 +89,9 @@ class Profile extends React.Component {
                         <a href={quoteLink} target='_blank'>Link to Quote</a>
                     </div>
                     <div style={favoriteDetails}>
+
                         <h1>Favorites Section</h1>
+
                         <div className='card' style={cardStyle}>
                               <div className='row'>
                                 <div className='col-sm-6 cardContainer'>
@@ -88,6 +108,7 @@ class Profile extends React.Component {
                                 </div>
                               </div>
                           </div>
+
                         <div className='card' style={cardStyle}>
                               <div className='row'>
                                 <div className='col-sm-6 cardContainer'>
@@ -98,15 +119,18 @@ class Profile extends React.Component {
                                   <a href='#'>Click here for recipe!</a>
                                       <div className='row'><br />
                                           <div className='col-sm-12'>
-                                              <button className='btn btn-default'>Save</button>
+                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
                                           </div>
                                       </div>
                                 </div>
                               </div>
                           </div>
+                          {/* <Search favorites={this.state.favorites}/> */}
+
                     </div>
 
                 </div>
+
             </div>
         )
     }
