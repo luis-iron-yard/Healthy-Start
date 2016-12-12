@@ -24,6 +24,7 @@ class Home extends React.Component {
     render() {
         var navStyling = {
             cursor: 'pointer',
+
         }
         return(
             <div className='hm_body_style'>
