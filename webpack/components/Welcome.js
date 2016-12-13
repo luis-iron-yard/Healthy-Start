@@ -40,8 +40,10 @@ class Welcome extends React.Component {
         .then(response => {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             sessionStorage.setItem('email', response.email)
+            sessionStorage.setItem('photo', response.photo)
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
+            console.log(response)
             if(response.authentication_token) {
                 window.location.href = '/home/nutrition'
                 console.log('Got all the way here...')
