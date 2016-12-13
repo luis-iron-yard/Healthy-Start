@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   after_create :send_welcome
   acts_as_token_authenticatable
+  attachment :photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
