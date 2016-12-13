@@ -11,6 +11,7 @@ class Signup extends React.Component {
             email: '',
             password: '',
             password_confirmation: '',
+            photo: '',
         }
     }
 
@@ -22,6 +23,7 @@ class Signup extends React.Component {
             email: this.state.email,
             password: this.state.password,
             password_confirmation: this.state.password_confirmation,
+            photo: this.state.photo,
         }
         this.signupUser(formData)
     }
@@ -99,6 +101,10 @@ class Signup extends React.Component {
                     <div className="form-group">
                       <label htmlFor="signUpConfirmationPassword">Password Confirmation</label>
                       <input type="password" className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
+                    </div>
+                    <div className="form-group">
+                    <label htmlFor="photo">Photo</label>
+                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.value})} required />
                     </div>
                     <div>
                       <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => browserHistory.push('/')}>Close</button>
