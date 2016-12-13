@@ -25,12 +25,6 @@ class User < ApplicationRecord
       end
 
   private
-  #
-  # attr_writer :login
-  #
-  # def login
-  #   @login || username || email
-  # end
 
   def send_welcome
     UserMailer.welcome_email(self).deliver unless seeded
