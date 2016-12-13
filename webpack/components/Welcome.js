@@ -11,6 +11,7 @@ class Welcome extends React.Component {
         this.state = {
             login: '',
             password: '',
+            photo: '',
         }
     }
 
@@ -20,6 +21,7 @@ class Welcome extends React.Component {
         var formData = {
             login: this.state.login,
             password: this.state.password,
+            photo: this.state.photo,
         }
         this.authenticateUser(formData)
     }
@@ -83,6 +85,10 @@ class Welcome extends React.Component {
                     <div className="form-group">
                         <label htmlFor="passwordInput">Password</label>
                         <input type="password" className="form-control" id="passwordInput" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
+                    </div>
+                    <div className="form-group">
+                    <label htmlFor="photo">Photo</label>
+                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.value})} required />
                     </div>
                     <button style={buttonWelcomeStyling} onClick={this.collectUserInput} className='ws--Button'>Login</button>
                     <Link to="/api/users/sign_up"><button style={buttonWelcomeStyling} onClick='' className='ws--Button'>Sign Up</button></Link>
