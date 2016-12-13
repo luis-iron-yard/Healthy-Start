@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     resources :recipes
     get '/search' => 'recipes#search'
     get '/quote' => 'quotes#quote_hit'
-
-    resources :favorites, only: [:create, :index]
+    delete '/favorites' => 'favorites#destroy'
+    resources :favorites, only: [:create, :index, :destroy]
 
     # get '/user/:id' => 'users#show'
 
