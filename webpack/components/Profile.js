@@ -99,8 +99,7 @@ class Profile extends React.Component {
                 <div className='col-sm-3 ns-listItemRecipe' key={i}>
                     <div className="card text-center">
                         <div className="card-block">
-                            {/* <h4 className="card-title">Nutrition</h4> */}
-                            <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                            <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                         </div>
                         <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                         <div className="card-block">
@@ -130,10 +129,10 @@ class Profile extends React.Component {
         })
         return(
             <div className='viewSection'>
-                <h4 className='pageTitle'>Profile</h4>
+                <h4 className='pageTitle'>Favorites</h4>
                 <div style={profileContainer}>
                     <div style={profileDetails}>
-                        <h1>Profile Section</h1><br />
+                        <h1>Favorites Section</h1><br />
                         <img style={imageStyling} src='https://unsplash.it/600/?random' alt='random image for profile'/><br />
                         <h5>Quote for the Day:</h5>
                         <blockquote>{quoteText}</blockquote>
@@ -142,47 +141,14 @@ class Profile extends React.Component {
                     </div>
                     <div style={favoriteDetails}>
 
-                        <h1>Favorites Section</h1>
+                        <div className="container-fluid">
+                            <h4>Saved:</h4>
+                            {/* {favoriteRecipes} */}
 
-                        {/* <div className='card' style={cardStyle}>
-                              <div className='row'>
-                                <div className='col-sm-6 cardContainer'>
-                                  <img className='cardContainer img-responsive' src='https://unsplash.it/600/?random' alt='Recipe image '/>
-                                </div>
-                                <div className='col-sm-6'>
-                                  <h4 className='cardInfo card-title'>Name of Recipe</h4><br />
-                                  <a href='#'>Click here for recipe!</a>
-                                      <div className='row'><br />
-                                          <div className='col-sm-12'>
-                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
-                                          </div>
-                                      </div>
-                                </div>
-                              </div>
-                          </div>
-
-                        <div className='card' style={cardStyle}>
-                              <div className='row'>
-                                <div className='col-sm-6 cardContainer'>
-                                  <img className='cardContainer img-responsive' src='https://unsplash.it/600/?random' alt='Recipe image '/>
-                                </div>
-                                <div className='col-sm-6'>
-                                  <h4 className='cardInfo card-title'>Name of Recipe</h4><br />
-                                  <a href='#'>Click here for recipe!</a>
-                                      <div className='row'><br />
-                                          <div className='col-sm-12'>
-                                              <button onClick={()=>this.deleteRecipe()} className="btn btn-default">Delete</button>
-                                          </div>
-                                      </div>
-                                </div>
-                              </div>
-                          </div> */}
-                          <div className="col-sm-6">
-                              <h4>Saved:</h4>
-                              <ol>
-                                  {favoriteRecipes}
-                              </ol>
-                          </div>
+                            <div className="row">
+                                {favoriteRecipes}
+                            </div>
+                        </div>
                     </div>
 
                 </div>
