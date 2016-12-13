@@ -5,7 +5,7 @@ respond_to :json
 skip_before_filter :require_no_authentication, :only => [:create ]
 
 def create
-resource = User.find_for_database_authentication(:login=>params[:user_login][:login])
+resource = User.find_for_database_authentication(:login=>params[:user_login][:email])
 
 
  if resource.nil?
