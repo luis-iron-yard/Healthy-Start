@@ -80,36 +80,76 @@ class Search extends React.Component {
 
 
     render() {
+        var imgStyle = {
+            width: '60%',
+            borderRadius: '2%',
+            boxShadow: '3px 3px 4px grey',
+            textAlign: 'center'
+        }
+        var cardStyle = {
+            border: '2px solid black',
+        }
+
+        var buttonStyling = {
+            padding: '2%',
+            margin: '3%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var recipeTitleStyle = {
+            overflow: 'hidden',
+        }
         // console.log(this.state.recipes)
         console.log(this.state.favorites)
         // window.authenticate_token = sessionStorage.getItem('authenticate_token')
         // console.log(authenticate_token)
-
         var newRecipes = this.state.recipes.map((recipe, i) =>{
-            //this^^ takes our empty array 'recipes', loops through it and assigns each incoming object as 'recipe' and assigns it an index (i) number. Below in the render function we are taking each of these objects we are receiving from the API call and displaying the various properties in each list item (li) that we are looping through, which is what gets rendered in our list (ul) by calling on our newRecipes variable
             return (
-                <li key={i}>
-
-                  <div className="card">
-                        <div className="row">
-                          <div className="col-sm-6 cardContainer">
-                            <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
-                          </div>
-                          <div className="col-sm-6">
-                            <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
-                            <a href={recipe.instruction}>Click here for recipe!</a>
-                                <div className="row"><br />
-                                    <div className="col-sm-12">
-                                        <button onClick={()=>this.savedRecipes(recipe)} className="btn btn-default">Save</button>
-                                    </div>
-                                </div>
-                          </div>
-                        </div>
+            // <li className='ns-listItemRecipe' key={i}>
+            <div className='col-sm-3 ns-listItemRecipe' key={i}>
+                <div className="card text-center">
+                    <div className="card-block">
+                        {/* <h4 className="card-title">Nutrition</h4> */}
+                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
-
-                </li>
-            )
+                    <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
+                    <div className="card-block">
+                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
+                    </div>
+                </div>
+            </div>
+            // </li>
+        )
         })
+        // var newRecipes = this.state.recipes.map((recipe, i) =>{
+        //     //this^^ takes our empty array 'recipes', loops through it and assigns each incoming object as 'recipe' and assigns it an index (i) number. Below in the render function we are taking each of these objects we are receiving from the API call and displaying the various properties in each list item (li) that we are looping through, which is what gets rendered in our list (ul) by calling on our newRecipes variable
+        //     return (
+        //         <li key={i}>
+        //
+        //           <div className="card">
+        //                 <div className="row">
+        //                   <div className="col-sm-6 cardContainer">
+        //                     <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
+        //                   </div>
+        //                   <div className="col-sm-6">
+        //                     <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
+        //                     <a href={recipe.instruction}>Click here for recipe!</a>
+        //                         <div className="row"><br />
+        //                             <div className="col-sm-12">
+        //                                 <button onClick={()=>this.savedRecipes(recipe)} className="btn btn-default">Save</button>
+        //                             </div>
+        //                         </div>
+        //                   </div>
+        //                 </div>
+        //             </div>
+        //
+        //         </li>
+        //     )
+        // })
         return(
             <div>
                 <form onSubmit={this.searchResults}>
