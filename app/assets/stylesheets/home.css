@@ -63,3 +63,7 @@ ul.hm_header_style {
 .ns--nutritionDesc {
   border-radius: 15px;
 }
+
+.nr--test:hover {
+  background-color: #000;
+}
