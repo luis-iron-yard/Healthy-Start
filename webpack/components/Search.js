@@ -28,7 +28,7 @@ class Search extends React.Component {
         //^ this line fetches the api and runs our value(food) against it
         .then(response => response.json())
         //^ this line turns the api call into JSON data
-        .then(response => console.log(response))
+        // .then(response => console.log(response))
     }
 
 
@@ -103,10 +103,7 @@ class Search extends React.Component {
         var searchBar = {
             textAlign: 'center',
         }
-        // console.log(this.state.recipes)
-        console.log(this.state.favorites)
-        // window.authenticate_token = sessionStorage.getItem('authenticate_token')
-        // console.log(authenticate_token)
+        // console.log(this.state.favorites)
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
             // <li className='ns-listItemRecipe' key={i}>
@@ -157,6 +154,7 @@ class Search extends React.Component {
                     <input style={inputStyling} type="text" ref={(a) => this._inputSearch = a} placeholder="search recipes..."></input>
                     <button style={buttonStyling} type="submit">search recipe</button>
                 </form>
+
                 <h1>Search Results</h1>
                 <div className="container-fluid">
                     <h4>Recipes:</h4>

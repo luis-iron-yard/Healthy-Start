@@ -38,6 +38,15 @@ class Home extends React.Component {
                 <div>
                     {this.props.children}
                 </div>
+                <div>
+                    <ul className='hm_header_style'>
+                        <li>Healthy Start</li>
+                        <li style={navStyling} onClick={() => browserHistory.push('/home/nutrition')}>Nutrition</li>
+                        <li style={navStyling} onClick={() => browserHistory.push('/home/search')}>Search</li>
+                        <li style={navStyling} onClick={() => browserHistory.push('/home/profile')}>Favorites</li>
+                        <li style={navStyling} >About</li>
+                    </ul>
+                </div>
             </div>
         )
     }
