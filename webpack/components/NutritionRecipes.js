@@ -5,11 +5,13 @@ class NutritionRecipes extends React.Component {
     constructor(props) {
         super(props)
         this.saveFavorites = this.saveFavorites.bind(this)
+        this.savedTest = this.savedTest.bind(this)
         this.postRecipeToDB = this.postRecipeToDB.bind(this)
         this.state = {
             favorites: [],
             recipes: [],
             selectedNutrient: '',
+            savedBtnText: 'Save to Favorites'
         }
     }
 
@@ -27,16 +29,33 @@ class NutritionRecipes extends React.Component {
         fetch('/api/search?food=' + food)
         //Convert server response and update the current state of the nutritions empty array
         .then(response => response.json())
-        .then(response => this.setState({recipes: response}))
-        if(recipes !== '') {
-            document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
-        }
+        .then(response => {
+            var recipes = response
+
+            var email = sessionStorage.getItem('email')
+            var user = sessionStorage.getItem('authentication_token')
+            fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
+            .then(response => response.json())
+            .then(response => {
+                var favorites = response.map(favorite => favorite.id)
+
+                this.setState({recipes: recipes, favorites: favorites})
+
+                if(response.length) {
+                    document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
+                }
+            })
+        })
     }
     saveFavorites(recipe){
         // console.log('Saving recipe to favorites')
         // console.log(recipe)
-        
+
         //Collect inputs of selected recipe to save to favorits array...
+        var favorites = this.state.favorites
+        favorites.push(recipe.id)
+        this.setState({favorites: favorites})
+
         var newFavoriteRecipe = {
             id: recipe.id,
             recipe: recipe.recipe_name,
@@ -46,6 +65,11 @@ class NutritionRecipes extends React.Component {
             user_token: sessionStorage.getItem('authentication_token')
         }
         this.postRecipeToDB(newFavoriteRecipe)
+        this.savedTest()
+    }
+
+    savedTest() {
+        this.setState({savedBtnText: 'Saved'})
     }
 
     postRecipeToDB(newFavoriteRecipe) {
@@ -103,7 +127,8 @@ class NutritionRecipes extends React.Component {
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
                         <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>
-                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button>
+                        {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button> */}
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,6 @@ class Search extends React.Component {
         fetch('/api/search?food=' + sessionStorage.getItem('searchValue'))
         .then(response => response.json())
         .then(response => this.setState({recipes: response}))
-        // .then(response => console.log(response))
     }
 
 
@@ -25,7 +24,6 @@ class Search extends React.Component {
 
         var food = this._inputSearch.value;
         //this takes the value of the input field (attached to _inputSearch) and attaches it to the variable food
-        // console.log(food);
         fetch('/api/search?food=' + food)
         //^ this line fetches the api and runs our value(food) against it
         .then(response => response.json())
@@ -45,7 +43,6 @@ class Search extends React.Component {
         })
         //this set's the new state of the array favorites from empty to updatedRecipes, with ech new OBJECT carrying the properties we defined above
 
-        // console.log(updatedRecipes)
 
         this.addFavoriteRecipe(recipe)
 
@@ -67,13 +64,8 @@ class Search extends React.Component {
         .then(response => response.json())
         .then(response => {
             sessionStorage.getItem('authentication_token', response.authentication_token)
-            // console.log(response.authentication_token)
 
         })
-
-        // formData.append('id'), sessionStorage.getItem('recipe_id')
-        // formData.append('user_token'), sessionStorage.getItem('authentication_token')
-        // formData.append('user_email'), sessionStorage.getItem('user_email')
     }
 
 
@@ -89,7 +81,13 @@ class Search extends React.Component {
         var cardStyle = {
             border: '2px solid black',
         }
-
+        var inputStyling = {
+            padding: '2%',
+            margin: '3%',
+            borderRadius: 15,
+            border: '2px solid #66ccff',
+            width: '50%',
+        }
         var buttonStyling = {
             padding: '2%',
             margin: '3%',
@@ -102,6 +100,9 @@ class Search extends React.Component {
         var recipeTitleStyle = {
             overflow: 'hidden',
         }
+        var searchBar = {
+            textAlign: 'center',
+        }
         // console.log(this.state.recipes)
         console.log(this.state.favorites)
         // window.authenticate_token = sessionStorage.getItem('authenticate_token')
@@ -113,7 +114,7 @@ class Search extends React.Component {
                 <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
-                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
@@ -152,16 +153,16 @@ class Search extends React.Component {
         // })
         return(
             <div>
-                <form onSubmit={this.searchResults}>
-                    <input type="text" ref={(a) => this._inputSearch = a} placeholder="search recipes..."></input>
-                    <button type="submit">search recipe</button>
+                <form style={searchBar} onSubmit={this.searchResults}>
+                    <input style={inputStyling} type="text" ref={(a) => this._inputSearch = a} placeholder="search recipes..."></input>
+                    <button style={buttonStyling} type="submit">search recipe</button>
                 </form>
                 <h1>Search Results</h1>
-                <div className="col-sm-6">
+                <div className="container-fluid">
                     <h4>Recipes:</h4>
-                    <ol>
+                    <div className="row">
                         {newRecipes}
-                    </ol>
+                    </div>
                 </div>
             </div>
         )

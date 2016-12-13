@@ -32,7 +32,7 @@ class Home extends React.Component {
                     <li style={navStyling} onClick={() => browserHistory.push('/home/nutrition')}>Nutrition</li>
                     {/* <li style={navStyling} onClick={() => browserHistory.push('/home/illness')}>Illness</li> */}
                     <li style={navStyling} onClick={() => browserHistory.push('/home/search')}>Search</li>
-                    <li style={navStyling} onClick={() => browserHistory.push('/home/profile')}>Profile</li>
+                    <li style={navStyling} onClick={() => browserHistory.push('/home/profile')}>Favorites</li>
                     <li style={navStyling} onClick={this.signOut}>SignOut</li>
                 </ul>
                 <div>
