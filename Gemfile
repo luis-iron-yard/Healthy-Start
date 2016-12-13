@@ -15,14 +15,21 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'webpack-rails'
+gem 'refile', github: 'refile/refile', require: 'refile/rails'
+gem 'refile-mini_magick', github: 'refile/refile-mini_magick'
+gem 'sinatra', github: 'sinatra/sinatra', branch: 'master'
+gem 'refile-postgres', '~> 1.4'
 gem 'devise'
 gem 'figaro'
 gem 'simple_token_authentication', '~> 1.0'
 gem 'httparty'
 gem 'faker'
 gem 'sendgrid'
+gem 'dalli'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

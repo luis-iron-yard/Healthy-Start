@@ -4,17 +4,19 @@ import React from 'react'
 class NutritionRecipes extends React.Component {
     constructor(props) {
         super(props)
-        this.saveFavorite = this.saveFavorites.bind(this)
-        this.compileRecipe = this.compileRecipe.bind(this)
+        this.saveFavorites = this.saveFavorites.bind(this)
+        // this.savedTest = this.savedTest.bind(this)
         this.postRecipeToDB = this.postRecipeToDB.bind(this)
         this.state = {
             favorites: [],
             recipes: [],
+            selectedNutrient: '',
+            // savedBtnText: 'Save to Favorites'
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        // console.log(nextProps)
         if(nextProps.food){
             this.fetchRecipes(nextProps.food.name)
         } else {
@@ -28,26 +30,38 @@ class NutritionRecipes extends React.Component {
         //Convert server response and update the current state of the nutritions empty array
         .then(response => response.json())
         .then(response => this.setState({recipes: response}))
-    }
-    saveFavorites(event){
-        console.log('Saving recipe to favorites')
-        this.compileRecipe(recipe)
-    }
-
-    compileRecipe(recipe) {
-        console.log('Compile recipe details to send to database')
-        var recipeID = {
-            user_token: '',
-            user_email: 'login authentication',
-            food_id: 'id',
+        if(recipes !== '') {
+            document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
         }
-        this.postRecipeToDB(recipeID)
+    }
+    saveFavorites(recipe){
+        // console.log('Saving recipe to favorites')
+        // console.log(recipe)
+
+        //Collect inputs of selected recipe to save to favorits array...
+        var newFavoriteRecipe = {
+            id: recipe.id,
+            recipe: recipe.recipe_name,
+            food_image: recipe.food_imgage,
+            instruction: recipe.instruction,
+            email: sessionStorage.getItem('email'),
+            user_token: sessionStorage.getItem('authentication_token')
+        }
+        this.postRecipeToDB(newFavoriteRecipe)
+        // this.savedTest()
     }
 
-    postRecipeToDB(recipeID) {
-        fetch("/api/favorites", {
-            body:JSON.stringify(
-                {recipeID}
+    // savedTest() {
+    //     this.setState({savedBtnText: 'Saved'})
+    // }
+
+    postRecipeToDB(newFavoriteRecipe) {
+        fetch('/api/favorites', {
+            body: JSON.stringify(
+                {id: newFavoriteRecipe.id,
+                user_email: newFavoriteRecipe.email,
+                user_token: newFavoriteRecipe.user_token,
+                }
             ),
             method: 'POST',
             headers: {
@@ -60,33 +74,60 @@ class NutritionRecipes extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '25%',
+            width: '100%',
+            borderRadius: '10px',
+            border: 'inset rgba(#999999, 0.85)',
+            boxShadow: 'inset -3px -3px 4px grey',
+            textAlign: 'center',
+            padding: '0 2px 0 2px',
+            filter: 'contrast(150%)',
         }
         var cardStyle = {
             border: '2px solid black',
         }
+
+        var buttonStyling = {
+            margin: '15px 0 15px 0',
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var recipeTitleStyle = {
+            overflow: 'hidden',
+        }
         var recipes = this.state.recipes.map((recipe, i) =>{
-            return <li className='ns-listItemRecipe' key={i}>
-                <div className="card">
+            return (
+            // <li className='ns-listItemRecipe' key={i}>
+            <div className='col-sm-3 ns-listItemRecipe' key={i}>
+                <div className="card text-center">
                     <div className="card-block">
-                        <h4 className="card-title">Nutrition</h4>
-                        <h6 className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        {/* <h4 className="card-title">Nutrition</h4> */}
+                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <a href={recipe.instruction} target='_blank' className="card-link">Instructions</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" className="card-link">Save to Favorites</a>
+                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button>
+                        {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>{this.state.savedBtnText}</button> */}
                     </div>
                 </div>
-            </li>
+            </div>
+            // </li>
+        )
         })
 // TODO: (1) Add save button; (2) Create function to capture values of specific recipe; (3) Compile favorite object into form; (4) Send a Post method to update database (5) Figure out what to do with response from Post to Server...
+        // console.log(this.props.nutrient.nutrient)
         return(
             <div>
-                <h1>Nutrition Recipes</h1>
-                <ol>
-                    {recipes}
-                </ol>
+                <h1 id='recipes'>Nutrition Recipes</h1><hr />
+                <div className='container-fluid'>
+                    <div className='row'>
+                        {recipes}
+                    </div>
+                </div>
             </div>
         )
     }

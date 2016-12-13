@@ -41,8 +41,6 @@ ul.hm_header_style {
     display: block;
     padding: 5%;
     margin: 2% 0 2% 0;
-    border: 1px solid #66ccff;
-    box-shadow: 2px 2px 2px #5F5F5F;
 }
 .ns-listItem, .ns-listItemRecipe, .ns--nutritionDesc {
     margin: 3%;
@@ -51,6 +49,11 @@ ul.hm_header_style {
     border: 1px solid #66ccff;
     border-radius: 40px 10px;
     box-shadow: 0 0 5px #5F5F5F;
+}
+
+.ns-listItemRecipe {
+    margin: 15px;
+    padding: 2px;
 }
 .ns--sectionHeader {
     margin-top: 0;
@@ -65,10 +68,15 @@ ul.hm_header_style {
     border-radius: 15px;
 }
 
-//Section for Illness Styling
-
 //Section for Search Styling
 
 //Section for Profile Styling
 
 //Styling for the Footer Section for the Home Page
+
+//Styling for Various screen sizes...
+@media screen and (max-width: 600px){
+    ul.hm_header_style{
+        display: block;
+    }
+}

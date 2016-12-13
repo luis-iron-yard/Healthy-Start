@@ -19,7 +19,7 @@ class Welcome extends React.Component {
         //Collecting values for user input fields...
         //Compile values into form variable to send out for authentication...
         var formData = {
-            login: this.state.login,
+            email: this.state.login,
             password: this.state.password,
             photo: this.state.photo,
         }
@@ -41,11 +41,16 @@ class Welcome extends React.Component {
         .then(response => response.json())
         .then(response => {
             sessionStorage.setItem('authentication_token', response.authentication_token)
+            sessionStorage.setItem('email', response.email)
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
+            if(response.authentication_token) {
+                window.location.href = '/home/nutrition'
+                console.log('Got all the way here...')
+            } else {
+                console.log('Error with login, please try again...')
+            }
             //If user info. is valid redirect to home page...
-            window.location.href = '/home/nutrition'
-            console.log('Got all the way here...')
         })
     }
 

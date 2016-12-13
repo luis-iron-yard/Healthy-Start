@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     resources :recipes
     get '/search' => 'recipes#search'
     get '/quote' => 'quotes#quote_hit'
-
-    resources :favorites, only: [:create]
+    delete '/favorites' => 'favorites#destroy'
+    resources :favorites, only: [:create, :index, :destroy]
 
     # get '/user/:id' => 'users#show'
 
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   # For a user to save a recipes to their favorites send a post here => POST  /api/favorites , also send user_token, user_email(login authentication) and also the food id number
   # Send user updates to this endpoint =>  PATCH /api/users/:id
   # Pulls all recipes saved in our database == > GET /api/recipes
+  # Shows the current user their favorited recipes == > GET /api/favorites please send the user_token and user_email(login authentication)
   # For getting nutrions, send request to == > GET /api/nutritions
   # To login the the end point will be  ==> POST to /api /users/sign_in
   # If you want to sign_up the end point will be ==>  POST to /api/users
