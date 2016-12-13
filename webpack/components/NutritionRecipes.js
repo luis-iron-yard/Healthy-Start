@@ -14,7 +14,7 @@ class NutritionRecipes extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        // console.log(nextProps)
         if(nextProps.food){
             this.fetchRecipes(nextProps.food.name)
         } else {
@@ -28,10 +28,14 @@ class NutritionRecipes extends React.Component {
         //Convert server response and update the current state of the nutritions empty array
         .then(response => response.json())
         .then(response => this.setState({recipes: response}))
+        if(recipes !== '') {
+            document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
+        }
     }
     saveFavorites(recipe){
-        console.log('Saving recipe to favorites')
-        console.log(recipe)
+        // console.log('Saving recipe to favorites')
+        // console.log(recipe)
+        
         //Collect inputs of selected recipe to save to favorits array...
         var newFavoriteRecipe = {
             id: recipe.id,
@@ -63,18 +67,21 @@ class NutritionRecipes extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '60%',
-            borderRadius: '2%',
-            boxShadow: '3px 3px 4px grey',
-            textAlign: 'center'
+            width: '100%',
+            borderRadius: '10px',
+            border: 'inset rgba(#999999, 0.85)',
+            boxShadow: 'inset -3px -3px 4px grey',
+            textAlign: 'center',
+            padding: '0 2px 0 2px',
+            filter: 'contrast(150%)',
         }
         var cardStyle = {
             border: '2px solid black',
         }
 
         var buttonStyling = {
-            padding: '2%',
-            margin: '3%',
+            margin: '15px 0 15px 0',
+            width: '100%',
             borderRadius: 15,
             color: '#66ccff',
             border: '2px solid #66ccff',
@@ -95,7 +102,7 @@ class NutritionRecipes extends React.Component {
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>
                         <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button>
                     </div>
                 </div>
@@ -107,10 +114,7 @@ class NutritionRecipes extends React.Component {
         // console.log(this.props.nutrient.nutrient)
         return(
             <div>
-                <h1 id='recipes'>Nutrition Recipes</h1>
-                {/* <ol>
-                    {recipes}
-                </ol> */}
+                <h1 id='recipes'>Nutrition Recipes</h1><hr />
                 <div className='container-fluid'>
                     <div className='row'>
                         {recipes}

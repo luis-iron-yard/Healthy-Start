@@ -16,8 +16,6 @@ class NutritionDetails extends React.Component {
 
     captureFoodSearch(food) {
         this.setState({selectedFood: food})
-        document.getElementById('recipes').scrollIntoView({
-  behavior: 'smooth'})
 }
 
 
@@ -34,14 +32,17 @@ class NutritionDetails extends React.Component {
             display: 'inline-block',
             cursor: 'pointer',
         }
-        console.log(this.props.currentNutrient)
+        var sourceTitle = {
+          whiteSpace: 'normal',
+        }
+        // console.log(this.props.currentNutrient)
         var foods = ''
         if(this.props.currentNutrient) {
              foods = this.props.currentNutrient.foods.map((food, i) => {
                 return <div style={buttonStyle} key={i} onClick={() => this.captureFoodSearch(food)}>{food.name}</div>
             })
         }
-        console.log(foods)
+        // console.log(foods)
         return(
             <div>
                 <div className='ns--nutritionDesc'>
@@ -57,9 +58,9 @@ class NutritionDetails extends React.Component {
                         <div>
                             {foods}
                         </div>
-                        <h6>Source: Pregnancy The Beginner's Guide &copy;2014 Dorling Kindersley Limited</h6>
+                        <h6 style={sourceTitle}>Source: Pregnancy The Beginner's Guide &copy;2014 Dorling Kindersley Limited</h6>
+
                     </div>
-                    <hr />
                 </div>
                 <NutritionRecipes food={this.state.selectedFood} nutritient={this.props.currentNutrient? this.props.currentNutrient.nutrient: ''} />
             </div>
