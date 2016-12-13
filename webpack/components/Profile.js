@@ -67,6 +67,12 @@ class Profile extends React.Component {
             borderRadius: '50%',
             width: '50%',
         }
+        var imgStyle = {
+            width: '60%',
+            borderRadius: '2%',
+            boxShadow: '3px 3px 4px grey',
+            textAlign: 'center'
+        }
         var cardStyle = {
             margin: '3%',
             padding: '5%',
@@ -75,10 +81,35 @@ class Profile extends React.Component {
             borderRadius: '40px 10px',
             boxShadow: '0 0 5px #5F5F5F',
         }
+        var buttonStyling = {
+            padding: '2%',
+            margin: '3%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var recipeTitleStyle = {
+            overflow: 'hidden',
+        }
         var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
             return(
-                <li key={i}>
-                <div className="card">
+                // <li key={i}>
+                <div className='col-sm-3 ns-listItemRecipe' key={i}>
+                    <div className="card text-center">
+                        <div className="card-block">
+                            {/* <h4 className="card-title">Nutrition</h4> */}
+                            <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        </div>
+                        <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
+                        <div className="card-block">
+                            <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
+                            <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button>
+                        </div>
+                    </div>
+                </div>
+                /* <div className="card">
                       <div className="row">
                         <div className="col-sm-6 cardContainer">
                           <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
@@ -93,8 +124,8 @@ class Profile extends React.Component {
                               </div>
                         </div>
                       </div>
-                  </div>
-                </li>
+                  </div> */
+                // </li>
             )
         })
         return(
@@ -113,7 +144,7 @@ class Profile extends React.Component {
 
                         <h1>Favorites Section</h1>
 
-                        <div className='card' style={cardStyle}>
+                        {/* <div className='card' style={cardStyle}>
                               <div className='row'>
                                 <div className='col-sm-6 cardContainer'>
                                   <img className='cardContainer img-responsive' src='https://unsplash.it/600/?random' alt='Recipe image '/>
@@ -145,7 +176,7 @@ class Profile extends React.Component {
                                       </div>
                                 </div>
                               </div>
-                          </div>
+                          </div> */}
                           <div className="col-sm-6">
                               <h4>Saved:</h4>
                               <ol>
