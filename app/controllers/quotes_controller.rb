@@ -1,9 +1,9 @@
 class QuotesController < ApplicationController
 
+  # calls forismatic api for a random motivational quote
   def quote_hit
-    @insperation = HTTParty.get("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")
-    puts @insperation.inspect
-    render json: @insperation
+    @motivation = HTTParty.get("http://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en")
+    render json: @motivation
   end
 
 end

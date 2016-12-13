@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
   get '/:thing/(:thing)' => 'home#index'
-  # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
+
+  # Need to leave get/:thing as last line of code so that front end can use react to redirect where needed
+  # If you need to delete a favorite => DELETE api/favorites
   # For a user to save a recipes to their favorites send a post here => POST  /api/favorites , also send user_token, user_email(login authentication) and also the food id number
   # Send user updates to this endpoint =>  PATCH /api/users/:id
   # Pulls all recipes saved in our database == > GET /api/recipes

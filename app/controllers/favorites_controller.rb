@@ -14,12 +14,9 @@ before_action :require_user, only: [:create, :index, :destroy]
   end
 # DELETE /api/favorites/:id - user deletes a favorite
   def destroy
-    @favorites = current_user.recipes
-    @favorites = Favorites.find(params[:id]).destroy
-
-    # @favorites = current_user.recipe.destroy
-    redirect_to :action => 'index'
-
+    recipe = Recipe.find(params[:id])
+    current_user.recipes.delete(recipe)
+    render json: current_user.recipes
   end
 
 end
