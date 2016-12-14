@@ -30,12 +30,14 @@ class Signup extends React.Component {
     }
 
     signupUser() {
+        var email = this.state.email
         var formData = new FormData()
         formData.append('user[username]', this.state.username)
         formData.append('user[email]', this.state.email)
         formData.append('user[password]', this.state.password)
         formData.append('user[password_confirmation]', this.state.password_confirmation)
         formData.append('user[photo]', this.state.photo)
+        console.log(formData)
 
         console.log('The Ajax is about to send off user data...')
         fetch("/api/users", {
@@ -49,10 +51,10 @@ class Signup extends React.Component {
         .then(response => {
             if (typeof response.authentication_token !== 'undefined') {
                 sessionStorage.setItem('authentication_token', response.authentication_token)
-                sessionStorage.setItem('email', response.email)
+                sessionStorage.setItem('email', encodeURIComponent(response.email))
+                // sessionStorage.setItem('email', response.email)
                 sessionStorage.setItem('user', JSON.stringify(response))
                 window.location.href = '/home/nutrition'
-                console.log(response)
             }
             else {
                 console.log(response)
