@@ -78,6 +78,18 @@ class Profile extends React.Component {
             borderRadius: '40px 10px',
             boxShadow: '0 0 5px #5F5F5F',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
         var buttonStyling = {
             marginTop: 12,
             marginBottom: 5,
@@ -101,7 +113,7 @@ class Profile extends React.Component {
                         </div>
                         <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                         <div className="card-block">
-                            <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>
+                            <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
                             <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button>
                         </div>
                     </div>

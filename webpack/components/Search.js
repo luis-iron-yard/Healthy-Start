@@ -73,7 +73,7 @@ class Search extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '60%',
+            width: '100%',
             borderRadius: '2%',
             boxShadow: '3px 3px 4px grey',
             textAlign: 'center'
@@ -88,6 +88,28 @@ class Search extends React.Component {
             border: '2px solid #66ccff',
             width: '50%',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var buttonSStyling = {
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+            marginBottom: 10
+        }
+
         var buttonStyling = {
             padding: '2%',
             margin: '3%',
@@ -115,8 +137,8 @@ class Search extends React.Component {
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
-                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
+                        <a style={buttonAStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</a>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonSStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
                     </div>
                 </div>
             </div>
