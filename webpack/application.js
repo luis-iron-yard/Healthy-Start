@@ -8,6 +8,7 @@ import Nutrition from './components/Nutrition'
 import Illness from './components/Illness'
 import Search from './components/Search'
 import Profile from './components/Profile'
+import About from './components/About'
 
 
 
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
                 <Route path='illness' component={Illness} />
                 <Route path='search' component={Search} />
                 <Route path='profile' component={Profile} />
+                <Route path='about' component={About} />
             </Route>
         </Router>
         ,destination
