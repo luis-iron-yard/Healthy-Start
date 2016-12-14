@@ -77,10 +77,14 @@ class Welcome extends React.Component {
         var titleEmphasis = {
             color: '#000',
         }
+        var logoStyling = {
+            fontSize: '1em',
+            fontFamily: 'Lobster, Helvetica, sans-serif',
+        }
         return(
             <div style={welcomeStyling}>
-                <h1 style={titleStyling}><span style={titleEmphasis}>Welcome to</span> Healthy Start!</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h1 style={titleStyling}><span style={titleEmphasis}>Welcome to</span> Healthy Start!</h1><br />
+                <h5>Because ever child and mother deserves a <span style={logoStyling}>Healthy Start...</span></h5>
                 <div><br />
                     <div className="form-group">
                         <label htmlFor="emailInput">Email address</label>

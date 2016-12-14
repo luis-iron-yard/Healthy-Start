@@ -23,12 +23,20 @@ class Signup extends React.Component {
             email: this.state.email,
             password: this.state.password,
             password_confirmation: this.state.password_confirmation,
-            photo: this.state.photo,
+            // photo: this.state.photo,
         }
         this.signupUser(formData)
+        // this.signupUser()
     }
 
     signupUser(formData) {
+        // var formData = new FormData()
+        // formData.append('username', this.state.username)
+        // formData.append('email', this.state.email)
+        // formData.append('password', this.state.password)
+        // formData.append('password_confirmation', this.state.password_confirmation)
+        // formData.append('file', this.state.photo[0])
+
         console.log('The Ajax is about to send off user data...')
         fetch("/api/users", {
             body:JSON.stringify(
@@ -102,10 +110,10 @@ class Signup extends React.Component {
                       <label htmlFor="signUpConfirmationPassword">Password Confirmation</label>
                       <input type="password" className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
                     </div>
-                    <div className="form-group">
+                    {/* <div className="form-group">
                     <label htmlFor="photo">Photo</label>
                     <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.value})} required />
-                    </div>
+                    </div> */}
                     <div>
                       <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => browserHistory.push('/')}>Close</button>
                       <button style={buttonSignupStyling} type="button" className="btn btn-primary" id="saveSignUp" onClick={this.captureUserData}>Save changes</button>
