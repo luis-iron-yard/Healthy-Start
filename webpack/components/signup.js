@@ -31,11 +31,11 @@ class Signup extends React.Component {
 
     signupUser() {
         var formData = new FormData()
-        formData.append('username', this.state.username)
-        formData.append('email', this.state.email)
-        formData.append('password', this.state.password)
-        formData.append('password_confirmation', this.state.password_confirmation)
-        formData.append('photo', this.state.photo)
+        formData.append('user[username]', this.state.username)
+        formData.append('user[email]', this.state.email)
+        formData.append('user[password]', this.state.password)
+        formData.append('user[password_confirmation]', this.state.password_confirmation)
+        formData.append('user[photo]', this.state.photo)
 
         console.log('The Ajax is about to send off user data...')
         fetch("/api/users", {
@@ -44,15 +44,13 @@ class Signup extends React.Component {
             // ),
             body: formData,
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
         })
         .then(response => response.json())
         .then(response => {
             if (typeof response.authentication_token !== 'undefined') {
                 sessionStorage.setItem('authentication_token', response.authentication_token)
                 sessionStorage.setItem('email', response.email)
+                sessionStorage.setItem('user', JSON.stringify(response))
                 window.location.href = '/home/nutrition'
                 console.log(response)
             }
@@ -113,7 +111,7 @@ class Signup extends React.Component {
                     </div>
                     <div className="form-group">
                     <label htmlFor="photo">Photo</label>
-                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.value})} required />
+                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.files[0]})} required />
                     </div>
                     <div>
                       <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => browserHistory.push('/')}>Close</button>

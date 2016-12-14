@@ -40,7 +40,7 @@ class Welcome extends React.Component {
         .then(response => {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             sessionStorage.setItem('email', response.email)
-            sessionStorage.setItem('photo', response.photo)
+            sessionStorage.setItem('user', JSON.stringify(response))            
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
             console.log(response)
