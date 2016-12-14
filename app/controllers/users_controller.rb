@@ -6,10 +6,7 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def edit
-    @user = current_user
-    render json: @user
-  end
+
 
   def update
     @user = current_user
@@ -17,7 +14,7 @@ class UsersController < ApplicationController
       render json: @user
       # Handle a successful update.
     else
-      render 'edit'
+      render json: ["Looks like your not logged in, please login or sign up! "], status: :forbidden
     end
   end
 end
@@ -27,5 +24,5 @@ end
 private
 
 def user_params
-  params.permit(:email, :password, :username, :phone)
+  params.permit(:email, :password, :username, :phone, :photo)
 end

@@ -56,8 +56,6 @@ ul.hm_header_style {
   display: block;
   padding: 5%;
   margin: 2% 0 2% 0;
-  border: 1px solid #66ccff;
-  box-shadow: 2px 2px 2px #5F5F5F;
 }
 
 .ns-listItem, .ns-listItemRecipe, .ns--nutritionDesc {
@@ -67,6 +65,11 @@ ul.hm_header_style {
   border: 1px solid #66ccff;
   border-radius: 40px 10px;
   box-shadow: 0 0 5px #5F5F5F;
+}
+
+.ns-listItemRecipe {
+  margin: 15px;
+  padding: 2px;
 }
 
 .ns--sectionHeader {
@@ -80,4 +83,20 @@ ul.hm_header_style {
 
 .ns--nutritionDesc {
   border-radius: 15px;
+}
+
+.hm--Footer {
+  padding: 6px 0 6px 0;
+}
+
+@media screen and (max-width: 600px) {
+  ul.hm_header_style {
+    display: block;
+  }
+  ul.hm_header_style li {
+    text-align: center;
+  }
+  .hm--Footer a, .hm--Footer h5 {
+    text-align: center;
+  }
 }

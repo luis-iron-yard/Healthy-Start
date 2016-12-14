@@ -12,11 +12,11 @@ class Nutrition extends React.Component {
         }
     }
     componentDidMount(){
-        console.log('We mounted')
+        // console.log('We mounted')
         this.nutritionList()
     }
     nutritionList(){
-        console.log('start fetch for nutrition list')
+        // console.log('start fetch for nutrition list')
         //Fire off ajax request to obtain list of nutritions
         fetch('/api/nutritions')
         //Convert server response and update the current state of the nutritions empty array
@@ -32,14 +32,14 @@ class Nutrition extends React.Component {
 
     render() {
         window.authenticate_token = sessionStorage.getItem('authenticate_token')
-        console.log(authenticate_token)        
-        console.log('The active nutrient is: ' + this.state.activeNutrient)
+        // console.log(authenticate_token)
+        // console.log('The active nutrient is: ' + this.state.activeNutrient)
         // console.log(this.state.nutritions)
         //Declare a variable to loop through list of nutritients and display each as a list item
         var nutritionItems = this.state.nutritions.map((nutrientItem, i) =>{
             return <li className='ns-listItem' onClick={()=> this.activeNutrient(nutrientItem)} key={i}>{nutrientItem.nutrient}</li>
         })
-        console.log('Now we need to pass this parent prop to the Nutrition Details and Recipes children on clicking')
+        // console.log('Now we need to pass this parent prop to the Nutrition Details and Recipes children on clicking')
         return(
             <div className='viewSection'>
                 <h4 className='pageTitle'>Nutrition</h4>

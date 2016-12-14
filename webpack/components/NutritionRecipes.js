@@ -4,18 +4,19 @@ import React from 'react'
 class NutritionRecipes extends React.Component {
     constructor(props) {
         super(props)
-        this.saveFavorite = this.saveFavorites.bind(this)
-        this.compileRecipe = this.compileRecipe.bind(this)
+        this.saveFavorites = this.saveFavorites.bind(this)
+        this.savedTest = this.savedTest.bind(this)
         this.postRecipeToDB = this.postRecipeToDB.bind(this)
         this.state = {
             favorites: [],
             recipes: [],
             selectedNutrient: '',
+            savedBtnText: 'Save to Favorites'
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps)
+        // console.log(nextProps)
         if(nextProps.food){
             this.fetchRecipes(nextProps.food.name)
         } else {
@@ -28,27 +29,56 @@ class NutritionRecipes extends React.Component {
         fetch('/api/search?food=' + food)
         //Convert server response and update the current state of the nutritions empty array
         .then(response => response.json())
-        .then(response => this.setState({recipes: response}))
-    }
-    saveFavorites(event){
-        console.log('Saving recipe to favorites')
-        this.compileRecipe(recipe)
-    }
+        .then(response => {
+            var recipes = response
 
-    compileRecipe(recipe) {
-        console.log('Compile recipe details to send to database')
-        var recipeID = {
-            user_token: '',
-            user_email: 'login authentication',
-            food_id: 'id',
+            var email = sessionStorage.getItem('email')
+            var user = sessionStorage.getItem('authentication_token')
+            fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
+            .then(response => response.json())
+            .then(response => {
+                var favorites = response.map(favorite => favorite.id)
+
+                this.setState({recipes: recipes, favorites: favorites})
+
+                if(response.length) {
+                    document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
+                }
+            })
+        })
+    }
+    saveFavorites(recipe){
+        // console.log('Saving recipe to favorites')
+        // console.log(recipe)
+
+        //Collect inputs of selected recipe to save to favorits array...
+        var favorites = this.state.favorites
+        favorites.push(recipe.id)
+        this.setState({favorites: favorites})
+
+        var newFavoriteRecipe = {
+            id: recipe.id,
+            recipe: recipe.recipe_name,
+            food_image: recipe.food_imgage,
+            instruction: recipe.instruction,
+            email: sessionStorage.getItem('email'),
+            user_token: sessionStorage.getItem('authentication_token')
         }
-        this.postRecipeToDB(recipeID)
+        this.postRecipeToDB(newFavoriteRecipe)
+        this.savedTest()
     }
 
-    postRecipeToDB(recipeID) {
-        fetch("/api/favorites", {
-            body:JSON.stringify(
-                {recipeID}
+    savedTest() {
+        this.setState({savedBtnText: 'Saved'})
+    }
+
+    postRecipeToDB(newFavoriteRecipe) {
+        fetch('/api/favorites', {
+            body: JSON.stringify(
+                {id: newFavoriteRecipe.id,
+                user_email: newFavoriteRecipe.email,
+                user_token: newFavoriteRecipe.user_token,
+                }
             ),
             method: 'POST',
             headers: {
@@ -61,18 +91,33 @@ class NutritionRecipes extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '45%',
-            borderRadius: '2%',
-            boxShadow: '3px 3px 4px grey',
-            textAlign: 'center'
+            width: '100%',
+            borderRadius: '10px',
+            border: 'inset rgba(#999999, 0.85)',
+            boxShadow: 'inset -3px -3px 4px grey',
+            textAlign: 'center',
+            padding: '0 2px 0 2px',
+            filter: 'contrast(150%)',
         }
         var cardStyle = {
             border: '2px solid black',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
 
         var buttonStyling = {
-            padding: 5,
-            margin: 5,
+            margin: '15px 0 15px 0',
+            width: '100%',
             borderRadius: 15,
             color: '#66ccff',
             border: '2px solid #66ccff',
@@ -86,15 +131,15 @@ class NutritionRecipes extends React.Component {
             return (
             // <li className='ns-listItemRecipe' key={i}>
             <div className='col-sm-3 ns-listItemRecipe' key={i}>
-                <div className="card">
+                <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
-                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>&nbsp;&nbsp;&nbsp;
-                        <button style={buttonStyling} href="#" className="card-link">Save to Favorites</button>
+                        <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
                     </div>
                 </div>
             </div>
@@ -105,10 +150,8 @@ class NutritionRecipes extends React.Component {
         // console.log(this.props.nutrient.nutrient)
         return(
             <div>
-                <h1 id='recipes'>Nutrition Recipes</h1>
-                {/* <ol>
-                    {recipes}
-                </ol> */}
+                <h1 id='recipes'>Nutrition Recipes</h1><hr />
+                <h6>Recipe data courtesy of <a href='https://developer.edamam.com/' target="_blank">edamam api</a></h6>
                 <div className='container-fluid'>
                     <div className='row'>
                         {recipes}

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     resources :recipes
     get '/search' => 'recipes#search'
     get '/quote' => 'quotes#quote_hit'
-
-    resources :favorites, only: [:create, :index]
+    delete '/favorites' => 'favorites#destroy'
+    resources :favorites, only: [:create, :index, :destroy]
 
     # get '/user/:id' => 'users#show'
 
@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
   get '/:thing/(:thing)' => 'home#index'
-  # Need to leave get/thing as last line of code so that front end can use react to redirect where needed
+
+  # Need to leave get/:thing as last line of code so that front end can use react to redirect where needed
+  # If you need to delete a favorite => DELETE api/favorites
   # For a user to save a recipes to their favorites send a post here => POST  /api/favorites , also send user_token, user_email(login authentication) and also the food id number
   # Send user updates to this endpoint =>  PATCH /api/users/:id
   # Pulls all recipes saved in our database == > GET /api/recipes
