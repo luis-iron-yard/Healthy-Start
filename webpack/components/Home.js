@@ -24,6 +24,7 @@ class Home extends React.Component {
     render() {
         var navStyling = {
             cursor: 'pointer',
+
         }
         var footerStyling = {
             backgroundColor: '#000',
