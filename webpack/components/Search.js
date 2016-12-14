@@ -28,7 +28,7 @@ class Search extends React.Component {
         //^ this line fetches the api and runs our value(food) against it
         .then(response => response.json())
         //^ this line turns the api call into JSON data
-        .then(response => console.log(response))
+        // .then(response => console.log(response))
     }
 
 
@@ -73,7 +73,7 @@ class Search extends React.Component {
 
     render() {
         var imgStyle = {
-            width: '60%',
+            width: '100%',
             borderRadius: '2%',
             boxShadow: '3px 3px 4px grey',
             textAlign: 'center'
@@ -88,6 +88,28 @@ class Search extends React.Component {
             border: '2px solid #66ccff',
             width: '50%',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
+        var buttonSStyling = {
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+            marginBottom: 10
+        }
+
         var buttonStyling = {
             padding: '2%',
             margin: '3%',
@@ -103,14 +125,11 @@ class Search extends React.Component {
         var searchBar = {
             textAlign: 'center',
         }
-        // console.log(this.state.recipes)
-        console.log(this.state.favorites)
-        // window.authenticate_token = sessionStorage.getItem('authenticate_token')
-        // console.log(authenticate_token)
+        // console.log(this.state.favorites)
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
             // <li className='ns-listItemRecipe' key={i}>
-            <div className='col-sm-3 ns-listItemRecipe' key={i}>
+            <div className='viewSection col-sm-3 ns-listItemRecipe' key={i}>
                 <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
@@ -118,8 +137,8 @@ class Search extends React.Component {
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
-                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
+                        <a style={buttonAStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</a>&nbsp;&nbsp;&nbsp;
+                        <button style={buttonSStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
                     </div>
                 </div>
             </div>
@@ -157,8 +176,9 @@ class Search extends React.Component {
                     <input style={inputStyling} type="text" ref={(a) => this._inputSearch = a} placeholder="search recipes..."></input>
                     <button style={buttonStyling} type="submit">search recipe</button>
                 </form>
+
                 <h1>Search Results</h1>
-                <div className="container-fluid">
+                <div className="container-fluid viewSection">
                     <h4>Recipes:</h4>
                     <div className="row">
                         {newRecipes}

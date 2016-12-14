@@ -7,6 +7,22 @@ img {
     width: 100%;
 }
 //Styling for the Header Section for the Home Page
+
+.hm--scrollMenu {
+    background-color: #333;
+    overflow: auto;
+    white-space: nowrap;
+    p {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+        :hover {
+            background-color: #777;            
+        }
+    }
+}
 .hm_body_style {
     padding: 20px;
     margin: 0;
@@ -73,10 +89,23 @@ ul.hm_header_style {
 //Section for Profile Styling
 
 //Styling for the Footer Section for the Home Page
+.hm--Footer {
+    padding: 6px 0 6px 0;
+
+}
+
 
 //Styling for Various screen sizes...
 @media screen and (max-width: 600px){
     ul.hm_header_style{
         display: block;
+        li {
+            text-align: center;
+        }
+    }
+    .hm--Footer {
+        a , h5 {
+            text-align: center;
+        }
     }
 }

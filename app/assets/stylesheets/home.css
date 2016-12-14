@@ -6,6 +6,24 @@ img {
   width: 100%;
 }
 
+.hm--scrollMenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.hm--scrollMenu p {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+.hm--scrollMenu p :hover {
+  background-color: #777;
+}
+
 .hm_body_style {
   padding: 20px;
   margin: 0;
@@ -67,8 +85,18 @@ ul.hm_header_style {
   border-radius: 15px;
 }
 
+.hm--Footer {
+  padding: 6px 0 6px 0;
+}
+
 @media screen and (max-width: 600px) {
   ul.hm_header_style {
     display: block;
+  }
+  ul.hm_header_style li {
+    text-align: center;
+  }
+  .hm--Footer a, .hm--Footer h5 {
+    text-align: center;
   }
 }

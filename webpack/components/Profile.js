@@ -9,12 +9,15 @@ class Profile extends React.Component {
         this.state = {
             quote: '',
             favorites: [],
+            user: {},
         }
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.retrieveQuote()
         this.retrieveFavorites()
+        var user = JSON.parse(sessionStorage.getItem('user'))
+        this.setState({user: user})
     }
 
     deleteRecipe() {
@@ -27,7 +30,6 @@ class Profile extends React.Component {
         .then(response => response.json())
         .then(response => {
             this.setState({quote: response})
-            // console.log(this.state.quote)
         })
     }
 
@@ -36,15 +38,13 @@ class Profile extends React.Component {
         var user = sessionStorage.getItem('authentication_token')
         fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
         .then(response => response.json())
-        // .then(response => this.setState({favorites: response})
         .then(response => {
             this.setState({favorites: response})
-            // console.log(this.state.favorites)
         })
     }
 
     render() {
-        console.log(this.state.favorites)
+        // console.log(this.state.favorites)
 
         var quoteText = this.state.quote.quoteText
         var quoteAuthor = this.state.quote.quoteAuthor
@@ -68,7 +68,7 @@ class Profile extends React.Component {
             width: '50%',
         }
         var imgStyle = {
-            width: '60%',
+            width: '100%',
             borderRadius: '2%',
             boxShadow: '3px 3px 4px grey',
             textAlign: 'center'
@@ -81,9 +81,22 @@ class Profile extends React.Component {
             borderRadius: '40px 10px',
             boxShadow: '0 0 5px #5F5F5F',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
         var buttonStyling = {
-            padding: '2%',
-            margin: '3%',
+            marginTop: 12,
+            marginBottom: 5,
+            width: '100%',
             borderRadius: 15,
             color: '#66ccff',
             border: '2px solid #66ccff',
@@ -103,28 +116,11 @@ class Profile extends React.Component {
                         </div>
                         <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                         <div className="card-block">
-                            <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
+                            <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
                             <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button>
                         </div>
                     </div>
                 </div>
-                /* <div className="card">
-                      <div className="row">
-                        <div className="col-sm-6 cardContainer">
-                          <img className="cardContainer img-responsive" src={recipe.food_image} alt="Recipe image "/>
-                        </div>
-                        <div className="col-sm-6">
-                          <h4 className="cardInfo card-title">{recipe.recipe_name}</h4><br />
-                          <a href={recipe.instruction}>Click here for recipe!</a>
-                              <div className="row"><br />
-                                  <div className="col-sm-12">
-                                      <button className="btn btn-default">Delete</button>
-                                  </div>
-                              </div>
-                        </div>
-                      </div>
-                  </div> */
-                // </li>
             )
         })
         return(
@@ -133,8 +129,9 @@ class Profile extends React.Component {
                 <div style={profileContainer}>
                     <div style={profileDetails}>
                         <h1>Favorites Section</h1><br />
-                        <img style={imageStyling} src='https://unsplash.it/600/?random' alt='random image for profile'/><br />
-                        <h5>Quote for the Day:</h5>
+                        <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
+                        <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br />
+                        <h5>Inspirational Quote:</h5>
                         <blockquote>{quoteText}</blockquote>
                         <footer> - <i>{quoteAuthor}</i></footer><br />
                         <a href={quoteLink} target='_blank'>Link to Quote</a>

@@ -41,7 +41,7 @@ class NutritionRecipes extends React.Component {
 
                 this.setState({recipes: recipes, favorites: favorites})
 
-                if(response.length) {
+                if(recipes.length) {
                     document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
                 }
             })
@@ -102,6 +102,18 @@ class NutritionRecipes extends React.Component {
         var cardStyle = {
             border: '2px solid black',
         }
+        var buttonAStyling = {
+            textDecoration: 'none',
+            display: 'block',
+            margin: '15px 0 15px 0',
+            padding: 2.5,
+            width: '100%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
 
         var buttonStyling = {
             margin: '15px 0 15px 0',
@@ -122,12 +134,11 @@ class NutritionRecipes extends React.Component {
                 <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
-                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>
-                        {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button> */}
+                        <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
                         <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
                     </div>
                 </div>
@@ -140,6 +151,7 @@ class NutritionRecipes extends React.Component {
         return(
             <div>
                 <h1 id='recipes'>Nutrition Recipes</h1><hr />
+                <h6>Recipe data courtesy of <a href='https://developer.edamam.com/' target="_blank">edamam api</a></h6>
                 <div className='container-fluid'>
                     <div className='row'>
                         {recipes}
