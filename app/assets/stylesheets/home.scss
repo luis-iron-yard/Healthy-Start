@@ -73,6 +73,11 @@ ul.hm_header_style {
 //Section for Profile Styling
 
 //Styling for the Footer Section for the Home Page
+.hm--Footer {
+    padding: 6px 0 6px 0;
+    display: inline-block;
+}
+
 
 //Styling for Various screen sizes...
 @media screen and (max-width: 600px){

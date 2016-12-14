@@ -67,6 +67,11 @@ ul.hm_header_style {
   border-radius: 15px;
 }
 
+.hm--Footer {
+  padding: 6px 0 6px 0;
+  display: inline-block;
+}
+
 @media screen and (max-width: 600px) {
   ul.hm_header_style {
     display: block;
