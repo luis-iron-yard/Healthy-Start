@@ -1,5 +1,7 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
+import { Link } from 'react-router'
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -54,18 +56,12 @@ class Home extends React.Component {
                                     <h5 className='text-center'><a href='https://www.theironyard.com/locations/indianapolis.html' alt='link to TIY Indianapolis' target='_blank'>The Iron Yard - Indianapolis</a></h5>
                                 </div>
                                 <div className='col-sm-4 col-xs-4'>
-                                    <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' alt='get to know us more link'><h5 className='text-right'>About Us</h5></a>
+                                    {/* <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' alt='get to know us more link'><h5 className='text-right'>About Us</h5></a> */}
+                                    <Link to="/home/about"><h5 style={navStyling} onClick='' className='text-right'>About Us</h5></Link>
                                 </div>
                             </div>
                         </div>
                     </footer>
-                    {/* <ul className='hm_header_style'>
-                        <li>Healthy Start</li>
-                        <li style={navStyling} onClick={() => browserHistory.push('/home/nutrition')}>Nutrition</li>
-                        <li style={navStyling} onClick={() => browserHistory.push('/home/search')}>Search</li>
-                        <li style={navStyling} onClick={() => browserHistory.push('/home/profile')}>Favorites</li>
-                        <li style={navStyling} >About</li>
-                    </ul> */}
                 </div>
             </div>
         )
