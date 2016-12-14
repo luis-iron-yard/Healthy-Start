@@ -62,7 +62,9 @@ class Welcome extends React.Component {
             padding: '150px',
             fontSize: '1.5em',
             textAlign: 'center',
-            background: '/img/landing_hp.jpg'
+            backgroundImage: 'url(/img/tomato.jpeg)',
+            backgroundSize: 'cover',
+            // filter: 'grayscale(55%)'
         }
         var titleStyling = {
             fontSize: '2.5em',
@@ -73,37 +75,43 @@ class Welcome extends React.Component {
             padding: 20,
             margin: 30,
             borderRadius: 15,
-            color: '#fff',
-            border: '4px solid #66ccff',
+            color: '#AC3921',
+            border: '4px solid #AC3921',
             boxShadow: '2px 2px 2px #fff',
+            background: '#FFF000',
         }
         var titleEmphasis = {
-            color: '#000',
+            color: '#FFF000',
+        }
+        var welcomeTitleStyling = {
+            color: '#FFF000',
         }
         var logoStyling = {
             fontSize: '1em',
             fontFamily: 'Lobster, Helvetica, sans-serif',
+            color: '#fff',
         }
         return(
-            <div style={welcomeStyling}>
-                <h1 style={titleStyling}><span style={titleEmphasis}>Welcome to</span> Healthy Start!</h1><br />
-                <h5>Because ever child and mother deserves a <span style={logoStyling}>Healthy Start...</span></h5>
-                {/* <img src='/img/landing_hp.jpg' alt='random image'/> */}
-                <div><br />
-                    <div className="form-group">
-                        <label htmlFor="emailInput">Email address</label>
-                        <input type="email" className="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" onChange={(e)=>this.setState({login: e.target.value})} required />
-                        <small id="emailAssistance" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="passwordInput">Password</label>
-                        <input type="password" className="form-control" id="passwordInput" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
-                    </div>
-                    <button style={buttonWelcomeStyling} onClick={this.collectUserInput} className='ws--Button'>Login</button>
-                    <Link to="/api/users/sign_up"><button style={buttonWelcomeStyling} onClick='' className='ws--Button'>Sign Up</button></Link>
-                </div>
+                        <div style={welcomeStyling}>
+                            <h1 style={titleStyling}><span style={welcomeTitleStyling}>Welcome to</span> Healthy Start!</h1><br />
+                            {/* <img src='/img/landing_hp.jpg' alt='random image'/> */}
+                            <div><br />
+                            <div style={titleEmphasis} className="form-group">
+                                <label htmlFor="emailInput">Email address</label>
+                                <input type="email" className="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" onChange={(e)=>this.setState({login: e.target.value})} required />
+                                <small id="emailAssistance" className="form-text">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div style={titleEmphasis} className="form-group">
+                                <label htmlFor="passwordInput">Password</label>
+                                <input type="password" className="form-control" id="passwordInput" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
+                            </div>
+                            <h5 style={logoStyling}>Because ever child and mother deserves a <b style={welcomeTitleStyling}>Healthy Start...</b></h5>
+                            <button style={buttonWelcomeStyling} onClick={this.collectUserInput} className='ws--Button'>Login</button>
+                            <Link to="/api/users/sign_up"><button style={buttonWelcomeStyling} onClick='' className='ws--Button'>Sign Up</button></Link>
+                        </div>
 
-            </div>
+                    </div>
+
         )
     }
 }

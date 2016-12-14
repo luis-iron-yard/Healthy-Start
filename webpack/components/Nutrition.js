@@ -40,9 +40,13 @@ class Nutrition extends React.Component {
             return <li className='ns-listItem' onClick={()=> this.activeNutrient(nutrientItem)} key={i}>{nutrientItem.nutrient}</li>
         })
         // console.log('Now we need to pass this parent prop to the Nutrition Details and Recipes children on clicking')
+        var focusText = {
+            color: '#fff',
+
+        }
         return(
             <div className='viewSection'>
-                <h4 className='pageTitle'>Nutrition</h4>
+                <h4 className='pageTitle'>Nutrition: <span style={focusText}>(Select a Nutrient to start...)</span></h4>
                 <div className='container'>
                     <div className='row'>
                         <div className='col-sm-4'>
