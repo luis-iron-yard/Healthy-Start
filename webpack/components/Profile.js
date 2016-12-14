@@ -117,7 +117,7 @@ class Profile extends React.Component {
                         <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                         <div className="card-block">
                             <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
-                            <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button>
+                            {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button> */}
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@ class Profile extends React.Component {
                     <div style={profileDetails}>
                         <h1>Favorites Section</h1><br />
                         <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
-                        <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br />
+                        {/* <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br /> */}
                         <h5>Inspirational Quote:</h5>
                         <blockquote>{quoteText}</blockquote>
                         <footer> - <i>{quoteAuthor}</i></footer><br />
