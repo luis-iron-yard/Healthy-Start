@@ -67,6 +67,11 @@ ul.hm_header_style {
   box-shadow: 0 0 5px #5F5F5F;
 }
 
+.ns--nutritionlist li.ns-listItem:hover {
+  background-color: #66ccff;
+  color: #fff;
+}
+
 .ns-listItemRecipe {
   margin: 15px;
   padding: 2px;
