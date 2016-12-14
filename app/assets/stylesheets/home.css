@@ -67,8 +67,18 @@ ul.hm_header_style {
   border-radius: 15px;
 }
 
+.hm--Footer {
+  padding: 6px 0 6px 0;
+}
+
 @media screen and (max-width: 600px) {
   ul.hm_header_style {
     display: block;
+  }
+  ul.hm_header_style li {
+    text-align: center;
+  }
+  .hm--Footer a, .hm--Footer h5 {
+    text-align: center;
   }
 }
