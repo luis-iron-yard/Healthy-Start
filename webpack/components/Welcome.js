@@ -17,10 +17,12 @@ class Welcome extends React.Component {
     collectUserInput() {
         //Collecting values for user input fields...
         //Compile values into form variable to send out for authentication...
+        var login = this.state.login
         var formData = {
             email: this.state.login,
             password: this.state.password,
         }
+        console.log(formData)
         this.authenticateUser(formData)
     }
 
@@ -40,7 +42,7 @@ class Welcome extends React.Component {
         .then(response => {
             sessionStorage.setItem('authentication_token', response.authentication_token)
             sessionStorage.setItem('email', response.email)
-            sessionStorage.setItem('user', JSON.stringify(response))            
+            sessionStorage.setItem('user', JSON.stringify(response))
             console.log('About to redirect to nutritions')
             console.log(response.authentication_token)
             console.log(response)
