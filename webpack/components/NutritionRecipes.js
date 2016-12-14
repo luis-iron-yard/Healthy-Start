@@ -41,7 +41,7 @@ class NutritionRecipes extends React.Component {
 
                 this.setState({recipes: recipes, favorites: favorites})
 
-                if(response.length) {
+                if(recipes.length) {
                     document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
                 }
             })
