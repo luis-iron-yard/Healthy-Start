@@ -129,7 +129,7 @@ class Profile extends React.Component {
                 <div style={profileContainer}>
                     <div style={profileDetails}>
                         <h1>Favorites Section</h1><br />
-                        <img style={imageStyling} src={this.state.user.photo} alt='random image for profile'/><br />
+                        <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
                         <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br />
                         <h5>Inspirational Quote:</h5>
                         <blockquote>{quoteText}</blockquote>
