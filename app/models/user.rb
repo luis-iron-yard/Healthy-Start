@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :recipes, through: :favorites
   validates :email, uniqueness: true
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/
+  validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\z/
   validates :username, uniqueness: true
 
   attr_accessor :seeded
