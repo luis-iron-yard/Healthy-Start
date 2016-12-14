@@ -60,6 +60,7 @@ class Welcome extends React.Component {
             padding: '150px',
             fontSize: '1.5em',
             textAlign: 'center',
+            background: '/img/landing_hp.jpg'
         }
         var titleStyling = {
             fontSize: '2.5em',
@@ -85,6 +86,7 @@ class Welcome extends React.Component {
             <div style={welcomeStyling}>
                 <h1 style={titleStyling}><span style={titleEmphasis}>Welcome to</span> Healthy Start!</h1><br />
                 <h5>Because ever child and mother deserves a <span style={logoStyling}>Healthy Start...</span></h5>
+                {/* <img src='/img/landing_hp.jpg' alt='random image'/> */}
                 <div><br />
                     <div className="form-group">
                         <label htmlFor="emailInput">Email address</label>

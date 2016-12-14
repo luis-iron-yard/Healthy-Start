@@ -122,12 +122,11 @@ class NutritionRecipes extends React.Component {
                 <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
-                        <h6 style={recipeTitleStyle}className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
-                        <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link">Instructions</button>
-                        {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button> */}
+                        <button style={buttonStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</button>
                         <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
                     </div>
                 </div>
@@ -140,6 +139,7 @@ class NutritionRecipes extends React.Component {
         return(
             <div>
                 <h1 id='recipes'>Nutrition Recipes</h1><hr />
+                <h6>Recipe data courtesy of <a href='https://developer.edamam.com/' target="_blank">edamam api</a></h6>
                 <div className='container-fluid'>
                     <div className='row'>
                         {recipes}
