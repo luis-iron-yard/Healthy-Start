@@ -75,7 +75,7 @@ ul.hm_header_style {
 //Styling for the Footer Section for the Home Page
 .hm--Footer {
     padding: 6px 0 6px 0;
-    display: inline-block;
+
 }
 
 
@@ -83,5 +83,13 @@ ul.hm_header_style {
 @media screen and (max-width: 600px){
     ul.hm_header_style{
         display: block;
+        li {
+            text-align: center;
+        }
+    }
+    .hm--Footer {
+        a , h5 {
+            text-align: center;
+        }
     }
 }
