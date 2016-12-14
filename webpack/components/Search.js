@@ -107,7 +107,7 @@ class Search extends React.Component {
         var newRecipes = this.state.recipes.map((recipe, i) =>{
             return (
             // <li className='ns-listItemRecipe' key={i}>
-            <div className='col-sm-3 ns-listItemRecipe' key={i}>
+            <div className='viewSection col-sm-3 ns-listItemRecipe' key={i}>
                 <div className="card text-center">
                     <div className="card-block">
                         {/* <h4 className="card-title">Nutrition</h4> */}
@@ -156,7 +156,7 @@ class Search extends React.Component {
                 </form>
 
                 <h1>Search Results</h1>
-                <div className="container-fluid">
+                <div className="container-fluid viewSection">
                     <h4>Recipes:</h4>
                     <div className="row">
                         {newRecipes}
