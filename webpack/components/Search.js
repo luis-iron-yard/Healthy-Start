@@ -6,7 +6,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props)
         this.searchResults = this.searchResults.bind(this)
-        this.savedRecipes = this.savedRecipes.bind(this)
+        this.saveFavorites = this.saveFavorites.bind(this)
         this.state = {
             recipes: [],
             favorites: [],
@@ -19,7 +19,7 @@ class Search extends React.Component {
     }
 
 
-    searchResults(e) {
+    searchResults(recipe) {
         sessionStorage.setItem('searchValue', this._inputSearch.value)
 
         var food = this._inputSearch.value;
@@ -29,44 +29,105 @@ class Search extends React.Component {
         .then(response => response.json())
         //^ this line turns the api call into JSON data
         // .then(response => console.log(response))
-    }
+        .then(response => {
+            var recipes = response
 
+            var email = sessionStorage.getItem('email')
+            var user = sessionStorage.getItem('authentication_token')
+            fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
+            .then(response => response.json())
+            .then(response => {
+                var favorites = response.map(favorite => favorite.id)
 
-    savedRecipes(recipe){
-        //When the save button is clicked, it fires off this function and takes in the prop recipe from our loop newRecipes
-        var updatedRecipes = this.state.favorites
-        //we are assigning ^^this variable to the empty array favorites
-        updatedRecipes.push(recipe)
-        //taking updatedRecipes(favorites array) and pushing these properties into each object that is "saved" and added to the favorites array
-        this.setState({
-            favorites: updatedRecipes
+                this.setState({recipes: recipes, favorites: favorites})
+
+                if(recipes.length) {
+                    document.getElementById('recipes').scrollIntoView({block: 'start', behavior: 'smooth'})
+                }
+            })
         })
-        //this set's the new state of the array favorites from empty to updatedRecipes, with ech new OBJECT carrying the properties we defined above
-
-
-        this.addFavoriteRecipe(recipe)
-
     }
 
-    addFavoriteRecipe(recipe) {
-        //Below is the fetch call that will POST the saved favorite recipes
-        fetch("/api/favorites", {
+
+    // saveFavorites(recipe){
+    //     //When the save button is clicked, it fires off this function and takes in the prop recipe from our loop newRecipes
+    //     var updatedRecipes = this.state.favorites
+    //     //we are assigning ^^this variable to the empty array favorites
+    //     updatedRecipes.push(recipe)
+    //     //taking updatedRecipes(favorites array) and pushing these properties into each object that is "saved" and added to the favorites array
+    //     this.setState({
+    //         favorites: updatedRecipes
+    //     })
+    //     //this set's the new state of the array favorites from empty to updatedRecipes, with ech new OBJECT carrying the properties we defined above
+    //
+    //
+    //     this.addFavoriteRecipe(recipe)
+    //
+    // }
+
+//ABOVE IS ORIGINAL CODE - BELOW IS TEST
+
+    saveFavorites(recipe){
+        // console.log('Saving recipe to favorites')
+        // console.log(recipe)
+
+        //Collect inputs of selected recipe to save to favorits array...
+        var favorites = this.state.favorites
+        favorites.push(recipe.id)
+        this.setState({favorites: favorites})
+
+        var newFavoriteRecipe = {
+            id: recipe.id,
+            recipe: recipe.recipe_name,
+            food_image: recipe.food_imgage,
+            instruction: recipe.instruction,
+            email: sessionStorage.getItem('email'),
+            user_token: sessionStorage.getItem('authentication_token')
+        }
+        this.postRecipeToDB(newFavoriteRecipe)
+        this.savedTest()
+    }
+    savedTest() {
+        this.setState({savedBtnText: 'Saved'})
+    }
+
+    postRecipeToDB(newFavoriteRecipe) {
+        fetch('/api/favorites', {
             body:JSON.stringify({
-                id: recipe.id,
-                user_token: sessionStorage.getItem('authentication_token'),
-                user_email: sessionStorage.getItem('email'),
-            }),
+                id: newFavoriteRecipe.id,
+                user_email: newFavoriteRecipe.email,
+                user_token: newFavoriteRecipe.user_token,
+                   }),
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             }
         })
         .then(response => response.json())
-        .then(response => {
-            sessionStorage.getItem('authentication_token', response.authentication_token)
-
-        })
+        .then(response => {console.log(response)})
     }
+
+//BELOW IS ORIGINAL CODE ABOVE IS TEST
+
+    // addFavoriteRecipe(recipe) {
+    //     //Below is the fetch call that will POST the saved favorite recipes
+    //     fetch("/api/favorites", {
+    //         body:JSON.stringify({
+    //             id: recipe.id,
+    //             user_token: sessionStorage.getItem('authentication_token'),
+    //             user_email: sessionStorage.getItem('email'),
+    //         }),
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //     .then(response => response.json())
+    //     .then(response => {
+    //         sessionStorage.getItem('authentication_token', response.authentication_token)
+    //
+    //     })
+    // }
 
 
 
@@ -126,7 +187,7 @@ class Search extends React.Component {
             textAlign: 'center',
         }
         // console.log(this.state.favorites)
-        var newRecipes = this.state.recipes.map((recipe, i) =>{
+        var recipes = this.state.recipes.map((recipe, i) =>{
             return (
             // <li className='ns-listItemRecipe' key={i}>
             <div className='viewSection col-sm-3 ns-listItemRecipe' key={i}>
@@ -138,7 +199,8 @@ class Search extends React.Component {
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className="card-block">
                         <a style={buttonAStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</a>&nbsp;&nbsp;&nbsp;
-                        <button style={buttonSStyling} href="#" className="card-link" onClick={()=>this.savedRecipes(recipe)}>Save to Favorites</button>
+                        {/* <button style={buttonSStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)}>Save to Favorites</button> */}
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
                     </div>
                 </div>
             </div>
@@ -181,7 +243,7 @@ class Search extends React.Component {
                 <div className="container-fluid viewSection">
                     <h4>Recipes:</h4>
                     <div className="row">
-                        {newRecipes}
+                        {recipes}
                     </div>
                 </div>
             </div>
