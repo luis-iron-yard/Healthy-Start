@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
-    </head>
-    <body>
-        <h1>Here's the recipe you favorited,
-            <%= @user.username %>!</h1>
+<h2>Here's the recipe you favorited,
+    <%= @user.username %>!</h2>
 
-        <h1>
-            <%= @recipe.recipe_name %>
-        </h1>
+<h1>
+    <%= @recipe.recipe_name %>
+</h1>
+You'll need these ingredients:
+<% @recipe.foods.each do |ing| %>
 
-        <% @recipe.foods.each do |ing| %>
+<li>
+    <%= ing.name %>
+</li>
+<% end %>
+<a href="<%= @recipe.instruction %>">
+    <h2> Click here for the recipe instructions ! </h2></a>
+<img src="<%= @recipe.food_image %>">
 
-        <p>
-            <%= ing.name %>
-        </p>
-        <% end %>
-        <a href="<%= @recipe.instruction %>">
-            Click here for the recipe instructions !</a>
-        <img src="<%= @recipe.food_image %>">
-
-        <p>Thanks for visiting and have a great day! Now   <a href="https://healthystart.herokuapp.com/">
-        sign in </a> and do awesome things!  </p>
-
-
-    </body>
-</html>
+<p>Thanks for visiting and have a great day! Now
+    <a href="https://healthystart.herokuapp.com/">
+        sign in
+    </a>
+    and do awesome things
+</p>
+Bon Apetit!

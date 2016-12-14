@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to Healthy Start , <%= @user.username %></h1>
+
+    <h1>Welcome to Healthy Start !</h1>
+
     <p>
       You have successfully signed up,
       your username is: <%= @user.username %>.<br>
     </p>
     <p>
-      To login to the site, just follow this link: <%= @url %>.
+      You can now  <a href="<%= @url %> ">
+      sign in </a>and search for your favorite recipes
     </p>
+
     <p>Thanks for joining and have a great day!</p>
-  </body>
-</html>
+
+    Bon Apetit!
