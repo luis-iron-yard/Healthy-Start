@@ -65,7 +65,7 @@ class Profile extends React.Component {
             width: '50%',
         }
         var imgStyle = {
-            width: '60%',
+            width: '100%',
             borderRadius: '2%',
             boxShadow: '3px 3px 4px grey',
             textAlign: 'center'
@@ -79,8 +79,9 @@ class Profile extends React.Component {
             boxShadow: '0 0 5px #5F5F5F',
         }
         var buttonStyling = {
-            padding: '2%',
-            margin: '3%',
+            marginTop: 12,
+            marginBottom: 5,
+            width: '100%',
             borderRadius: 15,
             color: '#66ccff',
             border: '2px solid #66ccff',
@@ -100,7 +101,7 @@ class Profile extends React.Component {
                         </div>
                         <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                         <div className="card-block">
-                            <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>&nbsp;&nbsp;&nbsp;
+                            <button style={buttonStyling} href={recipe.instruction} target='_blank' className="card-link nr--test">Instructions</button>
                             <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button>
                         </div>
                     </div>
@@ -113,8 +114,9 @@ class Profile extends React.Component {
                 <div style={profileContainer}>
                     <div style={profileDetails}>
                         <h1>Favorites Section</h1><br />
-                        <img style={imageStyling} src='https://unsplash.it/600/?random' alt='random image for profile'/><br />
-                        <h5>Quote for the Day:</h5>
+                        <img style={imageStyling} src='/img/duck.jpeg' alt='random image for profile'/><br />
+                        <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br />
+                        <h5>Inspirational Quote:</h5>
                         <blockquote>{quoteText}</blockquote>
                         <footer> - <i>{quoteAuthor}</i></footer><br />
                         <a href={quoteLink} target='_blank'>Link to Quote</a>

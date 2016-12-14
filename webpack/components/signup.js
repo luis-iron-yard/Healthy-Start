@@ -18,22 +18,31 @@ class Signup extends React.Component {
     captureUserData() {
         //Collect user details from input fields...
         //Compile user details into form to consolidate for Ajax...
-        var formData = {
-            username: this.state.username,
-            email: this.state.email,
-            password: this.state.password,
-            password_confirmation: this.state.password_confirmation,
-            photo: this.state.photo,
-        }
-        this.signupUser(formData)
+        // var formData = {
+        //     username: this.state.username,
+        //     email: this.state.email,
+        //     password: this.state.password,
+        //     password_confirmation: this.state.password_confirmation,
+        //     photo: this.state.photo,
+        // }
+        // this.signupUser(formData)
+        this.signupUser()
     }
 
-    signupUser(formData) {
+    signupUser() {
+        var formData = new FormData()
+        formData.append('username', this.state.username)
+        formData.append('email', this.state.email)
+        formData.append('password', this.state.password)
+        formData.append('password_confirmation', this.state.password_confirmation)
+        formData.append('photo', this.state.photo)
+
         console.log('The Ajax is about to send off user data...')
         fetch("/api/users", {
-            body:JSON.stringify(
-                {user: formData}
-            ),
+            // body:JSON.stringify(
+            //     {user: formData}
+            // ),
+            body: formData,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -88,19 +97,19 @@ class Signup extends React.Component {
                   <div>
                     <div className="form-group">
                       <label htmlFor="signUpUsername">Username</label>
-                      <input type="text" className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" onChange={(e)=>this.setState({username: e.target.value})} required />
+                      <input type="text" value={this.state.username} className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" onChange={(e)=>this.setState({username: e.target.value})} required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpEmail">Email address</label>
-                      <input type="email" className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" onChange={(e)=>this.setState({email: e.target.value})} required />
+                      <input type="email" value={this.state.email} className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" onChange={(e)=>this.setState({email: e.target.value})} required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpPassword">Password</label>
-                      <input type="password" className="form-control" id="signUpPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
+                      <input type="password" value={this.state.password} className="form-control" id="signUpPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpConfirmationPassword">Password Confirmation</label>
-                      <input type="password" className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
+                      <input type="password" value={this.state.password_confirmation} className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
                     </div>
                     <div className="form-group">
                     <label htmlFor="photo">Photo</label>
