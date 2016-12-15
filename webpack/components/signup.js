@@ -68,6 +68,8 @@ class Signup extends React.Component {
             padding: '175px',
             fontSize: '1.5em',
             textAlign: 'center',
+            backgroundImage: 'url(/img/food-tomato.jpg)',
+            backgroundSize: 'cover',
         }
         var titleStyling = {
             fontSize: '2.5em',

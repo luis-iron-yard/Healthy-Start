@@ -97,13 +97,13 @@ class Welcome extends React.Component {
                             {/* <img src='/img/landing_hp.jpg' alt='random image'/> */}
                             <div><br />
                             <div style={titleEmphasis} className="form-group">
-                                <label htmlFor="emailInput">Email address</label>
-                                <input type="email" className="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please Enter email" onChange={(e)=>this.setState({login: e.target.value})} required />
+                                <label htmlFor="emailInput">Username or Email</label>
+                                <input type="email" className="form-control" id="signInEmail" aria-describedby="emailAssistance" placeholder="Please enter username or email" onChange={(e)=>this.setState({login: e.target.value})} required />
                                 <small id="emailAssistance" className="form-text">We'll never share your email with anyone else.</small>
                             </div>
                             <div style={titleEmphasis} className="form-group">
                                 <label htmlFor="passwordInput">Password</label>
-                                <input type="password" className="form-control" id="passwordInput" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
+                                <input type="password" className="form-control" id="passwordInput" placeholder="Please enter password" onChange={(e)=>this.setState({password: e.target.value})} required />
                             </div>
                             <h5 style={logoStyling}>Because ever child and mother deserves a <b style={welcomeTitleStyling}>Healthy Start...</b></h5>
                             <button style={buttonWelcomeStyling} onClick={this.collectUserInput} className='ws--Button'>Login</button>
