@@ -43,6 +43,15 @@ class About extends React.Component {
             padding: '10px',
             // height: '300px'
         }
+        var buttonStyling = {
+            padding: '2%',
+            margin: '3%',
+            borderRadius: 15,
+            color: '#66ccff',
+            border: '2px solid #66ccff',
+            boxShadow: '2px 2px 2px #fff',
+            backgroundColor: '#fff',
+        }
         return(
             <div className='viewSection'>
                 <h3 className='pageTitle'>About Us</h3>
@@ -57,8 +66,8 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAeiAAAAJDI3MWRhOTcxLTgwZjQtNGVhNy1hMzUyLTA4MDJmOWNkNDc0ZQ.jpg" alt="Keith image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a href="https://github.com/kbrook10">Github</a></li>
-                                        <li><a href="https://www.linkedin.com/in/keith-brooks-b41aa164">LinkedIn</a></li>
+                                        <li><a style={buttonStyling} href="https://github.com/kbrook10">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/keith-brooks-b41aa164">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
                                 </div>
@@ -73,7 +82,7 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://avatars3.githubusercontent.com/u/17866073?v=3&s=400" alt="Luis image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a href="https://github.com/llancon">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://github.com/llancon">Github</a></li>
                                         <li>LinkedIn</li>
                                         <li></li>
                                     </ul>
@@ -89,8 +98,8 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAgsAAAAJGRjNWY1YWY1LWQ2MmQtNDllMS1iNjY4LTcyMWY0NzM2ZTViNQ.jpg" alt="Sam image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a href="https://github.com/Sam-Riley">Github</a></li>
-                                        <li><a href="https://www.linkedin.com/in/sam-riley-b36b94b2
+                                        <li><a style={buttonStyling} href="https://github.com/Sam-Riley">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/sam-riley-b36b94b2
                                         ">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
