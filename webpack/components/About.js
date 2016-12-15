@@ -66,8 +66,8 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAeiAAAAJDI3MWRhOTcxLTgwZjQtNGVhNy1hMzUyLTA4MDJmOWNkNDc0ZQ.jpg" alt="Keith image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a style={buttonStyling} href="https://github.com/kbrook10">Github</a></li>
-                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/keith-brooks-b41aa164">LinkedIn</a></li>
+                                        <li><a style={buttonStyling} href="https://github.com/kbrook10" target="_blank">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/keith-brooks-b41aa164" target="_blank">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
                                 </div>
@@ -82,8 +82,8 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://avatars3.githubusercontent.com/u/17866073?v=3&s=400" alt="Luis image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a style={buttonStyling} href="https://github.com/llancon">Github</a></li>
-                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/luis-lancon-82649866/">LinkedIn</a></li>
+                                        <li><a style={buttonStyling} href="https://github.com/llancon" target="_blank">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/luis-lancon-82649866/" target="_blank">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
                                 </div>
@@ -98,9 +98,9 @@ class About extends React.Component {
                                 <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAgsAAAAJGRjNWY1YWY1LWQ2MmQtNDllMS1iNjY4LTcyMWY0NzM2ZTViNQ.jpg" alt="Sam image"/>
                                 <div className="card-block"><br />
                                     <ul>
-                                        <li><a style={buttonStyling} href="https://github.com/Sam-Riley">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://github.com/Sam-Riley" target="_blank">Github</a></li>
                                         <li><a style={buttonStyling} href="https://www.linkedin.com/in/sam-riley-b36b94b2
-                                        ">LinkedIn</a></li>
+                                        " target="_blank">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
                                 </div>
