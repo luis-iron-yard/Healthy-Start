@@ -41,7 +41,7 @@ class About extends React.Component {
             margin: '2px',
             flex: '4',
             padding: '10px',
-            height: '300px'
+            // height: '300px'
         }
         return(
             <div className='viewSection'>
@@ -70,7 +70,7 @@ class About extends React.Component {
 
                         <div style={profileCard} className="col-sm-4">
                             <div className="card text-center">
-                                <img style={imageStyling} src="https://www.iconexperience.com/_img/o_collection_png/green_dark_grey/512x512/plain/robot.png" alt="Luis image"/>
+                                <img style={imageStyling} src="https://avatars3.githubusercontent.com/u/17866073?v=3&s=400" alt="Luis image"/>
                                 <div className="card-block"><br />
                                     <ul>
                                         <li><a href="https://github.com/llancon">Github</a></li>
