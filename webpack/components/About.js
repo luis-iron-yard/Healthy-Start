@@ -74,7 +74,7 @@ class About extends React.Component {
                                 <div className="card-block"><br />
                                     <ul>
                                         <li><a href="https://github.com/llancon">Github</a></li>
-                                        <li>LinkedIn</li>
+                                        <li><a href="https://www.linkedin.com/in/luis-lancon-82649866/">LinkedIn</a></li>
                                         <li></li>
                                     </ul>
                                 </div>
