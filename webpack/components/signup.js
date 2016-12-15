@@ -18,14 +18,6 @@ class Signup extends React.Component {
     captureUserData() {
         //Collect user details from input fields...
         //Compile user details into form to consolidate for Ajax...
-        // var formData = {
-        //     username: this.state.username,
-        //     email: this.state.email,
-        //     password: this.state.password,
-        //     password_confirmation: this.state.password_confirmation,
-        //     photo: this.state.photo,
-        // }
-        // this.signupUser(formData)
         this.signupUser()
     }
 
@@ -97,23 +89,23 @@ class Signup extends React.Component {
                   <div>
                     <div className="form-group">
                       <label htmlFor="signUpUsername">Username</label>
-                      <input type="text" value={this.state.username} className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" onChange={(e)=>this.setState({username: e.target.value})} required />
+                      <input type="text" value={this.state.username} className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" onChange={(e)=>this.setState({username: e.target.value})} maxLength='15' required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpEmail">Email address</label>
-                      <input type="email" value={this.state.email} className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" onChange={(e)=>this.setState({email: e.target.value})} required />
+                      <input type="email" value={this.state.email} className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" onChange={(e)=>this.setState({email: e.target.value})} maxLength='50' required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpPassword">Password</label>
-                      <input type="password" value={this.state.password} className="form-control" id="signUpPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} required />
+                      <input type="password" value={this.state.password} className="form-control" id="signUpPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} maxLength='15' required />
                     </div>
                     <div className="form-group">
                       <label htmlFor="signUpConfirmationPassword">Password Confirmation</label>
-                      <input type="password" value={this.state.password_confirmation} className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required />
+                      <input type="password" value={this.state.password_confirmation} className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required maxLength='15' />
                     </div>
                     <div className="form-group">
                     <label htmlFor="photo">Photo</label>
-                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.files[0]})} required />
+                    <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.files[0]})} />
                     </div>
                     <div>
                       <button style={buttonSignupStyling} type="button" className="btn btn-secondary" data-dismiss="modal" onClick={() => browserHistory.push('/')}>Close</button>
