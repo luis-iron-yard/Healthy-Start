@@ -102,7 +102,7 @@ class Welcome extends React.Component {
                             <div style={titleEmphasis} className="form-group">
                                 <input type="password" className="form-control" id="passwordInput" placeholder="Please enter password" onChange={(e)=>this.setState({password: e.target.value})} required />
                             </div>
-                            <h5 style={logoStyling}>Because ever child and mother deserves a <b style={welcomeTitleStyling}>Healthy Start...</b></h5>
+                            <h5 style={logoStyling}>Because every child and mother deserves a <b style={welcomeTitleStyling}>Healthy Start...</b></h5>
                             <button style={buttonWelcomeStyling} onClick={this.collectUserInput} className='ws--Button'>Login</button>
                             <Link to="/api/users/sign_up"><button style={buttonWelcomeStyling} onClick='' className='ws--Button'>Sign Up</button></Link>
                         </div>
