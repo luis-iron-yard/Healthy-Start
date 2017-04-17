@@ -83,8 +83,7 @@ class Signup extends React.Component {
         }
         return(
             <div style={signupStyling}>
-                <h1 style={titleStyling}>Healthy Start Signup</h1><br />
-                <p>When you don't know where to begin, you can always come to <span style={logoStyling}>Healthy Start</span></p><br />
+                <h1 style={titleStyling}>Signup</h1><br />
                 <div>
                   <h4 id="createProfile">Create User Profile</h4>
                   <hr />
