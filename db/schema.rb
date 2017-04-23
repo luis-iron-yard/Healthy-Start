@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161206183532) do
+ActiveRecord::Schema.define(version: 20170421024933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20161206183532) do
     t.text     "benefits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "quantity"
+    t.string   "unit"
   end
 
   create_table "nutrizations", id: false, force: :cascade do |t|
@@ -71,6 +73,16 @@ ActiveRecord::Schema.define(version: 20161206183532) do
     t.string   "food_image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "serving"
+    t.integer  "calorie"
+  end
+
+  create_table "refile_attachments", force: :cascade do |t|
+    t.integer  "oid",        null: false
+    t.string   "namespace",  null: false
+    t.datetime "created_at"
+    t.index ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
+    t.index ["oid"], name: "index_refile_attachments_on_oid", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -87,7 +99,7 @@ ActiveRecord::Schema.define(version: 20161206183532) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.string   "username"
-    t.string   "photo"
+    t.string   "photo_id"
     t.string   "phone"
     t.string   "authentication_token",   limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

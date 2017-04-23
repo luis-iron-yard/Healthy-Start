@@ -170,7 +170,9 @@ CREATE TABLE nutritions (
     nutrient character varying,
     benefits text,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    quantity integer,
+    unit character varying
 );
 
 
@@ -213,7 +215,9 @@ CREATE TABLE recipes (
     instruction character varying,
     food_image character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    serving integer,
+    calorie integer
 );
 
 
@@ -531,6 +535,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154'), ('20161212211338');
+INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154'), ('20161212211338'), ('20170421024117'), ('20170421024503'), ('20170421024811'), ('20170421024933');
 
 
