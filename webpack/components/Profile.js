@@ -50,18 +50,24 @@ class Profile extends React.Component {
         var quoteAuthor = this.state.quote.quoteAuthor
         var quoteLink = this.state.quote.quoteLink
         var profileContainer = {
-            display: 'flex',
+
+            display: 'inline-block'
+
+
         }
         var profileDetails = {
             flex: 4,
             display: 'flex',
             alignItems: 'center',
-            flexDirection: 'column',
-            padding: 20,
+            padding: '10%',
+            display: 'block'
+
         }
         var favoriteDetails = {
             flex: 8,
             padding: 20,
+            backgroundColor: '#fff',
+
         }
         var imageStyling = {
             borderRadius: '50%',
@@ -69,8 +75,8 @@ class Profile extends React.Component {
         }
         var imgStyle = {
             width: '100%',
-            borderRadius: '2%',
-            boxShadow: '3px 3px 4px grey',
+            borderRadius: '10%',
+            boxShadow: '5px 3px 4px grey',
             textAlign: 'center'
         }
         var cardStyle = {
@@ -80,6 +86,9 @@ class Profile extends React.Component {
             border: '1px solid #66ccff',
             borderRadius: '40px 10px',
             boxShadow: '0 0 5px #5F5F5F',
+            color: '#66ccff',
+            backgroundColor: '#fff',
+
         }
         var buttonAStyling = {
             textDecoration: 'none',
@@ -106,10 +115,17 @@ class Profile extends React.Component {
         var recipeTitleStyle = {
             overflow: 'hidden',
         }
+        var profileTitleStyle = {
+            textAlign: 'center',
+
+        }
         var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
             return(
-                // <li key={i}>
-                <div className='col-sm-3 ns-listItemRecipe' key={i}>
+
+
+
+
+                <div className='col-sm-3 col-md-5 col-lg-3 ns-listItemRecipe' key={i} >
                     <div className="card text-center">
                         <div className="card-block">
                             <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
@@ -124,24 +140,30 @@ class Profile extends React.Component {
             )
         })
         return(
-            <div className='viewSection'>
+          <div className='container'>
+              <div className='row'>
+
+            <div className=' col-sm-6  viewSection'>
+                <div style={profileTitleStyle}>
                 <h4 className='pageTitle'>Favorites</h4>
+                </div>
                 <div style={profileContainer}>
                     <div style={profileDetails}>
-                        <h1>Favorites Section</h1><br />
+                        <br/>
                         <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
                         {/* <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br /> */}
                         <h5>Inspirational Quote:</h5>
                         <blockquote>{quoteText}</blockquote>
                         <footer> - <i>{quoteAuthor}</i></footer><br />
-                        <a href={quoteLink} target='_blank'>Link to Quote</a>
+
+                        </div>
+                        </div>
+
                     </div>
                     <div style={favoriteDetails}>
 
-                        <div className="container-fluid">
-                            <h4>Saved:</h4>
-                            {/* {favoriteRecipes} */}
-
+                        <div className="container">
+                        <br></br>
                             <div className="row">
                                 {favoriteRecipes}
                             </div>

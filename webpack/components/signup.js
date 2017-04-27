@@ -57,7 +57,7 @@ class Signup extends React.Component {
     render() {
         var signupStyling = {
             margin: 'auto',
-            padding: '175px',
+            padding: '5%',
             fontSize: '1.5em',
             textAlign: 'center',
             backgroundImage: 'url(/img/food-tomato.jpg)',
@@ -89,23 +89,23 @@ class Signup extends React.Component {
                   <hr />
                   <div>
                     <div className="form-group">
-                      <label htmlFor="signUpUsername">Username</label>
+
                       <input type="text" value={this.state.username} className="form-control" id="signUpUsername" name="username" aria-describedby="sigunUpUsername" placeholder="Please Enter Username" onChange={(e)=>this.setState({username: e.target.value})} maxLength='15' required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="signUpEmail">Email address</label>
+                    <br></br>
                       <input type="email" value={this.state.email} className="form-control" id="signUpEmail" aria-describedby="signUpEmail" placeholder="Please Enter email" name="email" onChange={(e)=>this.setState({email: e.target.value})} maxLength='50' required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="signUpPassword">Password</label>
+                      <br></br>
                       <input type="password" value={this.state.password} className="form-control" id="signUpPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password: e.target.value})} maxLength='15' required />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="signUpConfirmationPassword">Password Confirmation</label>
+                      <br></br>
                       <input type="password" value={this.state.password_confirmation} className="form-control" id="signUpConfirmationPassword" name="password" placeholder="Password" onChange={(e)=>this.setState({password_confirmation: e.target.value})} required maxLength='15' />
                     </div>
                     <div className="form-group">
-                    <label htmlFor="photo">Photo</label>
+                    <br></br>
                     <input type="file" name="photo" className="form-control" id="photoInput" onChange={(e)=>this.setState({photo: e.target.files[0]})} />
                     </div>
                     <div>

@@ -59,7 +59,9 @@ class Welcome extends React.Component {
     render() {
         var welcomeStyling = {
             margin: 'auto',
-            padding: '150px',
+            padding: '20%',
+
+
             fontSize: '1.5em',
             textAlign: 'center',
             backgroundImage: 'url(/img/tomato.jpeg)',
@@ -75,16 +77,16 @@ class Welcome extends React.Component {
             padding: 20,
             margin: 30,
             borderRadius: 15,
-            color: '#AC3921',
-            border: '4px solid #AC3921',
+            color: '#0074D9',
+            border: '4px solid #0074D9',
             boxShadow: '2px 2px 2px #fff',
-            background: '#FFF000',
+
         }
         var titleEmphasis = {
             color: '#FFF000',
         }
         var welcomeTitleStyling = {
-            color: '#FFF000',
+            color: '#0074D9',
         }
         var logoStyling = {
             fontSize: '1em',
