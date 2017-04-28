@@ -78,9 +78,9 @@ class Welcome extends React.Component {
             margin: 30,
             borderRadius: 15,
             color: '#0074D9',
-            border: '4px solid #0074D9',
+            border: '2px solid #0074D9',
             boxShadow: '2px 2px 2px #fff',
-
+            backgroundColor: '#fff'
         }
         var titleEmphasis = {
             color: '#FFF000',

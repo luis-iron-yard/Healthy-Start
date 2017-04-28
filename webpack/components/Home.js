@@ -32,10 +32,14 @@ class Home extends React.Component {
             backgroundColor: '#000',
             color: '#fff',
         }
+        var headerStyling = {
+            backgroundColor: '#0074D9',
+            color: '#fff',
+        }
         return(
-            <div className='hm_body_style'>
-                <ul className='hm_header_style'>
-                    <li>Healthy Start</li>
+            <div className='hm_body_style '>
+                <ul style={headerStyling} className='hm_header_style'>
+                    <li >Healthy Start</li>
                     <li style={navStyling} onClick={() => browserHistory.push('/home/nutrition')}>Nutrition</li>
                     {/* <li style={navStyling} onClick={() => browserHistory.push('/home/illness')}>Illness</li> */}
                     <li style={navStyling} onClick={() => browserHistory.push('/home/search')}>Search</li>
