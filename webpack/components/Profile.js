@@ -13,40 +13,34 @@ class Profile extends React.Component {
         }
     }
 
-    componentWillMount() {
+    componentWillMount(){
         this.retrieveQuote()
         this.retrieveFavorites()
         var user = JSON.parse(sessionStorage.getItem('user'))
-        this.setState({
-            user: user
-        })
+        this.setState({user: user})
     }
 
     deleteRecipe() {
         // console.log("Delete button firing off delete function")
     }
 
-    retrieveQuote() {
+    retrieveQuote(){
         //Fire off Ajax to retrieve quote as users mounts page...
         fetch('/api/quote/?method=getQuote&format=json&lang=en')
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    quote: response
-                })
-            })
+        .then(response => response.json())
+        .then(response => {
+            this.setState({quote: response})
+        })
     }
 
-    retrieveFavorites() {
+    retrieveFavorites(){
         var email = sessionStorage.getItem('email')
         var user = sessionStorage.getItem('authentication_token')
         fetch('/api/favorites?user_email=' + email + '&user_token=' + user)
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    favorites: response
-                })
-            })
+        .then(response => response.json())
+        .then(response => {
+            this.setState({favorites: response})
+        })
     }
 
     render() {
@@ -128,116 +122,60 @@ class Profile extends React.Component {
             textAlign: 'center',
 
         }
-        var favoriteRecipes = this.state.favorites.map((recipe, i) => {
-            return (
+        var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
+            return(
 
 
 
 
-                <
-                div className = 'col-xs-11 col-sm-2 col-md-5 col-lg-3 ns-listItemRecipe'
-                key = {
-                    i
-                } >
-                <
-                div className = "card text-center" >
-                <
-                div className = "card-block" >
-                <
-                h6 style = {
-                    recipeTitleStyle
-                }
-                className = "card-subtitle text-muted" > {
-                    recipe.recipe_name
-                } < /h6> <
-                /div> <
-                img style = {
-                    imgStyle
-                }
-                src = {
-                    recipe.food_image
-                }
-                alt = "Card image" / >
-                <
-                div className = "card-block" >
-                <
-                a style = {
-                    buttonAStyling
-                }
-                href = {
-                    recipe.instruction
-                }
-                target = "_blank"
-                className = "card-link" > Instructions < /a> { /* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button> */ } <
-                /div> <
-                /div> <
-                /div>
+                <div className='col-xs-11 col-sm-2 col-md-5 col-lg-3 ns-listItemRecipe' key={i} >
+                    <div className="card text-center">
+                        <div className="card-block">
+                            <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
+                        </div>
+                        <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
+                        <div className="card-block">
+                            <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
+                            {/* <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.deleteRecipes(recipe)}>Delete</button> */}
+                        </div>
+                    </div>
+                </div>
             )
         })
-        return ( <
-            div className = 'container' >
-            <
-            div className = 'row' >
+        return(
+          <div className='container'>
+              <div className='row'>
 
-            <
-            div className = 'col-xs-12 col-sm-6  col-md-6 col-lg-6 viewSection' >
-            <
-            div style = {
-                profileTitleStyle
-            } >
-            <
-            h4 className = 'pageTitle' > Favorites < /h4> <
-            /div> <
-            div style = {
-                profileContainer
-            } >
-            <
-            div style = {
-                profileDetails
-            } >
+            <div className='col-xs-12 col-sm-6  col-md-6 col-lg-6 viewSection'>
+                <div style={profileTitleStyle}>
+                <h4 className='pageTitle'>Favorites</h4>
+                </div>
+                <div style={profileContainer}>
+                    <div style={profileDetails}>
+                      
+                        <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
+                        {/* <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br /> */}
+                        <h6>Inspirational Quote:</h6>
+                        <blockquote>{quoteText}</blockquote>
+                        <footer> - <i>{quoteAuthor}</i></footer>
 
-            <
-            img style = {
-                imageStyling
-            }
-            src = {
-                this.state.user.photo ? this.state.user.photo : '/img/duck.jpeg'
-            }
-            alt = 'random image for profile' / > < br / > { /* <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br /> */ } <
-            h6 > Inspirational Quote: < /h6> <
-            blockquote > {
-                quoteText
-            } < /blockquote> <
-            footer > - < i > {
-                quoteAuthor
-            } < /i></footer >
+                        </div>
+                        </div>
 
-            <
-            /div> <
-            /div>
+                    </div>
+                    <div style={favoriteDetails}>
 
-            <
-            /div> <
-            div style = {
-                favoriteDetails
-            } >
+                        <div className="container">
+                        <br></br>
+                            <div className="row">
+                                {favoriteRecipes}
+                            </div>
+                        </div>
+                    </div>
 
-            <
-            div className = "container" >
-            <
-            br > < /br> <
-            div className = "row" > {
-                favoriteRecipes
-            } <
-            /div> <
-            /div> <
-            /div>
+                </div>
 
-            <
-            /div>
-
-            <
-            /div>
+            </div>
         )
     }
 }

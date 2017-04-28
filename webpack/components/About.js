@@ -2,12 +2,12 @@ import React from 'react'
 
 
 class About extends React.Component {
-    constructor() {
+    constructor(){
         super()
     }
 
 
-    render() {
+    render(){
         var imageStyling = {
             borderRadius: '50%',
             width: '50%',
@@ -52,152 +52,67 @@ class About extends React.Component {
             boxShadow: '2px 2px 2px #fff',
             backgroundColor: '#fff',
         }
-        return ( <
-            div className = 'viewSection' >
-    <
-    h3 className = 'pageTitle' > About Us < /h3> <
-h4 style = {
-    aboutBox
-} > Healthy Start was created out of the need
-for an app that provides expecting mothers with a medium to educate themselves about crucial nutrients to their child during pregnancy, and foods that contain these nutrients.After researching existing apps
-for this target audience we discovered a need
-for expecting mothers to educate themselves about the dietary needs of their child. < /h4> <
-h3 className = 'pageTitle' > About our application < /h3> <
-h4 style = {
-    aboutBox
-} > The front end of the application was built using JS and React.The back end of the application was built using Ruby on Rails. < /h4> <
-div className = "container-fluid" >
-    <
-    div style = {
-        profileContainer
-    }
-className = "row" >
+        return(
+            <div className='viewSection'>
+                <h3 className='pageTitle'>About Us</h3>
+                <h4 style={aboutBox}>Healthy Start was created out of the need for an app that provides expecting mothers with a medium to educate themselves about crucial nutrients to their child during pregnancy, and foods that contain these nutrients. After researching existing apps for this target audience we discovered a need for expecting mothers to educate themselves about the dietary needs of their child.</h4>
+                <h3 className='pageTitle'>About our application</h3>
+                <h4 style={aboutBox}>The front end of the application was built using JS and React. The back end of the application was built using Ruby on Rails.</h4>
+                <div className="container-fluid">
+                    <div style={profileContainer} className="row">
 
-    <
-    div style = {
-        profileCard
-    }
-className = "col-xs-4 col-sm-4" >
-    <
-    div className = "card text-center" >
-    <
-    img style = {
-        imageStyling
-    }
-src = "https://media.licdn.com/media/AAEAAQAAAAAAAAeiAAAAJDI3MWRhOTcxLTgwZjQtNGVhNy1hMzUyLTA4MDJmOWNkNDc0ZQ.jpg"
-alt = "Keith image" / >
-    <
-    div className = "card-block" > < br / >
-    <
-    ul >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://github.com/kbrook10"
-target = "_blank" > Github < /a></li >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://www.linkedin.com/in/keith-brooks-b41aa164"
-target = "_blank" > LinkedIn < /a></li >
-    <
-    li > < /li> < /
-    ul > <
-    /div> <
-div className = "card-block" >
-    <
-    p > Keith is a Front - End software engineer with a passion
-for front end design and React. < /p> < /
-    div > <
-    /div> < /
-    div >
+                        <div style={profileCard} className="col-xs-4 col-sm-4">
+                            <div className="card text-center">
+                                <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAeiAAAAJDI3MWRhOTcxLTgwZjQtNGVhNy1hMzUyLTA4MDJmOWNkNDc0ZQ.jpg" alt="Keith image"/>
+                                <div className="card-block"><br />
+                                    <ul>
+                                        <li><a style={buttonStyling} href="https://github.com/kbrook10" target="_blank">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/keith-brooks-b41aa164" target="_blank">LinkedIn</a></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div className="card-block">
+                                    <p>Keith is a Front-End software engineer with a passion for front end design and React.</p>
+                                </div>
+                            </div>
+                        </div>
 
-    <
-    div style = {
-        profileCard
-    }
-className = "col-sm-4" >
-    <
-    div className = "card text-center" >
-    <
-    img style = {
-        imageStyling
-    }
-src = "https://avatars3.githubusercontent.com/u/17866073?v=3&s=400"
-alt = "Luis image" / >
-    <
-    div className = "card-block" > < br / >
-    <
-    ul >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://github.com/llancon"
-target = "_blank" > Github < /a></li >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://www.linkedin.com/in/luis-lancon-82649866/"
-target = "_blank" > LinkedIn < /a></li >
-    <
-    li > < /li> < /
-    ul > <
-    /div> <
-div className = "card-block" >
-    <
-    p > Luis is a Back - End software engineer who specializes in Ruby on Rails, and server side development. < /p> < /
-    div > <
-    /div> < /
-    div >
+                        <div style={profileCard} className="col-sm-4">
+                            <div className="card text-center">
+                                <img style={imageStyling} src="https://avatars3.githubusercontent.com/u/17866073?v=3&s=400" alt="Luis image"/>
+                                <div className="card-block"><br />
+                                    <ul>
+                                        <li><a style={buttonStyling} href="https://github.com/llancon" target="_blank">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/luis-lancon-82649866/" target="_blank">LinkedIn</a></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div className="card-block">
+                                    <p>Luis is a Back-End software engineer who specializes in Ruby on Rails, and server side development.</p>
+                                </div>
+                            </div>
+                        </div>
 
-    <
-    div style = {
-        profileCard
-    }
-className = "col-sm-4" >
-    <
-    div className = "card text-center" >
-    <
-    img style = {
-        imageStyling
-    }
-src = "https://media.licdn.com/media/AAEAAQAAAAAAAAgsAAAAJGRjNWY1YWY1LWQ2MmQtNDllMS1iNjY4LTcyMWY0NzM2ZTViNQ.jpg"
-alt = "Sam image" / >
-    <
-    div className = "card-block" > < br / >
-    <
-    ul >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://github.com/Sam-Riley"
-target = "_blank" > Github < /a></li >
-    <
-    li > < a style = {
-        buttonStyling
-    }
-href = "https://www.linkedin.com/in/sam-riley-b36b94b2
-" target="
-_blank ">LinkedIn</a></li> <
-li > < /li> < /
-    ul > <
-    /div> <
-div className = "card-block" >
-    <
-    p > Sam is a Front - End software engineer with an interest in Front - End frameworks, and React. < /p> < /
-    div > <
-    /div> < /
-    div >
+                        <div style={profileCard} className="col-sm-4">
+                            <div className="card text-center">
+                                <img style={imageStyling} src="https://media.licdn.com/media/AAEAAQAAAAAAAAgsAAAAJGRjNWY1YWY1LWQ2MmQtNDllMS1iNjY4LTcyMWY0NzM2ZTViNQ.jpg" alt="Sam image"/>
+                                <div className="card-block"><br />
+                                    <ul>
+                                        <li><a style={buttonStyling} href="https://github.com/Sam-Riley" target="_blank">Github</a></li>
+                                        <li><a style={buttonStyling} href="https://www.linkedin.com/in/sam-riley-b36b94b2
+                                        " target="_blank">LinkedIn</a></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                                <div className="card-block">
+                                    <p>Sam is a Front-End software engineer with an interest in Front-End frameworks, and React.</p>
+                                </div>
+                            </div>
+                        </div>
 
-    <
-    /div> < /
-    div > <
-    /div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }
