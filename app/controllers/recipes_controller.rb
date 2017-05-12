@@ -17,7 +17,9 @@ class RecipesController < ApplicationController
           recipe = Recipe.find_or_create_by(
             recipe_name: nut['recipe']['label'],
             instruction: nut['recipe']['url'],
-            food_image: nut['recipe']['image']
+            food_image: nut['recipe']['image'],
+            serving: nut['recipe']['yield'],
+            calorie: nut['recipe']['calories']
           )
           nut['recipe']['ingredients'].each do |fd|
             food = Food.find_or_initialize_by(

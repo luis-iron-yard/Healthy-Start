@@ -124,10 +124,6 @@ class Profile extends React.Component {
         }
         var favoriteRecipes = this.state.favorites.map((recipe,i)=>{
             return(
-
-
-
-
                 <div className='col-xs-11 col-sm-2 col-md-5 col-lg-3 ns-listItemRecipe' key={i} >
                     <div className="card text-center">
                         <div className="card-block">
@@ -152,7 +148,7 @@ class Profile extends React.Component {
                 </div>
                 <div style={profileContainer}>
                     <div style={profileDetails}>
-                      
+
                         <img style={imageStyling} src={this.state.user.photo ? this.state.user.photo :'/img/duck.jpeg'} alt='random image for profile'/><br />
                         {/* <h6 className='text-center'>Photograph courtesy of www.wallpaperlite.com</h6><br /> */}
                         <h6>Inspirational Quote:</h6>

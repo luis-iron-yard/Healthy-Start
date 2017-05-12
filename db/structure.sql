@@ -172,7 +172,9 @@ CREATE TABLE nutritions (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     quantity integer,
-    unit character varying
+    unit character varying,
+    nutrization_type character varying,
+    nutrization_id integer
 );
 
 
@@ -217,7 +219,7 @@ CREATE TABLE recipes (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     serving integer,
-    calorie integer
+    calorie double precision
 );
 
 
@@ -481,6 +483,13 @@ CREATE INDEX index_interests_on_interestable_type_and_interestable_id ON interes
 
 
 --
+-- Name: index_nutritions_on_nutrization_type_and_nutrization_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_nutritions_on_nutrization_type_and_nutrization_id ON nutritions USING btree (nutrization_type, nutrization_id);
+
+
+--
 -- Name: index_nutrizations_on_food_id_and_nutrition_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -535,6 +544,6 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (re
 
 SET search_path TO "$user", public;
 
-INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154'), ('20161212211338'), ('20170421024117'), ('20170421024503'), ('20170421024811'), ('20170421024933');
+INSERT INTO schema_migrations (version) VALUES ('20161129162627'), ('20161129171818'), ('20161129171925'), ('20161129173413'), ('20161130154727'), ('20161130174502'), ('20161130200714'), ('20161130220727'), ('20161130224924'), ('20161201161516'), ('20161201203138'), ('20161201204418'), ('20161205164035'), ('20161206183532'), ('20161212202154'), ('20161212211338'), ('20170421024117'), ('20170421024503'), ('20170421024811'), ('20170421024933'), ('20170423015332'), ('20170512015135');
 
 
