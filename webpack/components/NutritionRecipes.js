@@ -57,9 +57,10 @@ class NutritionRecipes extends React.Component {
         this.setState({favorites: favorites})
 
         var newFavoriteRecipe = {
+            calorie: recipe.calorie,
             id: recipe.id,
             recipe: recipe.recipe_name,
-            food_image: recipe.food_imgage,
+            food_image: recipe.food_image,
             instruction: recipe.instruction,
             email: sessionStorage.getItem('email'),
             user_token: sessionStorage.getItem('authentication_token')
@@ -137,6 +138,9 @@ class NutritionRecipes extends React.Component {
                         <h6 style={recipeTitleStyle} className="card-subtitle text-muted">{recipe.recipe_name}</h6>
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
+                    <div className = "card-block">
+                      <h5 style = {recipeTitleStyle} className = "card-subtitle"> {recipe.calorie}</h5>
+                    </div>
                     <div className="card-block">
                         <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
                         <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
