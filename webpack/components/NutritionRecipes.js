@@ -139,7 +139,8 @@ class NutritionRecipes extends React.Component {
                     </div>
                     <img style={imgStyle} src={recipe.food_image} alt="Card image"/>
                     <div className = "card-block">
-                      <h5 style = {recipeTitleStyle} className = "card-subtitle"> {recipe.calorie}</h5>
+                      <h6 style = {recipeTitleStyle} className = "card-subtitle"> {(recipe.calorie/recipe.serving).toFixed(2)} calories per serving</h6>
+                      {console.log(recipe.calorie, recipe.serving, recipe.recipe_name)}
                     </div>
                     <div className="card-block">
                         <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
