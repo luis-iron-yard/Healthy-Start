@@ -11,7 +11,7 @@ class NutritionRecipes extends React.Component {
             favorites: [],
             recipes: [],
             selectedNutrient: '',
-            savedBtnText: 'Save to Favorites'
+            savedBtnText: 'Add to Favorites'
         }
     }
 
@@ -128,6 +128,9 @@ class NutritionRecipes extends React.Component {
         var recipeTitleStyle = {
             overflow: 'hidden',
         }
+        var cal = {
+
+        }
         var recipes = this.state.recipes.map((recipe, i) =>{
             return (
             // <li className='ns-listItemRecipe' key={i}>
@@ -144,7 +147,7 @@ class NutritionRecipes extends React.Component {
                     </div>
                     <div className="card-block">
                         <a style={buttonAStyling} href={recipe.instruction} target="_blank" className="card-link">Instructions</a>
-                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Save To Favorites'}</button>
+                        <button style={buttonStyling} href="#" className="card-link" onClick={()=>this.saveFavorites(recipe)} disabled={this.state.favorites.includes(recipe.id)}>{this.state.favorites.includes(recipe.id)?'Saved':'Add to Favorites'}</button>
                     </div>
                 </div>
             </div>

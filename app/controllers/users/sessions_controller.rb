@@ -2,7 +2,7 @@ class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
 # acts_as_token_authentication_handler_for User
 respond_to :json
-skip_before_filter :require_no_authentication, :only => [:create ]
+skip_before_action :require_no_authentication, :only => [:create ,:new]
 
 def create
 resource = User.find_for_database_authentication(:login=>params[:user_login][:email])
